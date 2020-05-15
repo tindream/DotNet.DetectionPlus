@@ -1,0 +1,82 @@
+﻿<Window x:Class="DetectionPlus.Win.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DetectionPlus.Win"
+        xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="850" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="350"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <utils:ProgressBarRound Grid.Row="1" Margin="5" Height="32" Value="95" />
+
+        <utils:ComboBoxRound Grid.Row="2" Margin="5" Name="cbx">
+            <ComboBoxItem Content="A" IsSelected="True"/>
+            <ComboBoxItem Content="B"/>
+            <ComboBoxItem Content="C"/>
+        </utils:ComboBoxRound>
+
+        <utils:TextBoxRound Grid.Row="3" Margin="5" Name="tb"></utils:TextBoxRound>
+        <PasswordBox Grid.Row="4" Margin="5" ></PasswordBox>
+        <utils:ButtonRound Grid.Row="5" Margin="5"  Content="确认" Click="ButtonRound_Click" ></utils:ButtonRound>
+
+        <utils:CheckBoxRound Grid.Row="6" Margin="5"  ></utils:CheckBoxRound>
+        <utils:SelectedBox Grid.Row="7" Margin="5"  ></utils:SelectedBox>
+        <utils:ListViewRound Name="listView1" Grid.Row="8" Grid.Column="1" Height="250" Margin="5" >
+            <ComboBoxItem Content="Hello123"/>
+            <ListBoxItem Content="C1"/>
+            <ListBoxItem Content="C2"/>
+            <ListBoxItem Content="A1"/>
+            <ComboBoxItem Content="A2"/>
+            <ComboBoxItem Content="A3"/>
+            <ComboBoxItem Content="A4"/>
+            <ComboBoxItem Content="B1"/>
+            <ComboBoxItem Content="B2"/>
+            <ComboBoxItem Content="B3"/>
+            <ComboBoxItem Content="B4"/>
+        </utils:ListViewRound>
+
+
+        <utils:DataGridAuto Name="datagrid1" Grid.Column="1" Grid.RowSpan="8" Margin="5"  Height="295">
+            <DataGrid.Columns>
+                <DataGridTextColumn  MinWidth="130" Binding="{Binding Money}" ElementStyle="{StaticResource TextRightSytle}"/>
+                <DataGridTemplateColumn Header="进度" x:Name="Value">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <utils:ProgressBarRound Value="{Binding Value}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </utils:DataGridAuto>
+
+        <Path Grid.Row="1" Grid.Column="2" Fill="#66C2E6" Stroke="Gray" Data="M15,15 A8,8 0 1 1 15,16Z"></Path>
+        <Path Grid.Row="1" Grid.Column="2" Fill="#23AFFF" Stroke="Gray" Data="M60,15 A8,8 0 1 1 60,16Z"></Path>
+        <Path Grid.Row="1" Grid.Column="2" Fill="#23AFFF" Stroke="Gray" Data="M45,8 37,16 53,16Z"></Path>
+        <Path Grid.Row="1" Grid.Column="2" Fill="Red" Stroke="Gray" Data="M45,26 37,18 53,18Z"></Path>
+        <utils:PathButton Grid.Row="2" Grid.Column="2" Grid.RowSpan="3" Margin="74,10" VerticalAlignment="Top" ></utils:PathButton>
+
+    </Grid>
+</Window>

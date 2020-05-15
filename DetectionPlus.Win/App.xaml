@@ -1,0 +1,23 @@
+<Application x:Class="DetectionPlus.Win.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="clr-namespace:DetectionPlus.Win" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d1p1:Ignorable="d"
+             StartupUri="TestWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\Button.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\ComboBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\DataGrid.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\PasswordBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\ProgressBar.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\ScrollBar.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\TextBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Paway.WPF;component\Resources\ListView.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

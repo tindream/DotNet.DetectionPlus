@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29512.175
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionPlus.Win", "DetectionPlus.Win\DetectionPlus.Win.csproj", "{2DFE98A1-842B-400D-BA45-6194F2219EAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionPlus", "DetectionPlus\DetectionPlus.csproj", "{5C7B7D24-46DA-4678-9018-223F29C03E59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DFE98A1-842B-400D-BA45-6194F2219EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DFE98A1-842B-400D-BA45-6194F2219EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DFE98A1-842B-400D-BA45-6194F2219EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DFE98A1-842B-400D-BA45-6194F2219EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7B7D24-46DA-4678-9018-223F29C03E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7B7D24-46DA-4678-9018-223F29C03E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7B7D24-46DA-4678-9018-223F29C03E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7B7D24-46DA-4678-9018-223F29C03E59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F43FA6A7-D22C-439B-AE16-20C2D81DE9F6}
+	EndGlobalSection
+EndGlobal
