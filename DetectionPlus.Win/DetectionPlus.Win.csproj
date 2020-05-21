@@ -84,6 +84,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\MenuButtonModel.cs" />
+    <Compile Include="ViewModel\TeachViewModel.cs" />
+    <Compile Include="View\TeachWindow.xaml.cs">
+      <DependentUpon>TeachWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -95,6 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\ViewModelPlus.cs" />
+    <Page Include="View\TeachWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -131,15 +139,24 @@
       <Name>DetectionPlus</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="View\" />
+    <Resource Include="Images\teach.png" />
+    <Resource Include="Images\teach_s.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1.png" />
-    <Resource Include="Images\1_white.png" />
+    <Resource Include="Images\start.png" />
+    <Resource Include="Images\start_s.png" />
+    <Resource Include="Images\video.png" />
+    <Resource Include="Images\video_s.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1_1.png" />
+    <Resource Include="Images\test.png" />
+    <Resource Include="Images\test_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tool.png" />
+    <Resource Include="Images\tool_s.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

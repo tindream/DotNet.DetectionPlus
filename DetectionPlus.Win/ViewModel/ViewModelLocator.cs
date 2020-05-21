@@ -1,4 +1,4 @@
-/*
+ï»¿/*
   In App.xaml:
   <Application.Resources>
       <vm:ViewModelLocator xmlns:vm="clr-namespace:DetectionPlus.Win"
@@ -43,15 +43,17 @@ namespace DetectionPlus.Win.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<TeachViewModel>();
         }
 
         /// <summary>
-        /// ViewºÍViewModelÖ®¼ä²»ÔÙÖ±½ÓÒıÓÃ£¬¶øÊÇÍ¨¹ıViewModelLocator
+        /// Viewå’ŒViewModelä¹‹é—´ä¸å†ç›´æ¥å¼•ç”¨ï¼Œè€Œæ˜¯é€šè¿‡ViewModelLocator
         /// <para>DataContext="{Binding Main ,Source={StaticResource Locator}}"</para>
-        /// <para>x:Key="Locator"ÔÚApp.xamlÈ«¾Ö¶¨Òå</para>
-        /// <para>µ¥Àı£¬¿ÉÒÔÔÚÈ«¾ÖÒıÓÃ°ó¶¨</para>
+        /// <para>x:Key="Locator"åœ¨App.xamlå…¨å±€å®šä¹‰</para>
+        /// <para>å•ä¾‹ï¼Œå¯ä»¥åœ¨å…¨å±€å¼•ç”¨ç»‘å®š</para>
         /// </summary>
         public MainViewModel Main { get { return GetModelInstance<MainViewModel>(); } }
+        public TeachViewModel Teach { get { return GetModelInstance<TeachViewModel>(); } }
         public T GetModelInstance<T>() { return ServiceLocator.Current.GetInstance<T>(); }
 
 

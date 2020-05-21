@@ -37,23 +37,23 @@ namespace DetectionPlus.Win.ViewModel
                 if (menuList == null) menuList = new List<MenuButtonModel>();
                 menuList.Add(new MenuButtonModel("教导")
                 {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/teach.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/teach_s.png")
                 });
                 menuList.Add(new MenuButtonModel("取相")
                 {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/video.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/video_s.png")
                 });
                 menuList.Add(new MenuButtonModel("检测")
                 {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/start.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/start_s.png")
                 });
                 menuList.Add(new MenuButtonModel("测试")
                 {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/test.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/test_s.png")
                 });
-                menuList.Add(new MenuButtonModel("设置")
+                menuList.Add(new MenuButtonModel("侦错")
                 {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/tool.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/tool_s.png")
                 });
                 return menuList;
             }

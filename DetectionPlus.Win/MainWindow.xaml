@@ -12,28 +12,27 @@
         <utils:WindowFunctionBar>
             <Menu>
                 <MenuItem Header="档案" >
-                    <MenuItem Header="报告问题"/>
-                    <MenuItem Header="提供反馈"/>
-                    <Separator />
-                    <MenuItem Header="设置..." />
+                    <MenuItem Header="开启档案"/>
+                    <MenuItem Header="样板储存"/>
+                    <MenuItem Header="修改检测项目"/>
                 </MenuItem>
                 <MenuItem Header="图片" >
-                    <MenuItem Header="报告问题"/>
-                    <MenuItem Header="提供反馈"/>
+                    <MenuItem Header="打开影像"/>
+                    <MenuItem Header="储存影像"/>
                     <Separator />
-                    <MenuItem Header="设置..." />
+                    <MenuItem Header="载入失败影像"/>
+                    <Separator />
+                    <MenuItem Header="储存教导影像"/>
+                    <MenuItem Header="显示错误图片"/>
                 </MenuItem>
                 <MenuItem Header="系统" >
-                    <MenuItem Header="报告问题"/>
-                    <MenuItem Header="提供反馈"/>
-                    <Separator />
-                    <MenuItem Header="设置..." />
+                    <MenuItem Header="设定"/>
+                    <MenuItem Header="报表"/>
+                    <MenuItem Header="使用纪录"/>
                 </MenuItem>
                 <MenuItem Header="关于" >
-                    <MenuItem Header="报告问题"/>
-                    <MenuItem Header="提供反馈"/>
-                    <Separator />
-                    <MenuItem Header="设置..." />
+                    <MenuItem Header="说明"/>
+                    <MenuItem Header="关于"/>
                 </MenuItem>
             </Menu>
             <Separator />
@@ -46,7 +45,7 @@
         </utils:WindowFunctionBar>
     </utils:WindowEXT.FunctionBarRight>
     <DockPanel>
-        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" 
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" Padding="0,3,0,0"
                            ItemsSource="{Binding MenuList}" 
                            ItemMargin="0"
                            ItemHeight="85" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"

@@ -1,4 +1,4 @@
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System.Windows.Input;
@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace DetectionPlus.Win.ViewModel
 {
     /// <summary>
-    /// ViewModelBase��չ
+    /// ViewModelBase扩展
     /// </summary>
     public class ViewModelPlus : ViewModelBase
     {
