@@ -1,16 +1,70 @@
-﻿<Window x:Class="DetectionPlus.Win.MainWindow"
+﻿<utils:WindowEXT x:Class="DetectionPlus.Win.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DetectionPlus.Win"
+        xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
         DataContext="{Binding Main ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <StackPanel VerticalAlignment="Center">
-            <TextBlock Text="{Binding Title}" FontFamily="微软雅黑" Foreground="Black" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Margin="30" Width="80" Height="35" Content="改变文本" Command="{Binding ChangeTitleCmd}"/>
-        </StackPanel>
-    </Grid>
-</Window>
+        Title="" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <utils:WindowEXT.FunctionBar>
+        <utils:WindowFunctionBar>
+            <Menu>
+                <MenuItem Header="档案" >
+                    <MenuItem Header="报告问题"/>
+                    <MenuItem Header="提供反馈"/>
+                    <Separator />
+                    <MenuItem Header="设置..." />
+                </MenuItem>
+                <MenuItem Header="图片" >
+                    <MenuItem Header="报告问题"/>
+                    <MenuItem Header="提供反馈"/>
+                    <Separator />
+                    <MenuItem Header="设置..." />
+                </MenuItem>
+                <MenuItem Header="系统" >
+                    <MenuItem Header="报告问题"/>
+                    <MenuItem Header="提供反馈"/>
+                    <Separator />
+                    <MenuItem Header="设置..." />
+                </MenuItem>
+                <MenuItem Header="关于" >
+                    <MenuItem Header="报告问题"/>
+                    <MenuItem Header="提供反馈"/>
+                    <Separator />
+                    <MenuItem Header="设置..." />
+                </MenuItem>
+            </Menu>
+            <Separator />
+            <Button Content="请选择档案" ToolTip="当前档案"/>
+        </utils:WindowFunctionBar>
+    </utils:WindowEXT.FunctionBar>
+    <utils:WindowEXT.FunctionBarRight>
+        <utils:WindowFunctionBar>
+            <Button Content="Sign in" />
+        </utils:WindowFunctionBar>
+    </utils:WindowEXT.FunctionBarRight>
+    <DockPanel>
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" 
+                           ItemsSource="{Binding MenuList}" 
+                           ItemMargin="0"
+                           ItemHeight="85" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
+                           ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
+                           ItemBorder=";;0,0,0,3" ItemPadding=";;1,3,1,1" ItemImageMargin="0,3,0,0;;0,1,0,2" 
+                           ItemImageHeight="48" ItemImageWidth="48" ItemImageDock="Top"
+                           Background="#CCD5F0" BorderThickness="0">
+        </utils:ListViewEXT>
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White">
+            <TextBlock Text="动作状态" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
+        </StatusBar>
+
+        <Grid>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="{Binding Title}" FontFamily="微软雅黑" Foreground="Black" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Margin="30" Width="80" Height="35" Content="改变文本" Command="{Binding ChangeTitleCmd}"/>
+            </StackPanel>
+        </Grid>
+
+    </DockPanel>
+</utils:WindowEXT>

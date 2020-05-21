@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paway.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace DetectionPlus.Win
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WindowEXT
     {
         public MainWindow()
         {

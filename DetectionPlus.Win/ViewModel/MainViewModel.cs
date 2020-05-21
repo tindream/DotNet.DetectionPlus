@@ -1,6 +1,9 @@
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Paway.WPF;
+using System.Collections.Generic;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace DetectionPlus.Win.ViewModel
 {
@@ -23,14 +26,37 @@ namespace DetectionPlus.Win.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            //Colors.Transparent
+        }
+
+        private List<MenuButtonModel> menuList;
+        public List<MenuButtonModel> MenuList
+        {
+            get
+            {
+                if (menuList == null) menuList = new List<MenuButtonModel>();
+                menuList.Add(new MenuButtonModel("教导")
+                {
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                });
+                menuList.Add(new MenuButtonModel("取相")
+                {
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                });
+                menuList.Add(new MenuButtonModel("检测")
+                {
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                });
+                menuList.Add(new MenuButtonModel("测试")
+                {
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                });
+                menuList.Add(new MenuButtonModel("设置")
+                {
+                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/1.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/1_1.png")
+                });
+                return menuList;
+            }
         }
 
         private string title = "Hello MVVMLight,Hello C#";
