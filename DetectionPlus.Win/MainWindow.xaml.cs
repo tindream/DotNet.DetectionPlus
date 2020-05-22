@@ -22,21 +22,6 @@ namespace DetectionPlus.Win
         public MainWindow()
         {
             InitializeComponent();
-            listView1.SelectionChanged += ListView1_SelectionChanged;
-        }
-
-        private void ListView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (listView1.SelectedItem is IListViewInfo info)
-            {
-                switch (info.Content)
-                {
-                    case "教导":
-                        new TeachWindow().ShowDialog();
-                        listView1.SelectedIndex = -1;
-                        break;
-                }
-            }
         }
     }
 }

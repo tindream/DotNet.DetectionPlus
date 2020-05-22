@@ -7,17 +7,19 @@
         xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
         DataContext="{Binding Teach ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="教导" Height="450" Width="800" ResizeMode="NoResize">
+        Title="教导" Height="450" Width="800" ResizeMode="NoResize" Icon="../Images/teach.png">
 
     <DockPanel Margin="5,0">
         <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3,0,0"
-                           ItemsSource="{Binding StepList}" Orientation="Vertical"
+                           Orientation="Vertical"
                            ItemMargin="0"
                            ItemHeight="35" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
                            ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
-                           ItemBorder=";;0,0,3,0" ItemPadding=";;3,1,1,1"
+                           ItemBorder=";;0,0,3,0" ItemPadding=";;3,0,0,0"
                            ItemImageWidth="0" 
                            BorderThickness="0">
+            <utils:ListBoxItemEXT Content="检测功能"/>
+            <utils:ListBoxItemEXT Content="物件形状"/>
         </utils:ListViewEXT>
         <TextBlock Width="1" Background="LightGray"/>
 

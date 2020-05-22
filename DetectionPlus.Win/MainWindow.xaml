@@ -5,9 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DetectionPlus.Win"
         xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         DataContext="{Binding Main ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
         Title="" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" Padding="0,3,0,0"
+                           ItemMargin="0"
+                           ItemHeight="85" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
+                           ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
+                           ItemBorder=";;0,0,0,3" ItemPadding=";;0,3,0,0" ItemImageMargin="0,3,0,0;;0,1,0,2"
+                           ItemImageHeight="48" ItemImageWidth="48" ItemImageDock="Top"
+                           Background="#CCD5F0" BorderThickness="0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listView1}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <utils:ListBoxItemEXT Content="教导"
+                                  Image="pack://application:,,,/DetectionPlus.Win;component/Images/teach.png"/>
+            <utils:ListBoxItemEXT Content="取相"
+                                  Image="pack://siteoforigin:,,,/Images/video.png|pack://siteoforigin:,,,/Images/video_s.png"/>
+            <utils:ListBoxItemEXT Content="检测"
+                                  Image="pack://siteoforigin:,,,/Images/start.png|pack://siteoforigin:,,,/Images/start_s.png"/>
+            <!--<utils:ListBoxItemEXT Content="测试"
+                                  Image="pack://siteoforigin:,,,/Images/test.png|pack://siteoforigin:,,,/Images/test_s.png"/>
+            <utils:ListBoxItemEXT Content="侦错"
+                                  Image="pack://siteoforigin:,,,/Images/tool.png|pack://siteoforigin:,,,/Images/tool_s.png"/>-->
+        </utils:ListViewEXT>
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White">
+            <TextBlock Text="动作状态" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
+        </StatusBar>
+
+        <Grid>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="{Binding Title}" FontFamily="微软雅黑" Foreground="Black" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Margin="30" Width="80" Height="35" Content="改变文本" Command="{Binding ChangeTitleCmd}" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Images/teach.png"/>
+                    </Button.Background>
+
+                </Button>
+                
+            </StackPanel>
+        </Grid>
+
+    </DockPanel>
     <utils:WindowEXT.FunctionBar>
         <utils:WindowFunctionBar>
             <Menu>
@@ -44,26 +88,4 @@
             <Button Content="Sign in" />
         </utils:WindowFunctionBar>
     </utils:WindowEXT.FunctionBarRight>
-    <DockPanel>
-        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" Padding="0,3,0,0"
-                           ItemsSource="{Binding MenuList}" 
-                           ItemMargin="0"
-                           ItemHeight="85" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
-                           ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
-                           ItemBorder=";;0,0,0,3" ItemPadding=";;1,3,1,1" ItemImageMargin="0,3,0,0;;0,1,0,2" 
-                           ItemImageHeight="48" ItemImageWidth="48" ItemImageDock="Top"
-                           Background="#CCD5F0" BorderThickness="0">
-        </utils:ListViewEXT>
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White">
-            <TextBlock Text="动作状态" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
-        </StatusBar>
-
-        <Grid>
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="{Binding Title}" FontFamily="微软雅黑" Foreground="Black" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Margin="30" Width="80" Height="35" Content="改变文本" Command="{Binding ChangeTitleCmd}"/>
-            </StackPanel>
-        </Grid>
-
-    </DockPanel>
 </utils:WindowEXT>

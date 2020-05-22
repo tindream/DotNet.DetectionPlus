@@ -29,6 +29,27 @@ namespace DetectionPlus.Win.ViewModel
             //Colors.Transparent
         }
 
+        private ICommand selectionCommand;
+        public ICommand SelectionCommand
+        {
+            get
+            {
+                return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
+                {
+                    if (listView1.SelectedItem is IListViewInfo info)
+                    {
+                        switch (info.Content)
+                        {
+                            case "教导":
+                                Method.Show(listView1, new TeachWindow());
+                                listView1.SelectedIndex = -1;
+                                break;
+                        }
+                    }
+                }));
+            }
+        }
+
         private List<MenuButtonModel> menuList;
         public List<MenuButtonModel> MenuList
         {
@@ -66,17 +87,16 @@ namespace DetectionPlus.Win.ViewModel
             set { title = value; RaisePropertyChanged(); }
         }
 
-        private ICommand m_ChangeTitleCmd;
+        private ICommand changeTitleCmd;
         public ICommand ChangeTitleCmd
         {
             get
             {
-                return m_ChangeTitleCmd ?? (m_ChangeTitleCmd = new RelayCommand(UpdateTitle));
+                return changeTitleCmd ?? (changeTitleCmd = new RelayCommand(() =>
+                {
+                    Title = "chanage title command";
+                }));
             }
-        }
-        private void UpdateTitle()
-        {
-            Title = "chanage title command";
         }
     }
 }

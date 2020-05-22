@@ -15,13 +15,7 @@ namespace DetectionPlus.Win.ViewModel
         public TeachViewModel()
         {
             //Colors.Transparent
-            stepList.Clear();
-            stepList.Add(new MenuButtonModel("检测功能"));
-            stepList.Add(new MenuButtonModel("物件形状"));
         }
-
-        private List<MenuButtonModel> stepList = new List<MenuButtonModel>();
-        public List<MenuButtonModel> StepList { get { return stepList; } }
 
         private ICommand m_ChangeTitleCmd;
         public ICommand ChangeTitleCmd
