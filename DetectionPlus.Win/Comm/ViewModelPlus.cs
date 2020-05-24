@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System.Windows.Input;
 
-namespace DetectionPlus.Win.ViewModel
+namespace DetectionPlus.Win
 {
     /// <summary>
     /// ViewModelBase扩展

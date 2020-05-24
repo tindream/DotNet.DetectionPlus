@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:DetectionPlus.Win" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:vm="clr-namespace:DetectionPlus.Win.ViewModel" 
+             xmlns:vm="clr-namespace:DetectionPlus.Win" 
              d1p1:Ignorable="d" 
              StartupUri="MainWindow.xaml">
     <Application.Resources>

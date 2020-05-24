@@ -50,53 +50,11 @@ namespace DetectionPlus.Win.ViewModel
             }
         }
 
-        private List<MenuButtonModel> menuList;
-        public List<MenuButtonModel> MenuList
-        {
-            get
-            {
-                if (menuList == null) menuList = new List<MenuButtonModel>();
-                menuList.Add(new MenuButtonModel("教导")
-                {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/teach.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/teach_s.png")
-                });
-                menuList.Add(new MenuButtonModel("取相")
-                {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/video.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/video_s.png")
-                });
-                menuList.Add(new MenuButtonModel("检测")
-                {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/start.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/start_s.png")
-                });
-                menuList.Add(new MenuButtonModel("测试")
-                {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/test.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/test_s.png")
-                });
-                menuList.Add(new MenuButtonModel("侦错")
-                {
-                    Image = new ImageEXT(@"pack://application:,,,/DetectionPlus.Win;component/Images/tool.png", @"pack://application:,,,/DetectionPlus.Win;component/Images/tool_s.png")
-                });
-                return menuList;
-            }
-        }
-
         private string title = "Hello MVVMLight,Hello C#";
         public string Title
         {
             get { return title; }
             set { title = value; RaisePropertyChanged(); }
-        }
-
-        private ICommand changeTitleCmd;
-        public ICommand ChangeTitleCmd
-        {
-            get
-            {
-                return changeTitleCmd ?? (changeTitleCmd = new RelayCommand(() =>
-                {
-                    Title = "chanage title command";
-                }));
-            }
         }
     }
 }

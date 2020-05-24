@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using DetectionPlus.Model;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System;
@@ -10,9 +11,9 @@ using System.Windows.Media;
 
 namespace DetectionPlus.Win.ViewModel
 {
-    public class TeachViewModel : ViewModelPlus
+    public class ShootViewModel : ViewModelPlus
     {
-        public TeachViewModel() { }
+        public ShootViewModel() { }
 
         private ICommand selectionCommand;
         public ICommand SelectionCommand
@@ -25,21 +26,26 @@ namespace DetectionPlus.Win.ViewModel
                     {
                         switch (info.Content)
                         {
-                            case "检测功能":
-                                if (Method.Child<Frame>(listView1, out Frame frame, "frame"))
-                                {
-                                    frame.Source = new Uri("pack://application:,,,/DetectionPlus.Win;component/View/Teach/FunctionPage.xaml");
-                                }
-                                break;
-                            case "物件形状":
-                                if (Method.Child<Frame>(listView1, out frame, "frame"))
-                                {
-                                    frame.Source = null;
-                                }
+                            case "C1":
+                            case "C2":
                                 break;
                         }
                     }
                 }));
+            }
+        }
+
+        private List<ListViewModel> carameList;
+        public List<ListViewModel> CarameList
+        {
+            get
+            {
+                if (carameList == null) carameList = new List<ListViewModel>();
+                carameList.Add(new ListViewModel("C1"));
+                carameList.Add(new ListViewModel("C2"));
+                carameList.Add(new ListViewModel("C3"));
+                carameList.Add(new ListViewModel("全部"));
+                return carameList;
             }
         }
     }

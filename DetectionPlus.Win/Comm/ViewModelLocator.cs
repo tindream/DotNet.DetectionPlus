@@ -13,10 +13,11 @@
 */
 
 using CommonServiceLocator;
+using DetectionPlus.Win.ViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace DetectionPlus.Win.ViewModel
+namespace DetectionPlus.Win
 {
     /// <summary>
     /// This class contains static references to all the view models in the
@@ -52,9 +53,10 @@ namespace DetectionPlus.Win.ViewModel
         /// <para>x:Key="Locator"在App.xaml全局定义</para>
         /// <para>单例，可以在全局引用绑定</para>
         /// </summary>
-        public MainViewModel Main { get { return GetModelInstance<MainViewModel>(); } }
-        public TeachViewModel Teach { get { return GetModelInstance<TeachViewModel>(); } }
-        public T GetModelInstance<T>() { return ServiceLocator.Current.GetInstance<T>(); }
+        public MainViewModel Main { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
+        public TeachViewModel Teach { get { return ServiceLocator.Current.GetInstance<TeachViewModel>(); } }
+        public ShootViewModel Shoot { get { return ServiceLocator.Current.GetInstance<ShootViewModel>(); } }
+        public FunctionViewModel Function { get { return ServiceLocator.Current.GetInstance<FunctionViewModel>(); } }
 
 
         public static void Cleanup()

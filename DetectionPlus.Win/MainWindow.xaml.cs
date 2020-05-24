@@ -1,6 +1,7 @@
 ﻿using Paway.WPF;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -22,6 +23,13 @@ namespace DetectionPlus.Win
         public MainWindow()
         {
             InitializeComponent();
+            DebugShow();
+        }
+        [Conditional("DEBUG")]
+        private void DebugShow()
+        {
+            this.WindowState = WindowState.Normal;
+            this.ResizeMode = ResizeMode.CanResize;
         }
     }
 }

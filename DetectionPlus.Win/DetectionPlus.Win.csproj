@@ -80,16 +80,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Comm\ViewlLocator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\MenuButtonModel.cs" />
     <Compile Include="ViewModel\TeachViewModel.cs" />
+    <Compile Include="ViewModel\Teach\FunctionViewModel.cs" />
+    <Compile Include="ViewModel\Teach\ShootViewModel.cs" />
+    <Compile Include="View\Teach\ShootPage.xaml.cs">
+      <DependentUpon>ShootPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Teach\FunctionPage.xaml.cs">
+      <DependentUpon>FunctionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TeachWindow.xaml.cs">
       <DependentUpon>TeachWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Comm\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,7 +106,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelPlus.cs" />
+    <Compile Include="Comm\ViewModelPlus.cs" />
+    <Page Include="View\Teach\ShootPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Teach\FunctionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TeachWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,42 +157,24 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Images\teach.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\teach_s.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\F1.png" />
+    <Resource Include="Images\F2.png" />
+    <Resource Include="Images\teach.png" />
+    <Resource Include="Images\teach_s.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\start.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\start_s.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\video.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\video_s.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\start.png" />
+    <Resource Include="Images\start_s.png" />
+    <Resource Include="Images\video.png" />
+    <Resource Include="Images\video_s.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\test.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\test_s.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\test.png" />
+    <Resource Include="Images\test_s.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\tool.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\tool_s.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\tool.png" />
+    <Resource Include="Images\tool_s.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

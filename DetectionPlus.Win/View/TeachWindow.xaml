@@ -3,32 +3,47 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:local="clr-namespace:DetectionPlus.Win"
         xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
         DataContext="{Binding Teach ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="教导" Height="450" Width="800" ResizeMode="NoResize" Icon="../Images/teach.png">
+        Title="教导" Height="450" Width="800" Icon="../Images/teach.png" ResizeMode="NoResize" WindowState="Maximized">
 
     <DockPanel Margin="5,0">
-        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3,0,0"
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3"
                            Orientation="Vertical"
                            ItemMargin="0"
                            ItemHeight="35" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
                            ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
-                           ItemBorder=";;0,0,3,0" ItemPadding=";;3,0,0,0"
+                           ItemBorder=";;0,0,3,0" ItemPadding="5;5;5,5,3,5"
                            ItemImageWidth="0" 
-                           BorderThickness="0">
-            <utils:ListBoxItemEXT Content="检测功能"/>
+                           BorderThickness="0" VerticalAlignment="Center" HorizontalContentAlignment="Right">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listView1}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <utils:ListBoxItemEXT Content="检测功能" IsSelected="True"/>
             <utils:ListBoxItemEXT Content="物件形状"/>
+            <utils:ListBoxItemEXT Content="背景差异"/>
+            <utils:ListBoxItemEXT Content="二值化调整"/>
+            <utils:ListBoxItemEXT Content="框选物件"/>
+            <utils:ListBoxItemEXT Content="框选边缘"/>
+            <utils:ListBoxItemEXT Content="檢測項目"/>
+            <utils:ListBoxItemEXT Content="基本功能"/>
         </utils:ListViewEXT>
         <TextBlock Width="1" Background="LightGray"/>
 
         <Grid>
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="{Binding Title}" FontFamily="微软雅黑" Foreground="Black" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Margin="30" Width="80" Height="35" Content="改变文本" Command="{Binding ChangeTitleCmd}"/>
-            </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Source="/DetectionPlus.Win;component/View/Teach/ShootPage.xaml" NavigationUIVisibility="Hidden"/>
+            <TextBlock Height="1" Background="LightGray" VerticalAlignment="Bottom"/>
+            <Frame Grid.Row="1" Name="frame" Source="/DetectionPlus.Win;component/View/Teach/FunctionPage.xaml" NavigationUIVisibility="Hidden"/>
         </Grid>
-
     </DockPanel>
 </Window>
