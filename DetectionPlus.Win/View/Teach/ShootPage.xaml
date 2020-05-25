@@ -6,13 +6,14 @@
       xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
       xmlns:local="clr-namespace:DetectionPlus.Win"
+      DataContext="{Binding Shoot ,Source={StaticResource Locator}}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FunctionPage"
       FontSize="15">
     <DockPanel>
         <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top"
-                           ItemMargin="0"
+                           ItemMargin="0" ItemsSource="{Binding CarameList}"
                            ItemWidth="NaN"  ItemHeight="32" 
                            ItemRadius="0" 
                            ItemBorder="0,1,1,1" ItemPadding="15,0,15,0"
@@ -24,8 +25,6 @@
                                            CommandParameter="{Binding ElementName=listView1}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <utils:ListBoxItemEXT Content="C1"/>
-            <utils:ListBoxItemEXT Content="C2"/>
         </utils:ListViewEXT>
         <Image Source="pack://application:,,,/Images/F1.png" HorizontalAlignment="Left"/>
     </DockPanel>

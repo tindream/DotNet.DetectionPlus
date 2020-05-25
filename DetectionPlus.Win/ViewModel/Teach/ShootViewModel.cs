@@ -13,7 +13,16 @@ namespace DetectionPlus.Win.ViewModel
 {
     public class ShootViewModel : ViewModelPlus
     {
-        public ShootViewModel() { }
+        private List<ListViewModel> carameList;
+        public List<ListViewModel> CarameList { get { return carameList; } }
+        public ShootViewModel()
+        {
+            carameList = new List<ListViewModel>();
+            carameList.Add(new ListViewModel("C1") { IsSelected = true });
+            carameList.Add(new ListViewModel("C2"));
+            carameList.Add(new ListViewModel("C3"));
+            carameList.Add(new ListViewModel("全部"));
+        }
 
         private ICommand selectionCommand;
         public ICommand SelectionCommand
@@ -32,20 +41,6 @@ namespace DetectionPlus.Win.ViewModel
                         }
                     }
                 }));
-            }
-        }
-
-        private List<ListViewModel> carameList;
-        public List<ListViewModel> CarameList
-        {
-            get
-            {
-                if (carameList == null) carameList = new List<ListViewModel>();
-                carameList.Add(new ListViewModel("C1"));
-                carameList.Add(new ListViewModel("C2"));
-                carameList.Add(new ListViewModel("C3"));
-                carameList.Add(new ListViewModel("全部"));
-                return carameList;
             }
         }
     }

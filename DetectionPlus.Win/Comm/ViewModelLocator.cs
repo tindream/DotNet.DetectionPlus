@@ -45,6 +45,8 @@ namespace DetectionPlus.Win
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<TeachViewModel>();
+            SimpleIoc.Default.Register<ShootViewModel>();
+            SimpleIoc.Default.Register<FunctionViewModel>();
         }
 
         /// <summary>

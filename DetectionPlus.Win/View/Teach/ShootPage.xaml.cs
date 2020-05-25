@@ -25,8 +25,6 @@ namespace DetectionPlus.Win
         public ShootPage()
         {
             InitializeComponent();
-            //listView1.Items.Clear();
-            //listView1.ItemsSource = ServiceLocator.Current.GetInstance<ShootViewModel>().CarameList;
         }
     }
 }

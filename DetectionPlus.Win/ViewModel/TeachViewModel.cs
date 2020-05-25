@@ -37,6 +37,12 @@ namespace DetectionPlus.Win.ViewModel
                                     frame.Source = null;
                                 }
                                 break;
+                            default:
+                                if (Method.Child<Frame>(listView1, out frame, "frame"))
+                                {
+                                    frame.Source = null;
+                                }
+                                break;
                         }
                     }
                 }));
