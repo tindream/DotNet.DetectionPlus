@@ -16,12 +16,16 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" Margin="3" Source="pack://application:,,,/Images/F2.png"/>
+        <Image Grid.Column="1" Margin="5" Source="pack://application:,,,/Images/F2.png"/>
         <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
-        
-        <StackPanel>
-            <TextBlock Text="请勾选检测项目"/>
 
+        <StackPanel>
+            <TextBlock Text="请勾选检测项目" Padding="5"/>
+            <RadioButton Content="A" Name="a" Padding="5" Command="{Binding CheckedCommand}" CommandParameter="{Binding ElementName=a}" ClickMode="Hover"/>
+            <RadioButton Content="B" Margin="5" VerticalAlignment="Bottom" IsChecked="True"/>
+            <RadioButton Content="C"/>
+            <RadioButton Content="D"/>
+            <CheckBox Content="Hello" Name="h" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding ElementName=h}"/>
         </StackPanel>
 
     </Grid>

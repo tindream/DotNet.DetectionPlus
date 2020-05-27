@@ -8,6 +8,7 @@
         xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
         DataContext="{Binding Teach ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
+        Background="#FAFAFA"
         Title="教导" Height="450" Width="800" Icon="../Images/teach.png" ResizeMode="NoResize" WindowState="Maximized">
 
     <DockPanel Margin="5,0">

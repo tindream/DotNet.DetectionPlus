@@ -56,7 +56,7 @@
       <HintPath>..\packages\Paway.Helper.2.3.3.2\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
     <Reference Include="Paway.WPF, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.0.6\lib\net45\Paway.WPF.dll</HintPath>
+      <HintPath>..\packages\Paway.WPF.1.0.8\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -14,7 +14,7 @@
     <DockPanel>
         <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top"
                            ItemMargin="0" ItemsSource="{Binding CarameList}"
-                           ItemWidth="NaN"  ItemHeight="32" 
+                           ItemWidth="Auto"  ItemHeight="32" 
                            ItemRadius="0" 
                            ItemBorder="0,1,1,1" ItemPadding="15,0,15,0"
                            ItemImageWidth="0"
