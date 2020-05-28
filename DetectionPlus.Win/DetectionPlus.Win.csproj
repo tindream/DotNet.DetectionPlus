@@ -55,8 +55,8 @@
     <Reference Include="Paway.Helper, Version=2.3.3.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
       <HintPath>..\packages\Paway.Helper.2.3.3.2\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.0.8\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.0.9\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -87,6 +87,10 @@
     <Compile Include="ViewModel\TeachViewModel.cs" />
     <Compile Include="ViewModel\Teach\FunctionViewModel.cs" />
     <Compile Include="ViewModel\Teach\ShootViewModel.cs" />
+    <Compile Include="ViewModel\Teach\ShapeViewModel.cs" />
+    <Compile Include="View\Teach\ShapePage.xaml.cs">
+      <DependentUpon>ShapePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Teach\ShootPage.xaml.cs">
       <DependentUpon>ShootPage.xaml</DependentUpon>
     </Compile>
@@ -107,6 +111,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Comm\ViewModelPlus.cs" />
+    <Page Include="View\Teach\ShapePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Teach\ShootPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -155,7 +163,6 @@
       <Name>DetectionPlus</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\F1.png" />
     <Resource Include="Images\F2.png" />
@@ -175,6 +182,22 @@
   <ItemGroup>
     <Resource Include="Images\tool.png" />
     <Resource Include="Images\tool_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hexagon.png" />
+    <Resource Include="Images\rectangle.png" />
+    <Resource Include="Images\round.png" />
+    <Resource Include="Images\square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hexagon_w.png" />
+    <Resource Include="Images\rectangle_w.png" />
+    <Resource Include="Images\ring_w.png" />
+    <Resource Include="Images\round_w.png" />
+    <Resource Include="Images\square_w.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

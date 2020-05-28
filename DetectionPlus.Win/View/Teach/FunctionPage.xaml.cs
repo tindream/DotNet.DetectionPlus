@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Paway.Helper;
+using Paway.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,24 @@ namespace DetectionPlus.Win
         public FunctionPage()
         {
             InitializeComponent();
+            this.Loaded += FunctionPage_Loaded;
+        }
+        private void FunctionPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            radioList.Children.Clear();
+            var type = typeof(FunctionType);
+            var list = type.GetFields(TConfig.Flags).ToList();
+            for (int i = 1; i < list.Count; i++)
+            {
+                var radio = new RadioButtonEXT();
+                radio.Checked += Radio_Checked;
+                radio.IsChecked = i == 1;
+                radio.Content = list[i].Description();
+                radioList.Children.Add(radio);
+            }
+        }
+        private void Radio_Checked(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

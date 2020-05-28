@@ -34,7 +34,7 @@ namespace DetectionPlus.Win.ViewModel
                             case "物件形状":
                                 if (Method.Child<Frame>(listView1, out frame, "frame"))
                                 {
-                                    frame.Source = null;
+                                    frame.Source = new Uri("pack://application:,,,/DetectionPlus.Win;component/View/Teach/ShapePage.xaml");
                                 }
                                 break;
                             default:

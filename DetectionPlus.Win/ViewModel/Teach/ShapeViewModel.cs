@@ -1,5 +1,4 @@
-﻿using DetectionPlus.Model;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System;
@@ -11,18 +10,9 @@ using System.Windows.Media;
 
 namespace DetectionPlus.Win.ViewModel
 {
-    public class ShootViewModel : ViewModelPlus
+    public class ShapeViewModel : ViewModelPlus
     {
-        private readonly List<ListViewModel> carameList;
-        public List<ListViewModel> CarameList { get { return carameList; } }
-        public ShootViewModel()
-        {
-            carameList = new List<ListViewModel>();
-            carameList.Add(new ListViewModel("C1") { IsSelected = true });
-            carameList.Add(new ListViewModel("C2"));
-            carameList.Add(new ListViewModel("C3"));
-            carameList.Add(new ListViewModel("全部"));
-        }
+        public ShapeViewModel() { }
 
         private ICommand selectionCommand;
         public ICommand SelectionCommand
@@ -35,8 +25,7 @@ namespace DetectionPlus.Win.ViewModel
                     {
                         switch (info.Content)
                         {
-                            case "C1":
-                            case "C2":
+                            case "圆":
                                 break;
                         }
                     }

@@ -18,15 +18,19 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Column="1" Margin="5" Source="pack://application:,,,/Images/F2.png"/>
         <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
-
-        <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <TextBlock Text="请勾选检测项目" Padding="5"/>
-            <RadioButton Content="A" Name="a" Padding="5" Command="{Binding CheckedCommand}" CommandParameter="{Binding ElementName=a}" ClickMode="Hover"/>
-            <RadioButton Content="B" Margin="5" VerticalAlignment="Bottom" IsChecked="True"/>
-            <RadioButton Content="C"/>
-            <RadioButton Content="D"/>
-            <CheckBox Content="Hello" Name="h" Command="{Binding CheckBoxCommand}" CommandParameter="{Binding ElementName=h}"/>
-        </StackPanel>
+            <StackPanel Grid.Row="1" Name="radioList" VerticalAlignment="Center">
+                <utils:RadioButtonEXT Content="上(下)视检测功能" IsChecked="True"/>
+                <utils:RadioButtonEXT Content="A"/>
+                <utils:RadioButtonEXT Content="B"/>
+                <utils:RadioButtonEXT Content="C"/>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 </Page>

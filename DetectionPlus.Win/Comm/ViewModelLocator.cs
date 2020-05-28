@@ -47,8 +47,13 @@ namespace DetectionPlus.Win
             SimpleIoc.Default.Register<TeachViewModel>();
             SimpleIoc.Default.Register<ShootViewModel>();
             SimpleIoc.Default.Register<FunctionViewModel>();
+            SimpleIoc.Default.Register<ShapeViewModel>();
         }
 
+        public ShapeViewModel Shape { get { return ServiceLocator.Current.GetInstance<ShapeViewModel>(); } }
+        public FunctionViewModel Function { get { return ServiceLocator.Current.GetInstance<FunctionViewModel>(); } }
+        public ShootViewModel Shoot { get { return ServiceLocator.Current.GetInstance<ShootViewModel>(); } }
+        public TeachViewModel Teach { get { return ServiceLocator.Current.GetInstance<TeachViewModel>(); } }
         /// <summary>
         /// View和ViewModel之间不再直接引用，而是通过ViewModelLocator
         /// <para>DataContext="{Binding Main ,Source={StaticResource Locator}}"</para>
@@ -56,9 +61,6 @@ namespace DetectionPlus.Win
         /// <para>单例，可以在全局引用绑定</para>
         /// </summary>
         public MainViewModel Main { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
-        public TeachViewModel Teach { get { return ServiceLocator.Current.GetInstance<TeachViewModel>(); } }
-        public ShootViewModel Shoot { get { return ServiceLocator.Current.GetInstance<ShootViewModel>(); } }
-        public FunctionViewModel Function { get { return ServiceLocator.Current.GetInstance<FunctionViewModel>(); } }
 
 
         public static void Cleanup()
