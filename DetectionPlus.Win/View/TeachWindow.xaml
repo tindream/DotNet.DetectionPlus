@@ -15,7 +15,7 @@
         <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3"
                            Orientation="Vertical"
                            ItemMargin="0"
-                           ItemHeight="35" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
+                           ItemHeight="42" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
                            ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
                            ItemBorder=";;0,0,3,0" ItemPadding="5;5;5,5,3,5"
                            ItemImageWidth="0" 

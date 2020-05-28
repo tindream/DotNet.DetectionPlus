@@ -28,7 +28,7 @@
                            ItemMargin="0"
                            ItemHeight="65" ItemBorderBrush="Transparent;;"
                            ItemRadius="0" ItemBackground="Transparent;;" ItemTextForeground="#222;#222"
-                           ItemImageHeight="32" ItemImageWidth="32" ItemImageDock="Top"
+                           ItemImageDock="Top"
                            Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
