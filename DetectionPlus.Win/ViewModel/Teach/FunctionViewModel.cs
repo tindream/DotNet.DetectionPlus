@@ -1,5 +1,4 @@
-﻿using DetectionPlus.Model;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System;

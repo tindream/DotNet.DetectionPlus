@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DetectionPlus.Model
+namespace DetectionPlus.Win
 {
     public class ListViewModel : IListViewInfo
     {

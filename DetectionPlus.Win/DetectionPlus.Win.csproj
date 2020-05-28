@@ -84,6 +84,7 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Comm\ListViewModel.cs" />
     <Compile Include="ViewModel\TeachViewModel.cs" />
     <Compile Include="ViewModel\Teach\FunctionViewModel.cs" />
     <Compile Include="ViewModel\Teach\ShootViewModel.cs" />

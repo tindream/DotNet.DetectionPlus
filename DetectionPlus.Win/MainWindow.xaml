@@ -15,7 +15,7 @@
                            ItemMargin="0"
                            ItemHeight="85" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
                            ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
-                           ItemBorder=";;0,0,0,3" ItemPadding=";;0,3,0,0" ItemImageMargin="0,3,0,0;;0,1,0,2"
+                           ItemBorder=";;0,0,0,3" ItemPadding=";;0,3,0,0" ItemImageMargin="0,3,0,0;0,3,0,0;0,1,0,2"
                            ItemImageHeight="48" ItemImageWidth="48" ItemImageDock="Top"
                            Background="#CCD5F0" BorderThickness="0">
             <i:Interaction.Triggers>
