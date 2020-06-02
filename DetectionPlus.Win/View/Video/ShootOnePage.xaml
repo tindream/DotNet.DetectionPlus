@@ -1,0 +1,17 @@
+﻿<Page x:Class="DetectionPlus.Win.ShootOnePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+      xmlns:local="clr-namespace:DetectionPlus.Win"
+      DataContext="{Binding ShootOne ,Source={StaticResource Locator}}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="450"
+      Title="FunctionPage"
+      FontSize="15">
+    <Border BorderBrush="LightGray" BorderThickness="1">
+        <Image Source="pack://application:,,,/Images/F1.png" HorizontalAlignment="Left"/>
+    </Border>
+</Page>

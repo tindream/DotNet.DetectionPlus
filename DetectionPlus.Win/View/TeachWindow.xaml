@@ -32,7 +32,7 @@
             <utils:ListBoxItemEXT Content="二值化调整"/>
             <utils:ListBoxItemEXT Content="框选物件"/>
             <utils:ListBoxItemEXT Content="框选边缘"/>
-            <utils:ListBoxItemEXT Content="檢測項目"/>
+            <utils:ListBoxItemEXT Content="检测项目"/>
             <utils:ListBoxItemEXT Content="基本功能"/>
         </utils:ListViewEXT>
         <TextBlock Width="1" Background="LightGray"/>
@@ -42,9 +42,9 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame Source="/DetectionPlus.Win;component/View/Teach/ShootPage.xaml" NavigationUIVisibility="Hidden"/>
+            <Frame Source="/DetectionPlus.Win;component/View/Video/ShootPage.xaml" NavigationUIVisibility="Hidden"/>
             <TextBlock Height="1" Background="LightGray" VerticalAlignment="Bottom"/>
-            <Frame Grid.Row="1" Name="frame" Source="/DetectionPlus.Win;component/View/Teach/FunctionPage.xaml" NavigationUIVisibility="Hidden"/>
+            <Frame Grid.Row="1" Name="frame" NavigationUIVisibility="Hidden"/>
         </Grid>
     </DockPanel>
 </Window>

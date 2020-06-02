@@ -22,14 +22,14 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="请选择物体形状" Padding="5"/>
+            <TextBlock Text="请选择物体形状：" Padding="5"/>
 
             <utils:ListViewEXT Name="listView1" Grid.Row="1" DockPanel.Dock="Top"
-                           ItemMargin="0"
-                           ItemHeight="65" ItemBorderBrush="Transparent;;"
-                           ItemRadius="0" ItemBackground="Transparent;;" ItemTextForeground="#222;#222"
-                           ItemImageDock="Top"
-                           Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
+                               ItemMargin="0"
+                               ItemHeight="65" ItemBorderBrush="Transparent;;"
+                               ItemRadius="0" ItemBackground="Transparent;;" ItemTextForeground="#222;#222"
+                               ItemImageDock="Top"
+                               Background="Transparent" BorderThickness="0" VerticalAlignment="Center">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SelectionCommand}"

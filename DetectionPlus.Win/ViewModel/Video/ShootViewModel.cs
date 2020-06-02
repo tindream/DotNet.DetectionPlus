@@ -1,0 +1,98 @@
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Paway.WPF;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+
+namespace DetectionPlus.Win.ViewModel
+{
+    public class ShootViewModel : ViewModelPlus
+    {
+        private readonly List<ListViewModel> carameList;
+        public List<ListViewModel> CarameList { get { return carameList; } }
+        public ShootViewModel()
+        {
+            carameList = new List<ListViewModel>();
+            carameList.Add(new ListViewModel("C1") { IsSelected = true });
+            carameList.Add(new ListViewModel("C2"));
+            carameList.Add(new ListViewModel("C3"));
+            carameList.Add(new ListViewModel("C4"));
+            carameList.Add(new ListViewModel("C5"));
+            carameList.Add(new ListViewModel("C6"));
+            carameList.Add(new ListViewModel("全部"));
+        }
+
+        private ICommand selectionCommand;
+        public ICommand SelectionCommand
+        {
+            get
+            {
+                return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
+                {
+                    if (listView1.SelectedItem is IListViewInfo info)
+                    {
+                        switch (info.Content)
+                        {
+                            case "C1":
+                            case "C2":
+                            default:
+                                if (Method.Child<Grid>(listView1, out Grid grid, "grid"))
+                                {
+                                    grid.RowDefinitions.Clear();
+                                    grid.ColumnDefinitions.Clear();
+                                    AddControl(grid, 0, 0, info.Content);
+                                }
+                                break;
+                            case "全部":
+                                var count = carameList.Count - 1;
+                                if (count <= 4)
+                                {
+                                    AddColumn(listView1, 0, count);
+                                }
+                                else
+                                {
+                                    var row = (count + 3) / 4;
+                                    AddRow(listView1, row, count);
+                                }
+                                break;
+                        }
+                    }
+                }));
+            }
+        }
+        private void AddControl(Grid grid, int row, int column, object name)
+        {
+            var frame = new Frame();
+            grid.Children.Add(frame);
+            frame.Content = ViewlLocator.GetViewInstance<ShootOnePage>(name);
+            frame.SetValue(Grid.RowProperty, row); //设置按钮所在Grid控件的行
+            frame.SetValue(Grid.ColumnProperty, column); //设置按钮所在Grid控件的列
+        }
+        private void AddRow(DependencyObject obj, int count, int total)
+        {
+            if (Method.Child<Grid>(obj, out Grid grid, "grid"))
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    grid.RowDefinitions.Add(new RowDefinition());
+                    AddColumn(obj, i, i < count - 1 ? 4 : total % 4);
+                }
+            }
+        }
+        private void AddColumn(DependencyObject obj, int row, int count)
+        {
+            if (Method.Child<Grid>(obj, out Grid grid, "grid"))
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    grid.ColumnDefinitions.Add(new ColumnDefinition());
+                    AddControl(grid, row, i, row * 4 + i);
+                }
+            }
+        }
+    }
+}

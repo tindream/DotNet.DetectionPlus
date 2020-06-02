@@ -52,8 +52,8 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Helper, Version=2.3.3.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Helper.2.3.3.2\lib\net40\Paway.Helper.dll</HintPath>
+    <Reference Include="Paway.Helper, Version=2.3.5.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Helper.2.3.5\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
     <Reference Include="Paway.WPF, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Paway.WPF.1.0.10\lib\net45\Paway.WPF.dll</HintPath>
@@ -86,13 +86,41 @@
     </Compile>
     <Compile Include="Comm\ListViewModel.cs" />
     <Compile Include="ViewModel\TeachViewModel.cs" />
+    <Compile Include="ViewModel\Teach\BasalViewModel.cs" />
+    <Compile Include="ViewModel\Teach\ProjectViewModel.cs" />
+    <Compile Include="ViewModel\Teach\WdgeViewModel.cs" />
+    <Compile Include="ViewModel\Teach\SelectionViewModel.cs" />
+    <Compile Include="ViewModel\Teach\BinaryViewModel.cs" />
     <Compile Include="ViewModel\Teach\FunctionViewModel.cs" />
-    <Compile Include="ViewModel\Teach\ShootViewModel.cs" />
+    <Compile Include="ViewModel\Teach\BackgroundViewModel.cs" />
+    <Compile Include="ViewModel\Video\ShootOneViewModel.cs" />
+    <Compile Include="ViewModel\Video\ShootViewModel.cs" />
     <Compile Include="ViewModel\Teach\ShapeViewModel.cs" />
+    <Compile Include="View\Teach\BackgroundPage.xaml.cs">
+      <DependentUpon>BackgroundPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Teach\BasalPage.xaml.cs">
+      <DependentUpon>BasalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Teach\ProjectPage.xaml.cs">
+      <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Teach\WdgePage.xaml.cs">
+      <DependentUpon>WdgePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Teach\SelectionPage.xaml.cs">
+      <DependentUpon>SelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Teach\BinaryPage.xaml.cs">
+      <DependentUpon>BinaryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Teach\ShapePage.xaml.cs">
       <DependentUpon>ShapePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Teach\ShootPage.xaml.cs">
+    <Compile Include="View\Video\ShootOnePage.xaml.cs">
+      <DependentUpon>ShootOnePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Video\ShootPage.xaml.cs">
       <DependentUpon>ShootPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Teach\FunctionPage.xaml.cs">
@@ -112,11 +140,39 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Comm\ViewModelPlus.cs" />
+    <Page Include="View\Teach\BackgroundPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Teach\BasalPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Teach\ProjectPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Teach\WdgePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Teach\SelectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Teach\BinaryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Teach\ShapePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Teach\ShootPage.xaml">
+    <Page Include="View\Video\ShootOnePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Video\ShootPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

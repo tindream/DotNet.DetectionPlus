@@ -1,4 +1,4 @@
-﻿<Page x:Class="DetectionPlus.Win.FunctionPage"
+﻿<Page x:Class="DetectionPlus.Win.BackgroundPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DetectionPlus.Win"
       xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-      DataContext="{Binding Function ,Source={StaticResource Locator}}"
+      DataContext="{Binding Background ,Source={StaticResource Locator}}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FunctionPage"
@@ -16,19 +16,17 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" Margin="5" Source="pack://application:,,,/Images/F2.png"/>
         <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="请勾选检测项目。" Padding="5"/>
+            <TextBlock Text="物件是否比背景暗？" Padding="5"/>
+
             <StackPanel Grid.Row="1" Name="radioList" VerticalAlignment="Center">
-                <utils:RadioButtonEXT Content="上(下)视检测功能" IsChecked="True"/>
-                <utils:RadioButtonEXT Content="A"/>
-                <utils:RadioButtonEXT Content="B"/>
-                <utils:RadioButtonEXT Content="C"/>
+                <utils:RadioButtonEXT Content="是" IsChecked="True"/>
+                <utils:RadioButtonEXT Content="否（比较亮）"/>
             </StackPanel>
         </Grid>
 

@@ -25,9 +25,9 @@ namespace DetectionPlus.Win
         public FunctionPage()
         {
             InitializeComponent();
-            this.Loaded += FunctionPage_Loaded;
+            LoadData();
         }
-        private void FunctionPage_Loaded(object sender, RoutedEventArgs e)
+        private void LoadData()
         {
             radioList.Children.Clear();
             var type = typeof(FunctionType);

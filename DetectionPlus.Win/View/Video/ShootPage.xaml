@@ -26,6 +26,8 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </utils:ListViewEXT>
-        <Image Source="pack://application:,,,/Images/F1.png" HorizontalAlignment="Left"/>
+        <Grid Name="grid">
+            <Frame Source="/DetectionPlus.Win;component/View/Video/ShootOnePage.xaml" NavigationUIVisibility="Hidden"/>
+        </Grid>
     </DockPanel>
 </Page>

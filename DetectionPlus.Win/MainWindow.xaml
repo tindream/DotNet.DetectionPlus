@@ -39,11 +39,7 @@
             <TextBlock Text="动作状态" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
         </StatusBar>
 
-        <Grid>
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="{Binding Title}" FontFamily="微软雅黑" Foreground="Black" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </StackPanel>
-        </Grid>
+        <Frame Name="frame" NavigationUIVisibility="Hidden"/>
 
     </DockPanel>
     <utils:WindowEXT.FunctionBar>

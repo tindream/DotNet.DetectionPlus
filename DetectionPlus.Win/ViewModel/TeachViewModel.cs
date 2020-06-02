@@ -28,19 +28,49 @@ namespace DetectionPlus.Win.ViewModel
                             case "检测功能":
                                 if (Method.Child<Frame>(listView1, out Frame frame, "frame"))
                                 {
-                                    frame.Source = new Uri("pack://application:,,,/DetectionPlus.Win;component/View/Teach/FunctionPage.xaml");
+                                    frame.Content = ViewlLocator.GetViewInstance<FunctionPage>();
                                 }
                                 break;
                             case "物件形状":
                                 if (Method.Child<Frame>(listView1, out frame, "frame"))
                                 {
-                                    frame.Source = new Uri("pack://application:,,,/DetectionPlus.Win;component/View/Teach/ShapePage.xaml");
+                                    frame.Content = ViewlLocator.GetViewInstance<ShapePage>();
                                 }
                                 break;
-                            default:
+                            case "背景差异":
                                 if (Method.Child<Frame>(listView1, out frame, "frame"))
                                 {
-                                    frame.Source = null;
+                                    frame.Content = ViewlLocator.GetViewInstance<BackgroundPage>();
+                                }
+                                break;
+                            case "二值化调整":
+                                if (Method.Child<Frame>(listView1, out frame, "frame"))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<BinaryPage>();
+                                }
+                                break;
+                            case "框选物件":
+                                if (Method.Child<Frame>(listView1, out frame, "frame"))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<SelectionPage>();
+                                }
+                                break;
+                            case "框选边缘":
+                                if (Method.Child<Frame>(listView1, out frame, "frame"))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<WdgePage>();
+                                }
+                                break;
+                            case "检测项目":
+                                if (Method.Child<Frame>(listView1, out frame, "frame"))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<ProjectPage>();
+                                }
+                                break;
+                            case "基本功能":
+                                if (Method.Child<Frame>(listView1, out frame, "frame"))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<BasalPage>();
                                 }
                                 break;
                         }

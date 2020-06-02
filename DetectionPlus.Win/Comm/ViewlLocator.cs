@@ -29,14 +29,15 @@ namespace DetectionPlus.Win
         /// <summary>
         /// 单实例列表
         /// </summary>
-        private static readonly Dictionary<Type, object> instanceDic = new Dictionary<Type, object>();
+        private static readonly Dictionary<string, object> instanceDic = new Dictionary<string, object>();
 
-        public static T GetViewInstance<T>()
+        public static T GetViewInstance<T>(object tag = null)
         {
             var type = typeof(T);
-            if (instanceDic.ContainsKey(type)) return (T)instanceDic[type];
+            var name = $"{type.Name}-{tag}";
+            if (instanceDic.ContainsKey(name)) return (T)instanceDic[name];
             var obj = Activator.CreateInstance(type);
-            instanceDic.Add(type, obj);
+            instanceDic.Add(name, obj);
             return (T)obj;
         }
     }

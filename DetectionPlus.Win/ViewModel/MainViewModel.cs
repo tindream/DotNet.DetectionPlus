@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System.Collections.Generic;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -43,6 +44,12 @@ namespace DetectionPlus.Win.ViewModel
                             case "教导":
                                 Method.Show(listView1, new TeachWindow());
                                 listView1.SelectedIndex = -1;
+                                break;
+                            case "取相":
+                                if (Method.Child<Frame>(listView1, out Frame frame))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<ShootPage>();
+                                }
                                 break;
                         }
                     }

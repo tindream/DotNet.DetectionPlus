@@ -11,5 +11,7 @@ namespace DetectionPlus
         None,
         [Description("上(下)视检测功能")]
         UpDown,
+        [Description("其它检测功能")]
+        Other,
     }
 }
