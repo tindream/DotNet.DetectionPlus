@@ -25,14 +25,17 @@ namespace DetectionPlus.Win
         {
             InitializeComponent();
             DebugShow();
-            frame2.Content = ViewlLocator.GetViewInstance<ShootPage>(this.GetType().Name);
-            frame.Content = ViewlLocator.GetViewInstance<FunctionPage>();
         }
         [Conditional("DEBUG")]
         private void DebugShow()
         {
             this.WindowState = WindowState.Normal;
             this.ResizeMode = ResizeMode.CanResize;
+        }
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            ViewModelLocator.Default.Teach.LoadControl(listView1);
         }
     }
 }

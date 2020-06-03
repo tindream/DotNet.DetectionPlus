@@ -27,7 +27,7 @@
             </i:Interaction.Triggers>
         </utils:ListViewEXT>
         <Grid Name="grid">
-            <Frame x:Name="frame3" NavigationUIVisibility="Hidden"/>
+            <Frame NavigationUIVisibility="Hidden"/>
         </Grid>
     </DockPanel>
 </Page>

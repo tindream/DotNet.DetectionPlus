@@ -27,7 +27,11 @@ namespace DetectionPlus.Win
         public ShootPage()
         {
             InitializeComponent();
-            frame3.Content = ViewlLocator.GetViewInstance<ShootOnePage>($"{TMethod.Random()}-{ViewModelLocator.Default.Shoot.CarameList[0].Content}");
+        }
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            ViewModelLocator.Default.Shoot.LoadControl(listView1);
         }
     }
 }

@@ -42,7 +42,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame Name="frame2" NavigationUIVisibility="Hidden"/>
+            <Frame Source="/DetectionPlus.Win;component/View/Video/ShootPage.xaml" NavigationUIVisibility="Hidden"/>
             <TextBlock Height="1" Background="LightGray" VerticalAlignment="Bottom"/>
             <Frame Grid.Row="1" Name="frame" NavigationUIVisibility="Hidden"/>
         </Grid>

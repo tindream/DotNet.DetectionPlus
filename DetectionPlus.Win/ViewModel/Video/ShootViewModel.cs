@@ -33,35 +33,39 @@ namespace DetectionPlus.Win.ViewModel
             {
                 return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
                 {
-                    if (listView1.SelectedItem is IListViewInfo info)
-                    {
-                        if (Method.Child<Grid>(listView1, out Grid grid, "grid"))
-                        {
-                            grid.RowDefinitions.Clear();
-                            grid.ColumnDefinitions.Clear();
-                            switch (info.Content)
-                            {
-                                case "C1":
-                                case "C2":
-                                default:
-                                    AddControl(grid, 0, 0, info.Content);
-                                    break;
-                                case "全部":
-                                    var count = carameList.Count - 1;
-                                    if (count <= 4)
-                                    {
-                                        AddColumn(grid, 0, count);
-                                    }
-                                    else
-                                    {
-                                        var row = (count + 3) / 4;
-                                        AddRow(grid, row, count);
-                                    }
-                                    break;
-                            }
-                        }
-                    }
+                    LoadControl(listView1);
                 }));
+            }
+        }
+        public void LoadControl(ListViewEXT listView1)
+        {
+            if (listView1.SelectedItem is IListViewInfo info)
+            {
+                if (Method.Child<Grid>(listView1, out Grid grid, "grid"))
+                {
+                    grid.RowDefinitions.Clear();
+                    grid.ColumnDefinitions.Clear();
+                    switch (info.Content)
+                    {
+                        case "C1":
+                        case "C2":
+                        default:
+                            AddControl(grid, 0, 0, info.Content);
+                            break;
+                        case "全部":
+                            var count = carameList.Count - 1;
+                            if (count <= 4)
+                            {
+                                AddColumn(grid, 0, count);
+                            }
+                            else
+                            {
+                                var row = (count + 3) / 4;
+                                AddRow(grid, row, count);
+                            }
+                            break;
+                    }
+                }
             }
         }
         private void AddControl(Grid grid, int row, int column, object name)
