@@ -25,6 +25,7 @@ namespace DetectionPlus.Win
     /// </summary>
     public class ViewModelLocator
     {
+        public static ViewModelLocator Default { get; } = new ViewModelLocator();
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -42,7 +43,7 @@ namespace DetectionPlus.Win
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
-            
+
             SimpleIoc.Default.Register<BasalViewModel>();
             SimpleIoc.Default.Register<ProjectViewModel>();
             SimpleIoc.Default.Register<WdgeViewModel>();

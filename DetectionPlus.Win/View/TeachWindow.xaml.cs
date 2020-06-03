@@ -25,6 +25,7 @@ namespace DetectionPlus.Win
         {
             InitializeComponent();
             DebugShow();
+            frame2.Content = ViewlLocator.GetViewInstance<ShootPage>(this.GetType().Name);
             frame.Content = ViewlLocator.GetViewInstance<FunctionPage>();
         }
         [Conditional("DEBUG")]

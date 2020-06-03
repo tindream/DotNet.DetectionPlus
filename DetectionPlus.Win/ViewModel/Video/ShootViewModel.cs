@@ -35,30 +35,30 @@ namespace DetectionPlus.Win.ViewModel
                 {
                     if (listView1.SelectedItem is IListViewInfo info)
                     {
-                        switch (info.Content)
+                        if (Method.Child<Grid>(listView1, out Grid grid, "grid"))
                         {
-                            case "C1":
-                            case "C2":
-                            default:
-                                if (Method.Child<Grid>(listView1, out Grid grid, "grid"))
-                                {
-                                    grid.RowDefinitions.Clear();
-                                    grid.ColumnDefinitions.Clear();
+                            grid.RowDefinitions.Clear();
+                            grid.ColumnDefinitions.Clear();
+                            switch (info.Content)
+                            {
+                                case "C1":
+                                case "C2":
+                                default:
                                     AddControl(grid, 0, 0, info.Content);
-                                }
-                                break;
-                            case "全部":
-                                var count = carameList.Count - 1;
-                                if (count <= 4)
-                                {
-                                    AddColumn(listView1, 0, count);
-                                }
-                                else
-                                {
-                                    var row = (count + 3) / 4;
-                                    AddRow(listView1, row, count);
-                                }
-                                break;
+                                    break;
+                                case "全部":
+                                    var count = carameList.Count - 1;
+                                    if (count <= 4)
+                                    {
+                                        AddColumn(grid, 0, count);
+                                    }
+                                    else
+                                    {
+                                        var row = (count + 3) / 4;
+                                        AddRow(grid, row, count);
+                                    }
+                                    break;
+                            }
                         }
                     }
                 }));
@@ -68,30 +68,24 @@ namespace DetectionPlus.Win.ViewModel
         {
             var frame = new Frame();
             grid.Children.Add(frame);
-            frame.Content = ViewlLocator.GetViewInstance<ShootOnePage>(name);
+            frame.Content = ViewlLocator.GetViewInstance<ShootOnePage>($"{grid.GetHashCode()}-{name}");
             frame.SetValue(Grid.RowProperty, row); //设置按钮所在Grid控件的行
             frame.SetValue(Grid.ColumnProperty, column); //设置按钮所在Grid控件的列
         }
-        private void AddRow(DependencyObject obj, int count, int total)
+        private void AddRow(Grid grid, int count, int total)
         {
-            if (Method.Child<Grid>(obj, out Grid grid, "grid"))
+            for (int i = 0; i < count; i++)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    grid.RowDefinitions.Add(new RowDefinition());
-                    AddColumn(obj, i, i < count - 1 ? 4 : total % 4);
-                }
+                grid.RowDefinitions.Add(new RowDefinition());
+                AddColumn(grid, i, i < count - 1 ? 4 : total % 4);
             }
         }
-        private void AddColumn(DependencyObject obj, int row, int count)
+        private void AddColumn(Grid grid, int row, int count)
         {
-            if (Method.Child<Grid>(obj, out Grid grid, "grid"))
+            for (int i = 0; i < count; i++)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-                    AddControl(grid, row, i, row * 4 + i);
-                }
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                AddControl(grid, row, i, row * 4 + i);
             }
         }
     }

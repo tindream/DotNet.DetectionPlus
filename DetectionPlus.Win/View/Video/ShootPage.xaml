@@ -27,7 +27,7 @@
             </i:Interaction.Triggers>
         </utils:ListViewEXT>
         <Grid Name="grid">
-            <Frame Source="/DetectionPlus.Win;component/View/Video/ShootOnePage.xaml" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="frame3" NavigationUIVisibility="Hidden"/>
         </Grid>
     </DockPanel>
 </Page>

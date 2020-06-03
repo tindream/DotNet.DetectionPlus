@@ -1,5 +1,7 @@
 ﻿using CommonServiceLocator;
 using DetectionPlus.Win.ViewModel;
+using Paway.Helper;
+using Paway.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,7 @@ namespace DetectionPlus.Win
         public ShootPage()
         {
             InitializeComponent();
+            frame3.Content = ViewlLocator.GetViewInstance<ShootOnePage>($"{TMethod.Random()}-{ViewModelLocator.Default.Shoot.CarameList[0].Content}");
         }
     }
 }
