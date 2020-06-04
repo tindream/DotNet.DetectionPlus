@@ -16,7 +16,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" Margin="5" Source="pack://application:,,,/Images/F2.png"/>
+        <Image Grid.Column="1" Margin="5" Source="pack://application:,,,/Images/F2.png" Stretch="None"/>
         <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
         <Grid>
             <Grid.RowDefinitions>
@@ -25,9 +25,20 @@
             </Grid.RowDefinitions>
             <TextBlock Text="请调整二值化影像：其检测区域应呈橘色，并与背景有所区分。" Padding="5"/>
             <WrapPanel Grid.Row="1" Name="radioList" VerticalAlignment="Center">
-                <utils:ButtonEXT Content="-" BorderBrush="Transparent" Margin="5,5,0,5" />
-                <Slider Width="350" Maximum="100" Value="50" VerticalAlignment="Center" Margin="0,0,-1,0"/>
-                <utils:ButtonEXT Content="+" BorderBrush="Transparent" Margin="0,5,5,5"/>
+                <utils:ButtonEXT Content="-" BorderBrush="Transparent" Margin="5,5,-1,5" Radius="3" FontSize="24" Padding="13,0,13,3"
+                                 Command="{Binding Less}"
+                                 CommandParameter="{Binding ElementName=slider}"/>
+                <Slider x:Name="slider" Width="350" Maximum="100" Value="50" VerticalAlignment="Center" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="ValueChanged">
+                            <i:InvokeCommandAction Command="{Binding ValueChangedCommand}"
+                                           CommandParameter="{Binding ElementName=slider}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Slider>
+                <utils:ButtonEXT Content="+" BorderBrush="Transparent" Margin="-1,5,5,5" Radius="3" FontSize="24" Padding="9,0,9,3"
+                                 Command="{Binding Add}"
+                                 CommandParameter="{Binding ElementName=slider}"/>
             </WrapPanel>
         </Grid>
 

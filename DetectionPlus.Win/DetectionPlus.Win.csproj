@@ -52,11 +52,11 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Helper, Version=2.3.5.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Helper.2.3.5\lib\net40\Paway.Helper.dll</HintPath>
+    <Reference Include="Paway.Helper, Version=2.3.6.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Helper.2.3.6\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.0.12\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.0.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.0.13\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -80,11 +80,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Comm\ViewlLocator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Comm\ListViewModel.cs" />
     <Compile Include="ViewModel\TeachViewModel.cs" />
     <Compile Include="ViewModel\Teach\BasalViewModel.cs" />
     <Compile Include="ViewModel\Teach\ProjectViewModel.cs" />
@@ -211,17 +209,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DetectionPlus.Model\DetectionPlus.Model.csproj">
-      <Project>{ad2a7619-5af2-45ca-9110-cd2d9b24f2d0}</Project>
-      <Name>DetectionPlus.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DetectionPlus\DetectionPlus.csproj">
       <Project>{5c7b7d24-46da-4678-9018-223f29c03e59}</Project>
       <Name>DetectionPlus</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\F1.png" />
+    <Content Include="Images\F1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\F2.png" />
     <Resource Include="Images\teach.png" />
     <Resource Include="Images\teach_s.png" />

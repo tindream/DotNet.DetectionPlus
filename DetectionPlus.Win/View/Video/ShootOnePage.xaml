@@ -12,6 +12,6 @@
       Title="FunctionPage"
       FontSize="15">
     <Border BorderBrush="LightGray" BorderThickness="1">
-        <Image Source="pack://application:,,,/Images/F1.png" HorizontalAlignment="Left"/>
+        <Image Source="{Binding Image}" HorizontalAlignment="Left"/>
     </Border>
 </Page>

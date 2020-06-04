@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight;
+﻿using DetectionPlus.Message;
+using DetectionPlus.Model;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System;
@@ -26,6 +28,7 @@ namespace DetectionPlus.Win.ViewModel
             carameList.Add(new ListViewModel("全部"));
         }
 
+        #region 加载控件
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -92,5 +95,7 @@ namespace DetectionPlus.Win.ViewModel
                 AddControl(grid, row, i, row * 4 + i);
             }
         }
+
+        #endregion
     }
 }
