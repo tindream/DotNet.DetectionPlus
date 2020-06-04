@@ -26,6 +26,12 @@ namespace DetectionPlus.Win.ViewModel
             carameList.Add(new ListViewModel("C5"));
             carameList.Add(new ListViewModel("C6"));
             carameList.Add(new ListViewModel("全部"));
+            try
+            {
+                var result = DataService.Default.ExecuteScalar("select 0");
+            }
+            catch (Exception ex)
+            { }
         }
 
         #region 加载控件
