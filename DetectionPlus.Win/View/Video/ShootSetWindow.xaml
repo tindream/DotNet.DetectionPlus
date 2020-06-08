@@ -1,0 +1,42 @@
+﻿<Window x:Class="DetectionPlus.Win.ShootSetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:local="clr-namespace:DetectionPlus.Win"
+        xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+        DataContext="{Binding ShootSet ,Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Background="#FAFAFA"
+        Title="相机设置" Height="450" Width="800" ResizeMode="NoResize">
+
+    <DockPanel Margin="5,0">
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3" Width="90"
+                           Orientation="Vertical" ItemsSource="{Binding CarameList}"
+                           ItemMargin="0"
+                           ItemHeight="42" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
+                           ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
+                           ItemBorder=";;0,0,3,0" ItemPadding="5;5;5,5,3,5"
+                           ItemImageWidth="24" ItemImageHeight="24"
+                           BorderThickness="0" VerticalAlignment="Top" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listView1}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </utils:ListViewEXT>
+        <TextBlock Width="1" Background="LightGray"/>
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="名称：" Width="83" VerticalAlignment="Center" TextAlignment="Right"/>
+                <utils:TextBoxEXT Width="335"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,20">
+                <utils:ButtonEXT Content="删除" Width="88"/>
+                <utils:ButtonEXT Content="保存" Width="88"/>
+            </WrapPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>

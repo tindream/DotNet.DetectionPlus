@@ -16,7 +16,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" Margin="5" Source="pack://application:,,,/Images/F2.png" Stretch="None"/>
+        <Image Grid.Column="1" Margin="5" Source="/Images/F2.png" Stretch="None"/>
         <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
         <Grid>
             <Grid.RowDefinitions>

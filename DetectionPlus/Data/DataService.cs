@@ -29,6 +29,17 @@ namespace DetectionPlus
             }
         }
 
+        #region Init
+        public void Init()
+        {
+            new Action(() =>
+            {
+                DataService.Default.ExecuteCommand(cmd => { });
+            }).BeginInvoke(null, null);
+        }
+
+        #endregion
+
         #region Admin.Update
         public void Update(string name, object value, DbCommand arg = null)
         {

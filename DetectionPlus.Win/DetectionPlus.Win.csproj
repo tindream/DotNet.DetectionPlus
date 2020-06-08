@@ -52,14 +52,14 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Helper, Version=2.3.6.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Helper.2.3.6\lib\net40\Paway.Helper.dll</HintPath>
+    <Reference Include="Paway.Helper, Version=2.3.7.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Helper.2.3.7\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Utils, Version=2.3.6.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Utils.2.3.6\lib\net46\Paway.Utils.dll</HintPath>
+    <Reference Include="Paway.Utils, Version=2.3.7.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Utils.2.3.7\lib\net46\Paway.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.0.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.0.13\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.0.16\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -95,6 +95,7 @@
     <Compile Include="ViewModel\Teach\FunctionViewModel.cs" />
     <Compile Include="ViewModel\Teach\BackgroundViewModel.cs" />
     <Compile Include="ViewModel\Video\ShootOneViewModel.cs" />
+    <Compile Include="ViewModel\Video\ShootSetViewModel.cs" />
     <Compile Include="ViewModel\Video\ShootViewModel.cs" />
     <Compile Include="ViewModel\Teach\ShapeViewModel.cs" />
     <Compile Include="View\Teach\BackgroundPage.xaml.cs">
@@ -127,11 +128,14 @@
     <Compile Include="View\Teach\FunctionPage.xaml.cs">
       <DependentUpon>FunctionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TeachWindow.xaml.cs">
+    <Compile Include="View\Teach\TeachWindow.xaml.cs">
       <DependentUpon>TeachWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Comm\ViewModelLocator.cs" />
+    <Compile Include="View\Video\ShootSetWindow.xaml.cs">
+      <DependentUpon>ShootSetWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,9 +185,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TeachWindow.xaml">
+    <Page Include="View\Teach\TeachWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Video\ShootSetWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +226,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\add_w.png" />
     <Content Include="Images\F1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

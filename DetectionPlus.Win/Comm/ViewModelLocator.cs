@@ -44,30 +44,34 @@ namespace DetectionPlus.Win
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<BasalViewModel>();
-            SimpleIoc.Default.Register<ProjectViewModel>();
-            SimpleIoc.Default.Register<WdgeViewModel>();
-            SimpleIoc.Default.Register<SelectionViewModel>();
-            SimpleIoc.Default.Register<BinaryViewModel>();
-            SimpleIoc.Default.Register<BackgroundViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
+
             SimpleIoc.Default.Register<TeachViewModel>();
-            SimpleIoc.Default.Register<ShootOneViewModel>();
-            SimpleIoc.Default.Register<ShootViewModel>();
             SimpleIoc.Default.Register<FunctionViewModel>();
+            SimpleIoc.Default.Register<BackgroundViewModel>();
+            SimpleIoc.Default.Register<BasalViewModel>();
+            SimpleIoc.Default.Register<BinaryViewModel>();
+            SimpleIoc.Default.Register<ProjectViewModel>();
+            SimpleIoc.Default.Register<SelectionViewModel>();
             SimpleIoc.Default.Register<ShapeViewModel>();
+            SimpleIoc.Default.Register<WdgeViewModel>();
+
+            SimpleIoc.Default.Register<ShootViewModel>();
+            SimpleIoc.Default.Register<ShootOneViewModel>();
+            SimpleIoc.Default.Register<ShootSetViewModel>();
         }
 
-        public BasalViewModel Basal { get { return ServiceLocator.Current.GetInstance<BasalViewModel>(); } }
-        public ProjectViewModel Project { get { return ServiceLocator.Current.GetInstance<ProjectViewModel>(); } }
-        public WdgeViewModel Wdge { get { return ServiceLocator.Current.GetInstance<WdgeViewModel>(); } }
-        public SelectionViewModel Selection { get { return ServiceLocator.Current.GetInstance<SelectionViewModel>(); } }
-        public BinaryViewModel Binary { get { return ServiceLocator.Current.GetInstance<BinaryViewModel>(); } }
-        public BackgroundViewModel Background { get { return ServiceLocator.Current.GetInstance<BackgroundViewModel>(); } }
-        public ShapeViewModel Shape { get { return ServiceLocator.Current.GetInstance<ShapeViewModel>(); } }
-        public FunctionViewModel Function { get { return ServiceLocator.Current.GetInstance<FunctionViewModel>(); } }
+        public ShootSetViewModel ShootSet { get { return ServiceLocator.Current.GetInstance<ShootSetViewModel>(); } }
         public ShootOneViewModel ShootOne { get { return ServiceLocator.Current.GetInstance<ShootOneViewModel>(); } }
         public ShootViewModel Shoot { get { return ServiceLocator.Current.GetInstance<ShootViewModel>(); } }
+        public WdgeViewModel Wdge { get { return ServiceLocator.Current.GetInstance<WdgeViewModel>(); } }
+        public ShapeViewModel Shape { get { return ServiceLocator.Current.GetInstance<ShapeViewModel>(); } }
+        public SelectionViewModel Selection { get { return ServiceLocator.Current.GetInstance<SelectionViewModel>(); } }
+        public ProjectViewModel Project { get { return ServiceLocator.Current.GetInstance<ProjectViewModel>(); } }
+        public BinaryViewModel Binary { get { return ServiceLocator.Current.GetInstance<BinaryViewModel>(); } }
+        public BasalViewModel Basal { get { return ServiceLocator.Current.GetInstance<BasalViewModel>(); } }
+        public BackgroundViewModel Background { get { return ServiceLocator.Current.GetInstance<BackgroundViewModel>(); } }
+        public FunctionViewModel Function { get { return ServiceLocator.Current.GetInstance<FunctionViewModel>(); } }
         public TeachViewModel Teach { get { return ServiceLocator.Current.GetInstance<TeachViewModel>(); } }
         /// <summary>
         /// View和ViewModel之间不再直接引用，而是通过ViewModelLocator

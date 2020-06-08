@@ -14,6 +14,7 @@ namespace DetectionPlus.Model
         public ImageEXT Image { get; set; }
         public string Desc { get; set; }
 
+        public ListViewModel() { }
         public ListViewModel(string name)
         {
             this.Content = name;

@@ -9,7 +9,7 @@
         DataContext="{Binding Teach ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
         Background="#FAFAFA"
-        Title="教导" Height="450" Width="800" Icon="../Images/teach.png" ResizeMode="NoResize" WindowState="Maximized">
+        Title="教导" Height="450" Width="800" Icon="/Images/teach.png" ResizeMode="NoResize" WindowState="Maximized">
 
     <DockPanel Margin="5,0">
         <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3"

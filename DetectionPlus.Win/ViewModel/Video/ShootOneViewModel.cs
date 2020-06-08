@@ -32,7 +32,7 @@ namespace DetectionPlus.Win.ViewModel
         private void Binary(BinaryMessage binary)
         {
             var file = Path.Combine(Config.Images, "F1.png");
-            Image = Method.Binary(file, binary.Value);
+            Image = Method.Binary(file, 100 - binary.Value);
         }
 
         #endregion

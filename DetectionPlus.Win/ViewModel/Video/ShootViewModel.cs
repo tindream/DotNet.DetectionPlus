@@ -2,6 +2,7 @@
 using DetectionPlus.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Paway.Helper;
 using Paway.WPF;
 using System;
 using System.Collections.Generic;
@@ -26,12 +27,15 @@ namespace DetectionPlus.Win.ViewModel
             carameList.Add(new ListViewModel("C5"));
             carameList.Add(new ListViewModel("C6"));
             carameList.Add(new ListViewModel("全部"));
+            carameList.Add(new ListViewModel("设置"));
             try
             {
                 var result = DataService.Default.ExecuteScalar("select 0");
             }
             catch (Exception ex)
-            { }
+            {
+                Method.Toast(ex.Message());
+            }
         }
 
         #region 加载控件
@@ -72,6 +76,10 @@ namespace DetectionPlus.Win.ViewModel
                                 var row = (count + 3) / 4;
                                 AddRow(grid, row, count);
                             }
+                            break;
+                        case "设置":
+                            listView1.SelectedIndex = -1;
+                            Method.Show(listView1, new ShootSetWindow());
                             break;
                     }
                 }
