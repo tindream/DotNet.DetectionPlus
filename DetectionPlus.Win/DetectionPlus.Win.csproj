@@ -46,20 +46,23 @@
     <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=f46ff315b1088208, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.Extras.dll</HintPath>
     </Reference>
+    <Reference Include="halcondotnet">
+      <HintPath>..\Root\halcondotnet.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Helper, Version=2.3.7.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Helper.2.3.7\lib\net40\Paway.Helper.dll</HintPath>
+    <Reference Include="Paway.Helper, Version=2.3.8.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Helper.2.3.8\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Utils, Version=2.3.7.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Utils.2.3.7\lib\net46\Paway.Utils.dll</HintPath>
+    <Reference Include="Paway.Utils, Version=2.3.8.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Utils.2.3.8\lib\net46\Paway.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.0.16\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.0.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.0.18\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -119,6 +122,12 @@
     <Compile Include="View\Teach\ShapePage.xaml.cs">
       <DependentUpon>ShapePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Video\HSmartWindowPage.xaml.cs">
+      <DependentUpon>HSmartWindowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Video\HWindowPage.xaml.cs">
+      <DependentUpon>HWindowPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Video\ShootOnePage.xaml.cs">
       <DependentUpon>ShootOnePage.xaml</DependentUpon>
     </Compile>
@@ -172,6 +181,14 @@
     <Page Include="View\Teach\ShapePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Video\HSmartWindowPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Video\HWindowPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Video\ShootOnePage.xaml">
       <Generator>MSBuild:Compile</Generator>
