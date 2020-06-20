@@ -1,5 +1,4 @@
 ﻿using DetectionPlus.Message;
-using DetectionPlus.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.Helper;
@@ -58,7 +57,7 @@ namespace DetectionPlus.Win.ViewModel
             {
                 if (Method.Child<Grid>(listView1, out Grid grid, "grid"))
                 {
-                    switch (info.Content)
+                    switch (info.Text)
                     {
                         case "C1":
                         case "C2":

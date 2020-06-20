@@ -39,7 +39,7 @@ namespace DetectionPlus.Win.ViewModel
                 {
                     if (listView1.SelectedItem is IListView info)
                     {
-                        switch (info.Content)
+                        switch (info.Text)
                         {
                             case "教导":
                                 Method.Show(listView1, new TeachWindow());

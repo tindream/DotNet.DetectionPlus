@@ -29,7 +29,7 @@ namespace DetectionPlus.Win.ViewModel
         {
             if (listView1.SelectedItem is IListView info)
             {
-                switch (info.Content)
+                switch (info.Text)
                 {
                     case "检测功能":
                         if (Method.Child<Frame>(listView1, out Frame frame, "frame"))

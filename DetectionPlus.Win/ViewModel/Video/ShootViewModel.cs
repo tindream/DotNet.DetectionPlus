@@ -1,5 +1,4 @@
 ﻿using DetectionPlus.Message;
-using DetectionPlus.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.Helper;
@@ -58,12 +57,12 @@ namespace DetectionPlus.Win.ViewModel
                 {
                     grid.RowDefinitions.Clear();
                     grid.ColumnDefinitions.Clear();
-                    switch (info.Content)
+                    switch (info.Text)
                     {
                         case "C1":
                         case "C2":
                         default:
-                            AddControl(grid, 0, 0, info.Content);
+                            AddControl(grid, 0, 0, info.Text);
                             break;
                         case "全部":
                             var count = carameList.Count - 1;
