@@ -17,7 +17,7 @@
                            ItemMargin="0"
                            ItemHeight="42" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
                            ItemRadius="0" ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
-                           ItemBorder=";;0,0,3,0" ItemPadding="5;5;5,5,3,5"
+                           ItemBorder=";;0,0,3,0" ItemPadding="5"
                            ItemImageWidth="0" 
                            BorderThickness="0" VerticalAlignment="Center" HorizontalContentAlignment="Right">
             <i:Interaction.Triggers>

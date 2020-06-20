@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DetectionPlus.Model
 {
-    public class ListViewModel : IListViewInfo
+    public class ListViewModel : IListView
     {
         public string Content { get; set; }
         public bool IsSelected { get; set; }

@@ -37,7 +37,7 @@ namespace DetectionPlus.Win.ViewModel
             {
                 return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
                 {
-                    if (listView1.SelectedItem is IListViewInfo info)
+                    if (listView1.SelectedItem is IListView info)
                     {
                         switch (info.Content)
                         {

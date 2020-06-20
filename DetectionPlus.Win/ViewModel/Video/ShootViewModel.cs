@@ -52,7 +52,7 @@ namespace DetectionPlus.Win.ViewModel
         }
         public void LoadControl(ListViewEXT listView1)
         {
-            if (listView1.SelectedItem is IListViewInfo info)
+            if (listView1.SelectedItem is IListView info)
             {
                 if (Method.Child<Grid>(listView1, out Grid grid, "grid"))
                 {
