@@ -35,15 +35,15 @@
                                                CommandParameter="{Binding ElementName=listView1}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                <utils:ListBoxItemEXT Content="圆"
+                <utils:ListBoxItemEXT Text="圆"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/round.png|pack://application:,,,/DetectionPlus.Win;component/Images/round_w.png"/>
-                <utils:ListBoxItemEXT Content="六角"
+                <utils:ListBoxItemEXT Text="六角"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/hexagon.png|pack://application:,,,/DetectionPlus.Win;component/Images/hexagon_w.png"/>
-                <utils:ListBoxItemEXT Content="四角"
+                <utils:ListBoxItemEXT Text="四角"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/rectangle.png|pack://application:,,,/DetectionPlus.Win;component/Images/rectangle_w.png"/>
-                <utils:ListBoxItemEXT Content="滚花"
+                <utils:ListBoxItemEXT Text="滚花"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/ring.png|pack://application:,,,/DetectionPlus.Win;component/Images/ring_w.png"/>
-                <utils:ListBoxItemEXT Content="方形"
+                <utils:ListBoxItemEXT Text="方形"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/square.png|pack://application:,,,/DetectionPlus.Win;component/Images/square_w.png"/>
             </utils:ListViewEXT>
         </Grid>

@@ -55,14 +55,14 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Helper, Version=2.3.8.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Helper.2.3.8\lib\net40\Paway.Helper.dll</HintPath>
+    <Reference Include="Paway.Helper, Version=2.3.9.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Helper.2.3.9\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Utils, Version=2.3.8.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Utils.2.3.8\lib\net46\Paway.Utils.dll</HintPath>
+    <Reference Include="Paway.Utils, Version=2.3.9.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Utils.2.3.9\lib\net40\Paway.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.0.20.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.0.20\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.1.0\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -131,13 +131,13 @@
     <Compile Include="View\Video\ShootOnePage.xaml.cs">
       <DependentUpon>ShootOnePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Video\ShootPage.xaml.cs">
+    <Compile Include="View\ShootPage.xaml.cs">
       <DependentUpon>ShootPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Teach\FunctionPage.xaml.cs">
       <DependentUpon>FunctionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Teach\TeachWindow.xaml.cs">
+    <Compile Include="View\TeachWindow.xaml.cs">
       <DependentUpon>TeachWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -194,7 +194,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Video\ShootPage.xaml">
+    <Page Include="View\ShootPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -202,7 +202,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Teach\TeachWindow.xaml">
+    <Page Include="View\TeachWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

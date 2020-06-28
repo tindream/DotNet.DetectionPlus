@@ -35,11 +35,11 @@
                                                CommandParameter="{Binding ElementName=listView1}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                <utils:ListBoxItemEXT Content="头宽" />
-                <utils:ListBoxItemEXT Content="真圆度" />
-                <utils:ListBoxItemEXT Content="电渡1" />
-                <utils:ListBoxItemEXT Content="电渡2" />
-                <utils:ListBoxItemEXT Content="圆心至边距离" />
+                <utils:ListBoxItemEXT Text="头宽" />
+                <utils:ListBoxItemEXT Text="真圆度" />
+                <utils:ListBoxItemEXT Text="电渡1" />
+                <utils:ListBoxItemEXT Text="电渡2" />
+                <utils:ListBoxItemEXT Text="圆心至边距离" />
             </utils:ListViewEXT>
         </Grid>
 

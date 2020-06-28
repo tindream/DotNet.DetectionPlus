@@ -8,7 +8,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         DataContext="{Binding Main ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="" Height="450" Width="800" WindowStartupLocation="CenterScreen"
+        Title="" Height="660" Width="960" WindowStartupLocation="CenterScreen"
         WindowState="Maximized" ResizeMode="NoResize">
     <DockPanel>
         <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" Padding="0,3,0,0"
@@ -23,19 +23,19 @@
                                            CommandParameter="{Binding ElementName=listView1}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <utils:ListBoxItemEXT Content="教导"
+            <utils:ListBoxItemEXT Text="教导"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/teach.png|pack://application:,,,/DetectionPlus.Win;component/Images/teach_s.png"/>
-            <utils:ListBoxItemEXT Content="取相"
+            <utils:ListBoxItemEXT Text="取相"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/video.png|pack://application:,,,/DetectionPlus.Win;component/Images/video_s.png"/>
-            <utils:ListBoxItemEXT Content="检测"
+            <utils:ListBoxItemEXT Text="检测"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/start.png|pack://application:,,,/DetectionPlus.Win;component/Images/start_s.png"/>
-            <utils:ListBoxItemEXT Content="测试"
+            <utils:ListBoxItemEXT Text="测试"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/test.png|pack://application:,,,/DetectionPlus.Win;component/Images/test_s.png"/>
-            <utils:ListBoxItemEXT Content="侦错"
+            <utils:ListBoxItemEXT Text="侦错"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/tool.png|pack://application:,,,/DetectionPlus.Win;component/Images/tool_s.png"/>
         </utils:ListViewEXT>
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White">
-            <TextBlock Text="动作状态" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White" Height="30">
+            <TextBlock Text="准备就绪" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
         </StatusBar>
 
         <Frame Name="frame" NavigationUIVisibility="Hidden"/>

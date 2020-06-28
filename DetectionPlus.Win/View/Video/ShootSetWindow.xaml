@@ -12,9 +12,9 @@
         Title="相机设置" Height="450" Width="800" ResizeMode="NoResize">
 
     <DockPanel Margin="5,0">
-        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3" Width="90"
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Padding="0,3" Width="120"
                            Orientation="Vertical" ItemsSource="{Binding CarameList}"
-                           ItemHeight="42" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
+                           ItemHeight="42" ItemWidth="120" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
                            ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
                            ItemBorder=";;0,0,3,0" ItemPadding="5"
                            ItemImageWidth="24" ItemImageHeight="24"

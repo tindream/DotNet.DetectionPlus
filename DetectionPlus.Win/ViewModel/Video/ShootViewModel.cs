@@ -77,8 +77,8 @@ namespace DetectionPlus.Win.ViewModel
                             }
                             break;
                         case "设置":
-                            listView1.SelectedIndex = -1;
                             Method.Show(listView1, new ShootSetWindow());
+                            listView1.SelectedIndex = -1;
                             break;
                     }
                 }

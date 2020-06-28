@@ -34,8 +34,8 @@
                                                CommandParameter="{Binding ElementName=listView1}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                <utils:ListBoxItemEXT Content="基本功能" />
-                <utils:ListBoxItemEXT Content="内孔径" />
+                <utils:ListBoxItemEXT Text="基本功能" />
+                <utils:ListBoxItemEXT Text="内孔径" />
             </utils:ListViewEXT>
         </Grid>
 
