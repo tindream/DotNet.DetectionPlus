@@ -1,10 +1,8 @@
-﻿using Paway.Helper;
-using Paway.WPF;
+﻿using Paway.WPF;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,20 +12,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DetectionPlus.Sign
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// 相机设置
     /// </summary>
-    public partial class MainWindow : WindowEXT
+    public partial class CameraSetPage : Page
     {
-        public MainWindow()
+        public CameraSetPage()
         {
             InitializeComponent();
-            Config.Window = this;
         }
     }
 }

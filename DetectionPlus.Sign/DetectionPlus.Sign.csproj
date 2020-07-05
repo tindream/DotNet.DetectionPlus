@@ -63,6 +63,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -84,8 +85,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Comm\Config.cs" />
+    <Compile Include="ViewModel\CameraSetViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\CameraSetPage.xaml.cs">
+      <DependentUpon>CameraSetPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +104,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CameraSetPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -112,13 +122,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DetectionPlus.Camera\DetectionPlus.Camera.csproj">
+      <Project>{b3e5f70a-f48d-4696-8c1b-811a1de7cbb5}</Project>
+      <Name>DetectionPlus.Camera</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DetectionPlus\DetectionPlus.csproj">
       <Project>{5c7b7d24-46da-4678-9018-223f29c03e59}</Project>
       <Name>DetectionPlus</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="View\" />
+    <Resource Include="Images\run.png" />
+    <Resource Include="Images\run_s.png" />
+    <Resource Include="Images\stop.png" />
+    <Resource Include="Images\stop_s.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

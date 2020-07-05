@@ -42,9 +42,11 @@ namespace DetectionPlus.Sign
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
+            SimpleIoc.Default.Register<CameraSetViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
+        public CameraSetViewModel CameraSet { get { return ServiceLocator.Current.GetInstance<CameraSetViewModel>(); } }
         public MainViewModel Main { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
         public static void Cleanup()
         {

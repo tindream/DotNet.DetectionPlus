@@ -1,4 +1,4 @@
-﻿<Window x:Class="DetectionPlus.Sign.MainWindow"
+﻿<utils:WindowEXT x:Class="DetectionPlus.Sign.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,9 +8,44 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         DataContext="{Binding Main ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <utils:ButtonEXT Name="btnTest" Content="Hello" Height="180" 
-                         Command="{Binding ExecuteCommand}" CommandParameter="{Binding ElementName=btnTest}"/>
-    </Grid>
-</Window>
+        Name="wd"
+        Title="{Binding Text}" Height="660" Width="960" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <utils:ListViewEXT Name="listViewMain" DockPanel.Dock="Top" 
+                           HorizontalContentAlignment="Left" ItemWidth="Auto"
+                           ItemBorderBrush="Transparent;#AA23AFFF;#DC23AFFF"
+                           ItemBackground="Transparent;#ECF4FF;#E9EEFF" 
+                           ItemTextForeground="#222;#222"
+                           Background="#CCD5F0"
+                           ItemImageWidth="24" ItemImageStretch="None" ItemPadding="5,0,9,0" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listViewMain}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <utils:ListBoxItemEXT Text="启动" 
+                                  Image="pack://application:,,,/DetectionPlus.Sign;component/Images/run.png|pack://application:,,,/DetectionPlus.Sign;component/Images/run_s.png"/>
+        </utils:ListViewEXT>
+        <TextBlock DockPanel.Dock="Top" Background="#CCD5F0" Height="3"/>
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White" Height="30">
+            <TextBlock Text="{Binding Desc}" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
+        </StatusBar>
+
+        <Frame Name="frame" Background="#FAFAFA" NavigationUIVisibility="Hidden"/>
+
+    </DockPanel>
+    <utils:WindowEXT.FunctionBar>
+        <utils:WindowFunctionBar>
+            <Separator />
+            <Menu>
+                <MenuItem Header="设置" Command="{Binding CameraSet}" CommandParameter="{Binding ElementName=frame}"/>
+                <MenuItem Header="帮助">
+                    <MenuItem Header="注册" Command="{Binding About}" CommandParameter="{Binding ElementName=wd}"/>
+                    <Separator />
+                    <MenuItem Header="关于" Command="{Binding About}" CommandParameter="{Binding ElementName=wd}"/>
+                </MenuItem>
+            </Menu>
+        </utils:WindowFunctionBar>
+    </utils:WindowEXT.FunctionBar>
+</utils:WindowEXT>

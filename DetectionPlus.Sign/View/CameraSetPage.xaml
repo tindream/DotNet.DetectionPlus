@@ -1,0 +1,42 @@
+﻿<Page x:Class="DetectionPlus.Sign.CameraSetPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:i1="http://www.galasoft.ch/mvvmlight"
+        xmlns:local="clr-namespace:DetectionPlus.Sign"
+        xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF" 
+        DataContext="{Binding CameraSet ,Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800"
+        FontSize="15">
+
+    <DockPanel>
+        <WrapPanel Margin="5" DockPanel.Dock="Top" >
+            <utils:ButtonEXT Margin="15,0" BorderThickness="0" Height="60"  Width="60"
+                             BackgroundStart="{Binding RunColor}" BackgroundEnd="{Binding RunColor}" ForegroundRound="White"
+                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/run.png"
+                             Command="{Binding Run}" CommandParameter="{Binding ElementName=parent}"/>
+            <StackPanel>
+                <DockPanel>
+                    <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>
+                    <utils:TextBoxEXT Text="{Binding Info.Code}" MaxLength="32" Width="200" HorizontalAlignment="Left"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="触发：" VerticalAlignment="Center" TextAlignment="Right"/>
+                    <utils:RadioButtonEXT Content="软触发"/>
+                    <utils:RadioButtonEXT Content="硬触发"/>
+                </DockPanel>
+                <DockPanel Margin="0,4">
+                    <TextBlock Text="曝光：" VerticalAlignment="Center" TextAlignment="Right" />
+                    <utils:SliderEXT />
+                </DockPanel>
+            </StackPanel>
+        </WrapPanel>
+        <TextBlock Width="1" Background="LightGray" DockPanel.Dock="Right"/>
+        <Border BorderBrush="LightGray" BorderThickness="1" >
+            <Image Source="{Binding Image}" HorizontalAlignment="Left"/>
+        </Border>
+    </DockPanel>
+</Page>
