@@ -14,12 +14,7 @@ namespace DetectionPlus.Win
 {
     public class ShootOneViewModel : ViewModelPlus
     {
-        public ShootOneViewModel()
-        {
-            image = new BitmapImage(new Uri("pack://application:,,,/Images/F1.png"));
-            this.MessengerInstance.Register<BinaryMessage>(this, Binary);
-        }
-
+        #region 属性
         private ImageSource image;
         public ImageSource Image
         {
@@ -27,13 +22,20 @@ namespace DetectionPlus.Win
             set { image = value; RaisePropertyChanged(); }
         }
 
-        #region 二值化
+        #endregion
+
+        /// <summary>
+        /// 二值化
+        /// </summary>
         private void Binary(BinaryMessage binary)
         {
             var file = Path.Combine(Config.Images, "F1.png");
             Image = Method.Binary(file, 100 - binary.Value);
         }
-
-        #endregion
+        public ShootOneViewModel()
+        {
+            image = new BitmapImage(new Uri("pack://application:,,,/Images/F1.png"));
+            this.MessengerInstance.Register<BinaryMessage>(this, Binary);
+        }
     }
 }

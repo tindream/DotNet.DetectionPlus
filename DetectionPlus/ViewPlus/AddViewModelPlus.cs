@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace DetectionPlus.Win
+namespace DetectionPlus
 {
     public class AddViewModelPlus<T> : ViewModelPlus where T : IModel, IId
     {

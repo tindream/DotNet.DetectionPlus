@@ -14,31 +14,12 @@ namespace DetectionPlus.Win
 {
     public class ShootSetViewModel : ViewModelPlus
     {
-        private readonly List<ListViewModel> carameList;
-        public List<ListViewModel> CarameList { get { return carameList; } }
-        public ShootSetViewModel()
-        {
-            carameList = new List<ListViewModel>();
-            carameList.Add(new ListViewModel("C1") { IsSelected = true });
-            carameList.Add(new ListViewModel("C2"));
-            carameList.Add(new ListViewModel("C3"));
-            carameList.Add(new ListViewModel("C4"));
-            carameList.Add(new ListViewModel("C5"));
-            carameList.Add(new ListViewModel("C6"));
-            carameList.Add(new ListViewModel("C7"));
-            carameList.Add(new ListViewModel("C8"));
-            carameList.Add(new ListViewModel("C9"));
-            carameList.Add(new ListViewModel("C10"));
-            carameList.Add(new ListViewModel("C11"));
-            carameList.Add(new ListViewModel("C12"));
-            carameList.Add(new ListViewModel()
-            {
-                Image = new ImageEXT(new BitmapImage(new Uri("pack://application:,,,/Images/add.png")), null,
-                new BitmapImage(new Uri("pack://application:,,,/Images/add_w.png")))
-            });
-        }
+        #region 属性
+        public List<ListViewModel> CarameList { get; } = new List<ListViewModel>();
 
-        #region 加载控件
+        #endregion
+
+        #region 命令
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -50,7 +31,7 @@ namespace DetectionPlus.Win
                 }));
             }
         }
-        public void LoadControl(ListViewEXT listView1)
+        private void LoadControl(ListViewEXT listView1)
         {
             if (listView1.SelectedItem is IListView info)
             {
@@ -68,5 +49,26 @@ namespace DetectionPlus.Win
         }
 
         #endregion
+
+        public ShootSetViewModel()
+        {
+            CarameList.Add(new ListViewModel("C1") { IsSelected = true });
+            CarameList.Add(new ListViewModel("C2"));
+            CarameList.Add(new ListViewModel("C3"));
+            CarameList.Add(new ListViewModel("C4"));
+            CarameList.Add(new ListViewModel("C5"));
+            CarameList.Add(new ListViewModel("C6"));
+            CarameList.Add(new ListViewModel("C7"));
+            CarameList.Add(new ListViewModel("C8"));
+            CarameList.Add(new ListViewModel("C9"));
+            CarameList.Add(new ListViewModel("C10"));
+            CarameList.Add(new ListViewModel("C11"));
+            CarameList.Add(new ListViewModel("C12"));
+            CarameList.Add(new ListViewModel()
+            {
+                Image = new ImageEXT(new BitmapImage(new Uri("pack://application:,,,/Images/add.png")), null,
+                new BitmapImage(new Uri("pack://application:,,,/Images/add_w.png")))
+            });
+        }
     }
 }

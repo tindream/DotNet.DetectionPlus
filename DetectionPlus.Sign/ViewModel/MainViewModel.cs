@@ -1,4 +1,7 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Paway.WPF;
+using System.Windows.Input;
 
 namespace DetectionPlus.Sign
 {
@@ -14,8 +17,26 @@ namespace DetectionPlus.Sign
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelPlus
     {
+        #region 命令
+        private ICommand executeCommand;
+        public ICommand ExecuteCommand
+        {
+            get
+            {
+                return executeCommand ?? (executeCommand = new RelayCommand<ButtonEXT>(btn =>
+                {
+                    if (Expand.Run(out int result, "B"))
+                    {
+                        Method.Toast(btn, "Hello, " + result);
+                    }
+                }));
+            }
+        }
+
+        #endregion
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>

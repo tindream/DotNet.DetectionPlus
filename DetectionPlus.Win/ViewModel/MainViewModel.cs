@@ -22,14 +22,17 @@ namespace DetectionPlus.Win
     /// </summary>
     public class MainViewModel : ViewModelPlus
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public MainViewModel()
+        #region 属性
+        private string title = "Hello MVVMLight,Hello C#";
+        public string Title
         {
-            //Colors.Transparent
+            get { return title; }
+            set { title = value; RaisePropertyChanged(); }
         }
 
+        #endregion
+
+        #region 命令
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -57,11 +60,14 @@ namespace DetectionPlus.Win
             }
         }
 
-        private string title = "Hello MVVMLight,Hello C#";
-        public string Title
+        #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the MainViewModel class.
+        /// </summary>
+        public MainViewModel()
         {
-            get { return title; }
-            set { title = value; RaisePropertyChanged(); }
+            //Colors.Transparent
         }
     }
 }

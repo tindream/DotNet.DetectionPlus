@@ -12,8 +12,7 @@ namespace DetectionPlus.Win
 {
     public class ProjectViewModel : ViewModelPlus
     {
-        public ProjectViewModel() { }
-
+        #region 命令
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -32,5 +31,9 @@ namespace DetectionPlus.Win
                 }));
             }
         }
+
+        #endregion
+
+        public ProjectViewModel() { }
     }
 }

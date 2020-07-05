@@ -11,7 +11,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace DetectionPlus.Win
+namespace DetectionPlus
 {
     public class DataGridViewModel<T> : ViewModelPlus where T : IModel, IId, new()
     {

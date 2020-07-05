@@ -12,8 +12,7 @@ namespace DetectionPlus.Win
 {
     public class BinaryViewModel : ViewModelPlus
     {
-        public BinaryViewModel() { }
-
+        #region 命令
         private ICommand less;
         public ICommand Less
         {
@@ -25,6 +24,7 @@ namespace DetectionPlus.Win
                 }));
             }
         }
+
         private ICommand add;
         public ICommand Add
         {
@@ -36,6 +36,7 @@ namespace DetectionPlus.Win
                 }));
             }
         }
+
         private ICommand valueChangedCommand;
         public ICommand ValueChangedCommand
         {
@@ -47,5 +48,9 @@ namespace DetectionPlus.Win
                 }));
             }
         }
+
+        #endregion
+
+        public BinaryViewModel() { }
     }
 }

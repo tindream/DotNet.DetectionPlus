@@ -12,8 +12,7 @@ namespace DetectionPlus.Win
 {
     public class TeachViewModel : ViewModelPlus
     {
-        public TeachViewModel() { }
-
+        #region 命令
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -25,7 +24,7 @@ namespace DetectionPlus.Win
                 }));
             }
         }
-        public void LoadControl(ListViewEXT listView1)
+        private void LoadControl(ListViewEXT listView1)
         {
             if (listView1.SelectedItem is IListView info)
             {
@@ -81,6 +80,13 @@ namespace DetectionPlus.Win
                         break;
                 }
             }
+        }
+
+        #endregion
+
+        public TeachViewModel()
+        {
+            this.MessengerInstance.Register<TeachRefreshMessage>(this, msg => LoadControl(msg.Obj as ListViewEXT));
         }
     }
 }

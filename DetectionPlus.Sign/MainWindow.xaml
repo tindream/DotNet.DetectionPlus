@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DetectionPlus.Sign"
+        xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        DataContext="{Binding Main ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <utils:ButtonEXT Name="btnTest" Content="Hello" Height="180" 
+                         Command="{Binding ExecuteCommand}" CommandParameter="{Binding ElementName=btnTest}"/>
     </Grid>
 </Window>

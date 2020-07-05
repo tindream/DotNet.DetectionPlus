@@ -12,8 +12,7 @@ namespace DetectionPlus.Win
 {
     public class BasalViewModel : ViewModelPlus
     {
-        public BasalViewModel() { }
-
+        #region 命令
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -32,5 +31,9 @@ namespace DetectionPlus.Win
                 }));
             }
         }
+
+        #endregion
+
+        public BasalViewModel() { }
     }
 }

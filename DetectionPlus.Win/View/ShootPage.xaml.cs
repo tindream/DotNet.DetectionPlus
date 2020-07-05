@@ -1,4 +1,5 @@
 ﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight.Messaging;
 using Paway.Helper;
 using Paway.WPF;
 using System;
@@ -30,7 +31,7 @@ namespace DetectionPlus.Win
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            ViewModelLocator.Default.Shoot.LoadControl(listView1);
+            Messenger.Default.Send(new ShootRefreshMessage() { Obj = listView1 });
         }
     }
 }

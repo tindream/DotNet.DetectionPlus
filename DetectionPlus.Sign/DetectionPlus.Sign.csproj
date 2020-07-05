@@ -111,5 +111,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DetectionPlus\DetectionPlus.csproj">
+      <Project>{5c7b7d24-46da-4678-9018-223f29c03e59}</Project>
+      <Name>DetectionPlus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

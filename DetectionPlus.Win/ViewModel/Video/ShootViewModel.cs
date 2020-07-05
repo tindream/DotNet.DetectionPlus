@@ -13,30 +13,12 @@ namespace DetectionPlus.Win
 {
     public class ShootViewModel : ViewModelPlus
     {
-        private readonly List<ListViewModel> carameList;
-        public List<ListViewModel> CarameList { get { return carameList; } }
-        public ShootViewModel()
-        {
-            carameList = new List<ListViewModel>();
-            carameList.Add(new ListViewModel("C1") { IsSelected = true });
-            carameList.Add(new ListViewModel("C2"));
-            carameList.Add(new ListViewModel("C3"));
-            carameList.Add(new ListViewModel("C4"));
-            carameList.Add(new ListViewModel("C5"));
-            carameList.Add(new ListViewModel("C6"));
-            carameList.Add(new ListViewModel("全部"));
-            carameList.Add(new ListViewModel("设置"));
-            try
-            {
-                var result = DataService.Default.ExecuteScalar("select 0");
-            }
-            catch (Exception ex)
-            {
-                Method.Toast(ex.Message());
-            }
-        }
+        #region 属性
+        public List<ListViewModel> CarameList { get; } = new List<ListViewModel>();
 
-        #region 加载控件
+        #endregion
+
+        #region 命令
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -48,7 +30,7 @@ namespace DetectionPlus.Win
                 }));
             }
         }
-        public void LoadControl(ListViewEXT listView1)
+        private void LoadControl(ListViewEXT listView1)
         {
             if (listView1.SelectedItem is IListView info)
             {
@@ -64,7 +46,7 @@ namespace DetectionPlus.Win
                             AddControl(grid, 0, 0, info.Text);
                             break;
                         case "全部":
-                            var count = carameList.Count - 1;
+                            var count = CarameList.Count - 1;
                             if (count <= 4)
                             {
                                 AddColumn(grid, 0, count);
@@ -109,5 +91,26 @@ namespace DetectionPlus.Win
         }
 
         #endregion
+
+        public ShootViewModel()
+        {
+            CarameList.Add(new ListViewModel("C1") { IsSelected = true });
+            CarameList.Add(new ListViewModel("C2"));
+            CarameList.Add(new ListViewModel("C3"));
+            CarameList.Add(new ListViewModel("C4"));
+            CarameList.Add(new ListViewModel("C5"));
+            CarameList.Add(new ListViewModel("C6"));
+            CarameList.Add(new ListViewModel("全部"));
+            CarameList.Add(new ListViewModel("设置"));
+            try
+            {
+                var result = DataService.Default.ExecuteScalar("select 0");
+            }
+            catch (Exception ex)
+            {
+                Method.Toast(ex.Message());
+            }
+            this.MessengerInstance.Register<ShootRefreshMessage>(this, msg => LoadControl(msg.Obj as ListViewEXT));
+        }
     }
 }

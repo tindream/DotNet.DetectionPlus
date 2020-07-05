@@ -1,4 +1,5 @@
-﻿using Paway.WPF;
+﻿using GalaSoft.MvvmLight.Messaging;
+using Paway.WPF;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -35,7 +36,7 @@ namespace DetectionPlus.Win
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            ViewModelLocator.Default.Teach.LoadControl(listView1);
+            Messenger.Default.Send(new TeachRefreshMessage() { Obj = listView1 });
         }
     }
 }
