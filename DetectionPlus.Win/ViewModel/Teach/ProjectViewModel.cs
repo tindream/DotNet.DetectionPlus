@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace DetectionPlus.Win.ViewModel
+namespace DetectionPlus.Win
 {
     public class ProjectViewModel : ViewModelPlus
     {

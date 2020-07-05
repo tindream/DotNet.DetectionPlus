@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DetectionPlus.Message
+namespace DetectionPlus.Win
 {
     public class BinaryMessage
     {

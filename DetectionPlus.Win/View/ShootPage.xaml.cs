@@ -1,5 +1,4 @@
 ﻿using CommonServiceLocator;
-using DetectionPlus.Win.ViewModel;
 using Paway.Helper;
 using Paway.WPF;
 using System;

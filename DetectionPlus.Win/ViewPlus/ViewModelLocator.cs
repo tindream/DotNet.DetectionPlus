@@ -13,7 +13,6 @@
 */
 
 using CommonServiceLocator;
-using DetectionPlus.Win.ViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 

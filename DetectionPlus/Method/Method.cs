@@ -1,9 +1,11 @@
-﻿using Paway.Helper;
+﻿using log4net;
+using Paway.Helper;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +16,8 @@ namespace DetectionPlus
 {
     public class Method : Paway.WPF.Method
     {
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// 图片二值化转换
         /// </summary>
@@ -48,5 +52,51 @@ namespace DetectionPlus
             var result = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
             return result;
         }
+
+        #region 统一Invoke处理
+        public static void Invoke(DependencyObject obj, Action action)
+        {
+            obj.Dispatcher.Invoke(() =>
+            {
+                try
+                {
+                    action.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    Method.Error(obj, ex.Message());
+                }
+            });
+        }
+        public static void BeginInvoke(DependencyObject obj, Action action)
+        {
+            obj.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                try
+                {
+                    action.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    Method.Error(obj, ex.Message());
+                }
+            }));
+        }
+        public static void BeginInvoke<T>(DependencyObject obj, Action<T> action, T t)
+        {
+            obj.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                try
+                {
+                    action.Invoke(t);
+                }
+                catch (Exception ex)
+                {
+                    Method.Error(obj, ex.Message());
+                }
+            }));
+        }
+
+        #endregion
     }
 }

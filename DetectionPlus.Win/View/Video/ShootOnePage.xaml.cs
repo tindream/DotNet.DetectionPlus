@@ -1,5 +1,4 @@
 ﻿using CommonServiceLocator;
-using DetectionPlus.Win.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

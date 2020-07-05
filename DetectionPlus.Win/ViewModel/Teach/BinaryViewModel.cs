@@ -1,5 +1,4 @@
-﻿using DetectionPlus.Message;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System;
@@ -9,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace DetectionPlus.Win.ViewModel
+namespace DetectionPlus.Win
 {
     public class BinaryViewModel : ViewModelPlus
     {

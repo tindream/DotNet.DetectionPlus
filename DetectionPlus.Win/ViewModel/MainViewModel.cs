@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace DetectionPlus.Win.ViewModel
+namespace DetectionPlus.Win
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.

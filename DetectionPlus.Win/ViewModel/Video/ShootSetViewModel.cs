@@ -1,5 +1,4 @@
-﻿using DetectionPlus.Message;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.Helper;
 using Paway.WPF;
@@ -11,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace DetectionPlus.Win.ViewModel
+namespace DetectionPlus.Win
 {
     public class ShootSetViewModel : ViewModelPlus
     {
