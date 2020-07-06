@@ -1,0 +1,28 @@
+﻿<Page x:Class="DetectionPlus.Sign.SystemSetPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetectionPlus.Sign"
+      xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+      DataContext="{Binding SystemSet ,Source={StaticResource Locator}}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      FontSize="15">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Margin="0,20,0,0">
+            <TextBlock Text="获取间隔：" VerticalAlignment="Center" TextAlignment="Right"/>
+            <utils:TextBoxEXT Width="335" Name="tbInterval" Text="{Binding Info.Interval}"/>
+            <TextBlock Text="ms" VerticalAlignment="Center" Foreground="#666"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" Margin="0,0,0,100">
+            <utils:ButtonEXT Name="btnSave" Content="确认" Width="88" Command="{Binding Save}" CommandParameter="{Binding ElementName=btnSave}"
+                             BackgroundStart="#1023AFFF" BackgroundEnd="#D323AFFF" />
+        </WrapPanel>
+    </Grid>
+</Page>

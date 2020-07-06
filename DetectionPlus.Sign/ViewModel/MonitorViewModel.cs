@@ -3,15 +3,15 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System.Reflection;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace DetectionPlus.Sign
 {
-    public class CameraSetViewModel : ViewModelPlus
+    public class MonitorViewModel : ViewModelPlus
     {
         #region 属性
-        public string Text { get { return Config.Text; } }
-        private string desc = "准备就绪";
+        private string desc;
         public string Desc
         {
             get { return desc; }
@@ -21,28 +21,16 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
-        private ICommand about;
-        public ICommand About
+        private ICommand run;
+        public ICommand Run
         {
             get
             {
-                return about ?? (about = new RelayCommand<WindowEXT>(wd =>
-                {
-                    var version = Assembly.GetExecutingAssembly().GetName().Version;
-                    Method.Toast(wd, $"v{version}");
-                }));
-            }
-        }
-        private ICommand executeCommand;
-        public ICommand ExecuteCommand
-        {
-            get
-            {
-                return executeCommand ?? (executeCommand = new RelayCommand<ButtonEXT>(btn =>
+                return run ?? (run = new RelayCommand<Page>(pg =>
                 {
                     if (Expand.Run(out int result, "B"))
                     {
-                        Method.Toast(btn, "Hello, " + result);
+                        Method.Toast(pg, "Hello, " + result);
                         Config.Camera = new HKCamera();
                         { //关闭
                             Config.Camera.CameraStop();
@@ -67,8 +55,6 @@ namespace DetectionPlus.Sign
 
         #endregion
 
-        public CameraSetViewModel()
-        {
-        }
+        public MonitorViewModel() { }
     }
 }

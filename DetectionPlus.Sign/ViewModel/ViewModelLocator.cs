@@ -41,11 +41,17 @@ namespace DetectionPlus.Sign
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
-
+            
+            SimpleIoc.Default.Register<SystemSetViewModel>();
+            SimpleIoc.Default.Register<SetViewModel>();
+            SimpleIoc.Default.Register<MonitorViewModel>();
             SimpleIoc.Default.Register<CameraSetViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
+        public SystemSetViewModel SystemSet { get { return ServiceLocator.Current.GetInstance<SystemSetViewModel>(); } }
+        public SetViewModel Set { get { return ServiceLocator.Current.GetInstance<SetViewModel>(); } }
+        public MonitorViewModel Monitor { get { return ServiceLocator.Current.GetInstance<MonitorViewModel>(); } }
         public CameraSetViewModel CameraSet { get { return ServiceLocator.Current.GetInstance<CameraSetViewModel>(); } }
         public MainViewModel Main { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
         public static void Cleanup()

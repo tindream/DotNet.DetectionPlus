@@ -9,15 +9,22 @@
         xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF" 
         DataContext="{Binding CameraSet ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
+        Name="pg"
         d:DesignHeight="450" d:DesignWidth="800"
         FontSize="15">
 
     <DockPanel>
-        <WrapPanel Margin="5" DockPanel.Dock="Top" >
-            <utils:ButtonEXT Margin="15,0" BorderThickness="0" Height="60"  Width="60"
-                             BackgroundStart="{Binding RunColor}" BackgroundEnd="{Binding RunColor}" ForegroundRound="White"
-                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/run.png"
-                             Command="{Binding Run}" CommandParameter="{Binding ElementName=parent}"/>
+        <DockPanel Margin="5" DockPanel.Dock="Top" >
+            <utils:ButtonEXT Margin="15,0"  Height="52"  Width="52" 
+                             Border="1;0"
+                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/connect.png|pack://application:,,,/DetectionPlus.Sign;component/Images/connect_s.png"
+                             Command="{Binding Connect}" CommandParameter="{Binding ElementName=pg}" Stretch="None"/>
+            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
+                             Border="1;0"
+                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/picture.png|pack://application:,,,/DetectionPlus.Sign;component/Images/picture_s.png"
+                             Command="{Binding Picture}" CommandParameter="{Binding ElementName=pg}" Stretch="None"/>
             <StackPanel>
                 <DockPanel>
                     <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>
@@ -28,12 +35,12 @@
                     <utils:RadioButtonEXT Content="软触发"/>
                     <utils:RadioButtonEXT Content="硬触发"/>
                 </DockPanel>
-                <DockPanel Margin="0,4">
+                <DockPanel >
                     <TextBlock Text="曝光：" VerticalAlignment="Center" TextAlignment="Right" />
-                    <utils:SliderEXT />
+                    <utils:SliderEXT x:Name="slider" Maximum="100" Value="20" Margin="0,5"/>
                 </DockPanel>
             </StackPanel>
-        </WrapPanel>
+        </DockPanel>
         <TextBlock Width="1" Background="LightGray" DockPanel.Dock="Right"/>
         <Border BorderBrush="LightGray" BorderThickness="1" >
             <Image Source="{Binding Image}" HorizontalAlignment="Left"/>

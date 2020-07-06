@@ -34,66 +34,25 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
-        private ICommand selectionCommand;
-        public ICommand SelectionCommand
+        private ICommand mainPage;
+        public ICommand MainPage
         {
             get
             {
-                return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
+                return mainPage ?? (mainPage = new RelayCommand<Frame>(frame =>
                 {
-                    if (listView1.SelectedItem is IListView info)
-                    {
-                        switch (info.Text)
-                        {
-                            case "教导":
-                                break;
-                            case "取相":
-                                break;
-                        }
-                        listView1.SelectedIndex = -1;
-                    }
+                    frame.Content = ViewlLocator.GetViewInstance<MonitorPage>();
                 }));
             }
         }
-        private ICommand cameraSet;
-        public ICommand CameraSet
+        private ICommand setPage;
+        public ICommand SetPage
         {
             get
             {
-                return cameraSet ?? (cameraSet = new RelayCommand<Frame>(frame =>
+                return setPage ?? (setPage = new RelayCommand<Frame>(frame =>
                 {
-                    frame.Content = ViewlLocator.GetViewInstance<CameraSetPage>();
-                }));
-            }
-        }
-        private ICommand executeCommand;
-        public ICommand ExecuteCommand
-        {
-            get
-            {
-                return executeCommand ?? (executeCommand = new RelayCommand<ButtonEXT>(btn =>
-                {
-                    if (Expand.Run(out int result, "B"))
-                    {
-                        Method.Toast(btn, "Hello, " + result);
-                        Config.Camera = new HKCamera();
-                        { //关闭
-                            Config.Camera.CameraStop();
-                            Config.Camera.CameraClose();
-                        }
-                        {//曝光
-                            Config.Camera.InitExposureTime = 1;
-                            Config.Camera.ExposureTime = 2;
-                        }
-                        {//拍照
-                            var bitmap = Config.Camera.CurrentImage();
-                            if (bitmap != null)
-                            {
-                                //hWindowTool1.DisplayImage(bitmap);
-                                //ReadRegion();
-                            }
-                        }
-                    }
+                    frame.Content = ViewlLocator.GetViewInstance<SetPage>();
                 }));
             }
         }

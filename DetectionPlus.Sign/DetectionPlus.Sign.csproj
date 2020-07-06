@@ -86,11 +86,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Comm\Config.cs" />
-    <Compile Include="ViewModel\CameraSetViewModel.cs" />
+    <Compile Include="ViewModel\MonitorViewModel.cs" />
+    <Compile Include="ViewModel\Set\CameraSetViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SetViewModel.cs" />
+    <Compile Include="ViewModel\Set\SystemSetViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\CameraSetPage.xaml.cs">
+    <Compile Include="View\MonitorPage.xaml.cs">
+      <DependentUpon>MonitorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Set\CameraSetPage.xaml.cs">
       <DependentUpon>CameraSetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetPage.xaml.cs">
+      <DependentUpon>SetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Set\SystemSetPage.xaml.cs">
+      <DependentUpon>SystemSetPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -104,7 +116,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\CameraSetPage.xaml">
+    <Page Include="View\MonitorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Set\CameraSetPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SetPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Set\SystemSetPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -131,12 +155,25 @@
       <Name>DetectionPlus</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\connect.png" />
+    <Resource Include="Images\disconnect.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\run.png" />
     <Resource Include="Images\run_s.png" />
     <Resource Include="Images\stop.png" />
     <Resource Include="Images\stop_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\connect_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\disconnect_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\picture.png" />
+    <Resource Include="Images\picture_s.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,35 +11,19 @@
         Name="wd"
         Title="{Binding Text}" Height="660" Width="960" WindowStartupLocation="CenterScreen">
     <DockPanel>
-        <utils:ListViewEXT Name="listViewMain" DockPanel.Dock="Top" 
-                           HorizontalContentAlignment="Left" ItemWidth="Auto"
-                           ItemBorderBrush="Transparent;#AA23AFFF;#DC23AFFF"
-                           ItemBackground="Transparent;#ECF4FF;#E9EEFF" 
-                           ItemTextForeground="#222;#222"
-                           Background="#CCD5F0"
-                           ItemImageWidth="24" ItemImageStretch="None" ItemPadding="5,0,9,0" >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
-                                           CommandParameter="{Binding ElementName=listViewMain}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <utils:ListBoxItemEXT Text="启动" 
-                                  Image="pack://application:,,,/DetectionPlus.Sign;component/Images/run.png|pack://application:,,,/DetectionPlus.Sign;component/Images/run_s.png"/>
-        </utils:ListViewEXT>
-        <TextBlock DockPanel.Dock="Top" Background="#CCD5F0" Height="3"/>
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White" Height="30">
             <TextBlock Text="{Binding Desc}" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
         </StatusBar>
 
-        <Frame Name="frame" Background="#FAFAFA" NavigationUIVisibility="Hidden"/>
+        <Frame Name="frame" Background="#FAFAFA" NavigationUIVisibility="Hidden" Source="/DetectionPlus.Sign;component/View/MonitorPage.xaml" />
 
     </DockPanel>
     <utils:WindowEXT.FunctionBar>
         <utils:WindowFunctionBar>
             <Separator />
             <Menu>
-                <MenuItem Header="设置" Command="{Binding CameraSet}" CommandParameter="{Binding ElementName=frame}"/>
+                <MenuItem Header="主页" Command="{Binding MainPage}" CommandParameter="{Binding ElementName=frame}"/>
+                <MenuItem Header="设置" Command="{Binding SetPage}" CommandParameter="{Binding ElementName=frame}"/>
                 <MenuItem Header="帮助">
                     <MenuItem Header="注册" Command="{Binding About}" CommandParameter="{Binding ElementName=wd}"/>
                     <Separator />
