@@ -1,7 +1,9 @@
-﻿using Paway.Helper;
+﻿using DetectionPlus.Camera;
+using Paway.Helper;
 using Paway.WPF;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -28,6 +30,29 @@ namespace DetectionPlus.Sign
         {
             InitializeComponent();
             Config.Window = this;
+        }
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            Method.Progress(this, () =>
+            {
+                Config.Camera = new HKCamera();
+            });
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (Config.Camera != null)
+            {
+                Method.ProgressSync(Config.Window, () =>
+                {
+                    if (Config.Camera.IsOpen)
+                    {
+                        Config.Camera.CameraStop();
+                    }
+                    Config.Camera.CameraClose();
+                });
+            }
+            base.OnClosing(e);
         }
     }
 }
