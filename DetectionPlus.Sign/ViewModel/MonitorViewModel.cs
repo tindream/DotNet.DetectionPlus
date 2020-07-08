@@ -89,18 +89,21 @@ namespace DetectionPlus.Sign
         {
             Method.Invoke(Config.Window, () =>
             {
+                Total++;
+                var info = new HistroyInfo();
                 if (obj == null)
-                { }
+                {
+                    info.Description = "拍照失败";
+                    Method.Toast(Config.Window, info.Description);
+                }
                 else
                 {
-                    Total++;
                     Image = Imaging.CreateBitmapSourceFromHBitmap(obj.Bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                     var iResult = Expand.Run(out int result, "B");
                     if (iResult) Success++;
-                    var info = new HistroyInfo(iResult);
-                    this.MessengerInstance.Send(new HistroyMessage(info));
+                    info.Result = iResult;
                 }
-
+                this.MessengerInstance.Send(new HistroyMessage(info));
             });
         }
 

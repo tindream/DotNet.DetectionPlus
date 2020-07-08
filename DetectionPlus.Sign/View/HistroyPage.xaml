@@ -1,4 +1,4 @@
-﻿<Page x:Class="DetectionPlus.Sign.AlarmRecordPage"
+﻿<Page x:Class="DetectionPlus.Sign.HistroyPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -34,9 +34,9 @@
         </utils:ListViewEXT>
         <utils:DataGridEXT Name="datagrid1" Grid.Row="1" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Binding="{Binding Message}"/>
-                <DataGridTextColumn Width="160" Binding="{Binding TriggerOn, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"/>
-                <DataGridTextColumn Width="160" Binding="{Binding EndOn, Converter={StaticResource dateConverter}}"/>
+                <DataGridTextColumn  Width="160" Binding="{Binding CreateOn, Converter={StaticResource dateConverter}}"/>
+                <DataGridTextColumn  Width="160" Binding="{Binding Results}"/> 
+                <DataGridTextColumn  Width="*" Binding="{Binding Description}"/> 
             </DataGrid.Columns>
         </utils:DataGridEXT>
 

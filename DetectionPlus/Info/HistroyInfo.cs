@@ -11,20 +11,34 @@ namespace DetectionPlus
     public class HistroyInfo : BaseInfo
     {
         /// <summary>
-        /// 执行结果
-        /// </summary>
-        public bool Result { get; set; }
-
-        /// <summary>
         /// 时间
         /// </summary>
+        [Text("执行时间")]
         public DateTime CreateOn { get; set; }
 
-        public HistroyInfo() { }
-        public HistroyInfo(bool result)
+        /// <summary>
+        /// 执行结果
+        /// </summary>
+        [NoShow]
+        public bool Result { get; set; }
+        [Text("结果")]
+        [NoSelect]
+        public string Results { get { return Result ? "成功" : "失败"; } }
+
+        [Text("描述")]
+        public string Description { get; set; }
+
+        public override string Desc()
+        {
+            return $"{CreateOn:G}-{Results}";
+        }
+        public HistroyInfo()
+        {
+            this.CreateOn = DateTime.Now;
+        }
+        public HistroyInfo(bool result) : this()
         {
             this.Result = result;
-            this.CreateOn = DateTime.Now;
         }
     }
 }

@@ -67,6 +67,7 @@ namespace DetectionPlus.Sign
 
         public HistroyViewModel()
         {
+            base.server = DataService.Default;
             this.MessengerInstance.Register<HistroyMessage>(this, msg => Histroy(msg.Info));
         }
     }

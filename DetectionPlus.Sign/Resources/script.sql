@@ -3,6 +3,7 @@
 CREATE TABLE [Histroys](
 "Id"  integer Primary Key AutoIncrement not null,
 "Result"  bit,
+"Description"  nvarchar(256),
 "CreateOn"  datetime,
  unique(Id asc)
 );

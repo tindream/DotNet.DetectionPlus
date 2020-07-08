@@ -61,6 +61,7 @@ namespace DetectionPlus.Sign
                         if (!Config.Camera.IsOpen)
                         {
                             Config.Camera.Connect();
+                            Config.Camera.SetTriggerMode(Config.Admin.IsTrigger);
                             Config.Admin.ExposureTime = Config.Camera.ExposureTime;
                             Method.Invoke(btnConnect, () =>
                             {
