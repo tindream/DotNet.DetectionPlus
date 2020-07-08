@@ -34,6 +34,17 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
+        private ICommand history;
+        public ICommand History
+        {
+            get
+            {
+                return history ?? (history = new RelayCommand<Frame>(frame =>
+                {
+                    frame.Content = ViewlLocator.GetViewInstance<HistroyPage>();
+                }));
+            }
+        }
         private ICommand mainPage;
         public ICommand MainPage
         {

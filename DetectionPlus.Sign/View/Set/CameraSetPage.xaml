@@ -25,6 +25,11 @@
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
                              BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/picture.png|pack://application:,,,/DetectionPlus.Sign;component/Images/picture_s.png"
                              Command="{Binding Picture}" CommandParameter="{Binding ElementName=pg}" Stretch="None"/>
+            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
+                             Border="1;0"
+                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/save.png|pack://application:,,,/DetectionPlus.Sign;component/Images/save_s.png"
+                             Command="{Binding Save}" CommandParameter="{Binding ElementName=pg}" Stretch="None"/>
             <StackPanel>
                 <DockPanel>
                     <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>
@@ -37,7 +42,7 @@
                 </DockPanel>
                 <DockPanel >
                     <TextBlock Text="曝光：" VerticalAlignment="Center" TextAlignment="Right" />
-                    <utils:SliderEXT x:Name="slider" Maximum="100" Value="20" Margin="0,5" >
+                    <utils:SliderEXT x:Name="slider" Maximum="100000" Value="{Binding Admin.ExposureTime}" Margin="0,5" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ValueChanged">
                                 <i:InvokeCommandAction Command="{Binding ValueChanged}"

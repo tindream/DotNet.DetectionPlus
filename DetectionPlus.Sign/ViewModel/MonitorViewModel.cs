@@ -28,6 +28,18 @@ namespace DetectionPlus.Sign
             get { return image; }
             set { image = value; RaisePropertyChanged(); }
         }
+        private int success;
+        public int Success
+        {
+            get { return success; }
+            set { success = value; RaisePropertyChanged(); }
+        }
+        private int total;
+        public int Total
+        {
+            get { return total; }
+            set { total = value; RaisePropertyChanged(); }
+        }
 
         #endregion
 
@@ -39,10 +51,6 @@ namespace DetectionPlus.Sign
             {
                 return run ?? (run = new RelayCommand<ButtonEXT>(btnRun =>
                 {
-                    if (Expand.Run(out int result, "B"))
-                    {
-                        Method.Toast(btnRun, "Hello, " + result);
-                    }
                     Method.Progress(btnRun, () =>
                     {
                         if (!Config.Camera.IsGrabbing)
@@ -81,7 +89,18 @@ namespace DetectionPlus.Sign
         {
             Method.Invoke(Config.Window, () =>
             {
-                Image = Imaging.CreateBitmapSourceFromHBitmap(obj.Bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                if (obj == null)
+                { }
+                else
+                {
+                    Total++;
+                    Image = Imaging.CreateBitmapSourceFromHBitmap(obj.Bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                    var iResult = Expand.Run(out int result, "B");
+                    if (iResult) Success++;
+                    var info = new HistroyInfo(iResult);
+                    this.MessengerInstance.Send(new HistroyMessage(info));
+                }
+
             });
         }
 

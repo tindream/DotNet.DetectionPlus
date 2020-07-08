@@ -16,4 +16,14 @@ namespace DetectionPlus.Sign
             this.Message = msg;
         }
     }
+
+    public class HistroyMessage
+    {
+        public HistroyInfo Info { get; set; }
+
+        public HistroyMessage(HistroyInfo info)
+        {
+            this.Info = info;
+        }
+    }
 }

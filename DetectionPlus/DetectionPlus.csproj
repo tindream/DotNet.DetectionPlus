@@ -61,8 +61,8 @@
     <Reference Include="Paway.Utils, Version=2.3.11.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
       <HintPath>..\packages\Paway.Utils.2.3.11\lib\net40\Paway.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.1.5\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.1.6.1\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -92,6 +92,7 @@
     <Compile Include="Enum\IModel.cs" />
     <Compile Include="Info\AdminBaseInfo.cs" />
     <Compile Include="Info\BaseInfo.cs" />
+    <Compile Include="Info\HistroyInfo.cs" />
     <Compile Include="Method\Config.cs" />
     <Compile Include="Method\Expand.cs" />
     <Compile Include="Method\Method.cs" />

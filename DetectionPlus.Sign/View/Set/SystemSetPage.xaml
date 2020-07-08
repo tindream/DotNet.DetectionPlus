@@ -21,8 +21,8 @@
             <TextBlock Text="ms" VerticalAlignment="Center" Foreground="#666"/>
         </WrapPanel>
         <WrapPanel Grid.Row="1" Margin="0,0,0,100">
-            <utils:ButtonEXT Name="btnSave" Content="确认" Width="88" Command="{Binding Save}" CommandParameter="{Binding ElementName=btnSave}"
-                             BackgroundStart="#1023AFFF" BackgroundEnd="#D323AFFF" />
+            <utils:ButtonEXT Name="btnSave" Content="确认" Width="120" Height="42" 
+                             Command="{Binding Save}" CommandParameter="{Binding ElementName=btnSave}"/>
         </WrapPanel>
     </Grid>
 </Page>

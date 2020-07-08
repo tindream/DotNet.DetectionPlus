@@ -10,7 +10,7 @@ namespace DetectionPlus.Sign
     /// 管理数据
     /// </summary>
     [Serializable]
-    public class AdminInfo
+    public class AdminInfo : BaseInfo
     {
         #region Camera
         /// <summary>
@@ -21,10 +21,15 @@ namespace DetectionPlus.Sign
         /// 硬触发标记
         /// </summary>
         public bool IsTrigger { get; set; }
+        private float exposureTime;
         /// <summary>
         /// 曝光
         /// </summary>
-        public float ExposureTime { get; set; }
+        public float ExposureTime
+        {
+            get { return exposureTime; }
+            set { exposureTime = value; OnPropertyChanged(); }
+        }
 
         #endregion
 

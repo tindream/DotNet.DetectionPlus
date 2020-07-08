@@ -24,6 +24,7 @@ namespace DetectionPlus.Sign
     /// </summary>
     public class ViewModelLocator
     {
+        public static ViewModelLocator Default { get; } = new ViewModelLocator();
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -41,7 +42,9 @@ namespace DetectionPlus.Sign
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
-            
+
+            SimpleIoc.Default.Register<HistroyQueryModel>();
+            SimpleIoc.Default.Register<HistroyViewModel>();
             SimpleIoc.Default.Register<SystemSetViewModel>();
             SimpleIoc.Default.Register<SetViewModel>();
             SimpleIoc.Default.Register<MonitorViewModel>();
@@ -49,6 +52,8 @@ namespace DetectionPlus.Sign
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
+        public HistroyQueryModel HistroyQuery { get { return ServiceLocator.Current.GetInstance<HistroyQueryModel>(); } }
+        public HistroyViewModel Histroy { get { return ServiceLocator.Current.GetInstance<HistroyViewModel>(); } }
         public SystemSetViewModel SystemSet { get { return ServiceLocator.Current.GetInstance<SystemSetViewModel>(); } }
         public SetViewModel Set { get { return ServiceLocator.Current.GetInstance<SetViewModel>(); } }
         public MonitorViewModel Monitor { get { return ServiceLocator.Current.GetInstance<MonitorViewModel>(); } }

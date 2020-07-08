@@ -1,5 +1,14 @@
 
 
+CREATE TABLE [Histroys](
+"Id"  integer Primary Key AutoIncrement not null,
+"Result"  bit,
+"CreateOn"  datetime,
+ unique(Id asc)
+);
+GO
+Create index main.Histroys_id on Histroys (Id ASC);
+GO
 
 
 

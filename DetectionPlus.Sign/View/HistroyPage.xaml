@@ -1,0 +1,44 @@
+﻿<Page x:Class="DetectionPlus.Sign.AlarmRecordPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetectionPlus.Sign"
+      xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+      DataContext="{Binding Histroy ,Source={StaticResource Locator}}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      FontSize="15">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <utils:ListViewEXT Name="listView1" ItemWidth="Auto" ItemPadding="5,0,5,0" ItemTextPadding="5"
+                           ItemImageWidth="24" ItemImageHeight="24"
+                           ItemBorderBrush="Transparent;;"
+                           ItemBackground="Transparent;;">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listView1}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <utils:ListBoxItemEXT Text="刷新"
+                                  Image="pack://application:,,,/DetectionPlus.Sign;component/Images/refresh.png|pack://application:,,,/DetectionPlus.Sign;component/Images/refresh_s.png"/>
+            <utils:ListBoxItemEXT Text="查询"
+                                  Image="pack://application:,,,/DetectionPlus.Sign;component/Images/search.png|pack://application:,,,/DetectionPlus.Sign;component/Images/search_s.png"/>
+            <utils:ListBoxItemEXT Text="删除"
+                                  Image="pack://application:,,,/DetectionPlus.Sign;component/Images/close.png|pack://application:,,,/DetectionPlus.Sign;component/Images/close_s.png"/>
+        </utils:ListViewEXT>
+        <utils:DataGridEXT Name="datagrid1" Grid.Row="1" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Binding="{Binding Message}"/>
+                <DataGridTextColumn Width="160" Binding="{Binding TriggerOn, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"/>
+                <DataGridTextColumn Width="160" Binding="{Binding EndOn, Converter={StaticResource dateConverter}}"/>
+            </DataGrid.Columns>
+        </utils:DataGridEXT>
+
+    </Grid>
+</Page>

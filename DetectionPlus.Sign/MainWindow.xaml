@@ -23,6 +23,7 @@
             <Separator />
             <Menu>
                 <MenuItem Header="主页" Command="{Binding MainPage}" CommandParameter="{Binding ElementName=frame}"/>
+                <MenuItem Header="历史" Command="{Binding History}" CommandParameter="{Binding ElementName=frame}"/>
                 <MenuItem Header="设置" Command="{Binding SetPage}" CommandParameter="{Binding ElementName=frame}"/>
                 <MenuItem Header="帮助">
                     <MenuItem Header="注册" Command="{Binding About}" CommandParameter="{Binding ElementName=wd}"/>

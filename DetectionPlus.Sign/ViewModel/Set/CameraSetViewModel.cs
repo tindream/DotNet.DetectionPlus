@@ -41,7 +41,7 @@ namespace DetectionPlus.Sign
                 return valueChanged ?? (valueChanged = new RelayCommand<SliderEXT>(slider =>
                 {
                     //曝光
-                    var value = (float)(slider.Value * 500);
+                    var value = (float)slider.Value;
                     Config.Camera.InitExposureTime = value;
                     Config.Camera.ExposureTime = value;
                     Config.Admin.ExposureTime = value;
@@ -57,13 +57,11 @@ namespace DetectionPlus.Sign
                 {
                     Method.Progress(btnConnect, () =>
                     {
-                        DataService.Default.Update(nameof(Config.Admin.CameraName));
-                        DataService.Default.Update(nameof(Config.Admin.IsTrigger));
-                        DataService.Default.Update(nameof(Config.Admin.ExposureTime));
                         Config.Camera.CameraName = Config.Admin.CameraName;
                         if (!Config.Camera.IsOpen)
                         {
                             Config.Camera.Connect();
+                            Config.Admin.ExposureTime = Config.Camera.ExposureTime;
                             Method.Invoke(btnConnect, () =>
                             {
                                 btnConnect.BackgroundImage = new ImageEXT(new BitmapImage(new Uri("pack://application:,,,/DetectionPlus.Sign;component/Images/disconnect.png")),
@@ -84,6 +82,20 @@ namespace DetectionPlus.Sign
                 }));
             }
         }
+        private ICommand save;
+        public ICommand Save
+        {
+            get
+            {
+                return save ?? (save = new RelayCommand<Page>(pg =>
+                {
+                    DataService.Default.Update(nameof(Config.Admin.CameraName));
+                    DataService.Default.Update(nameof(Config.Admin.IsTrigger));
+                    DataService.Default.Update(nameof(Config.Admin.ExposureTime));
+                    Method.Toast(pg, "保存成功");
+                }));
+            }
+        }
         private ICommand picture;
         public ICommand Picture
         {
@@ -94,6 +106,11 @@ namespace DetectionPlus.Sign
                     Method.Progress(pg, () =>
                     {
                         var bitmap = Config.Camera.CurrentImage();
+                        if (bitmap == null)
+                        {
+                            Method.Toast(pg, "拍照失败");
+                            return;
+                        }
                         Method.Invoke(pg, () =>
                         {
                             Image = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
