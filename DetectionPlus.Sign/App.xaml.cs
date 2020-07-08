@@ -21,6 +21,8 @@ namespace DetectionPlus.Sign
             log4net.Config.XmlConfigurator.Configure();
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             $"v{version} ({Environment.MachineName})".Log();
+
+            DataService.Default.Init();
         }
     }
 }

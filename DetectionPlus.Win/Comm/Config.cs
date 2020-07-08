@@ -1,5 +1,4 @@
-﻿using DetectionPlus.Camera;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace DetectionPlus.Sign
+namespace DetectionPlus.Win
 {
     public class Config : DetectionPlus.Config
     {
@@ -17,7 +16,6 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 全局数据
-        public static ICamera Camera { get; set; }
         public static AdminInfo Admin { get; set; }
 
         #endregion

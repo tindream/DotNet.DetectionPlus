@@ -12,9 +12,9 @@ using log4net;
 using System.Reflection;
 using System.Threading;
 using System.Collections;
-using DetectionPlus.Properties;
+using DetectionPlus.Win.Properties;
 
-namespace DetectionPlus
+namespace DetectionPlus.Win
 {
     public class DataService : SQLiteHelper
     {
@@ -41,22 +41,24 @@ namespace DetectionPlus
         #endregion
 
         #region Admin.Update
-        public void Update(string name, object value, DbCommand arg = null)
+        public void Update(string name, DbCommand arg = null)
         {
-            ExecuteTransaction(cmd =>
+            var value = Config.Admin.GetValue(name);
+            base.ExecuteCommand(cmd =>
             {
-                //string find = "Name = @name";
-                //List<AdminBaseInfo> list = Find<AdminBaseInfo>(find, new { name }, cmd);
-                //if (list.Count == 0)
-                //{
-                //    AdminBaseInfo info = new AdminBaseInfo() { Name = name, Value = value.ToString() };
-                //    Insert(info, cmd);
-                //}
-                //else
-                //{
-                //    list[0].Value = value.ToString();
-                //    Update(list[0], cmd);
-                //}
+                string find = string.Format("Name = '{0}'", name);
+                List<AdminBaseInfo> list = Find<AdminBaseInfo>(find, cmd);
+                if (list.Count == 0)
+                {
+                    AdminBaseInfo info = new AdminBaseInfo() { Name = name, Value = value.ToStrs(), DateTime = DateTime.Now };
+                    Insert(info, cmd);
+                }
+                else
+                {
+                    list[0].Value = value.ToString();
+                    list[0].DateTime = DateTime.Now;
+                    Update(list[0], cmd);
+                }
             }, arg);
         }
 

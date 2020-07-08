@@ -93,8 +93,16 @@
     <Compile Include="..\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Comm\AdminInfo.cs" />
+    <Compile Include="Comm\Config.cs" />
+    <Compile Include="Comm\DataService.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewMessage\RefreshMessage.cs" />
     <Compile Include="ViewMessage\BinaryMessage.cs" />
@@ -233,6 +241,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\script.sql" />
     <Resource Include="Images\add.png" />
     <Resource Include="Images\add_w.png" />
     <Content Include="Images\F1.png">
@@ -272,6 +281,11 @@
     <Resource Include="Images\round_w.png" />
     <Resource Include="Images\square_w.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

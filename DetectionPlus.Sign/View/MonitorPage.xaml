@@ -15,11 +15,11 @@
 
     <DockPanel>
         <DockPanel Margin="5" DockPanel.Dock="Top" >
-            <utils:ButtonEXT Margin="15,0"  Height="52"  Width="52" 
+            <utils:ButtonEXT Name="btnRun" Margin="15,0"  Height="52"  Width="52" 
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
                              BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/run.png|pack://application:,,,/DetectionPlus.Sign;component/Images/run_s.png"
-                             Command="{Binding Run}" CommandParameter="{Binding ElementName=pg}" Stretch="None"/>
+                             Command="{Binding Run}" CommandParameter="{Binding ElementName=btnRun}" Stretch="None"/>
             <StackPanel>
             </StackPanel>
         </DockPanel>

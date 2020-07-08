@@ -15,13 +15,13 @@ using System.Windows.Media.Imaging;
 
 namespace DetectionPlus
 {
-    public class Sign : ISign
-    {
-        public int Result(string image)
-        {
-            return image.GetHashCode();
-        }
-    }
+    //public class Sign : ISign
+    //{
+    //    public int Result(string image)
+    //    {
+    //        return image.GetHashCode();
+    //    }
+    //}
     public interface ISign
     {
         int Result(string image);

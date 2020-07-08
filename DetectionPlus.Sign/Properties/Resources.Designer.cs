@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DetectionPlus.Properties {
+namespace DetectionPlus.Sign.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DetectionPlus.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DetectionPlus.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DetectionPlus.Sign.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,15 +63,31 @@ namespace DetectionPlus.Properties {
         /// <summary>
         ///   查找类似 
         ///
-        ///-- ----------------------------
-        ///-- Table structure for A
-        ///-- ----------------------------
-        ///DROP TABLE IF EXISTS &quot;main&quot;.&quot;A&quot;;
-        ///CREATE TABLE &quot;A&quot; (
-        ///&quot;Id&quot;  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
-        ///);
         ///
-        /// 的本地化字符串。
+        ///
+        ///
+        ///-- ----------------------------
+        ///-- Table structure for Users
+        ///-- Date: 2011-11-11
+        ///-- ----------------------------
+        ///CREATE TABLE [Users](
+        ///&quot;Id&quot;  integer Primary Key AutoIncrement not null,
+        ///&quot;Name&quot;  nvarchar(32),
+        ///&quot;Pad&quot;  nvarchar(32),
+        ///&quot;Statu&quot;  bit,
+        ///&quot;UserType&quot;  int,
+        ///&quot;LoginOn&quot;  datetime,
+        ///&quot;CreateOn&quot;  datetime,
+        /// unique(Id asc)
+        ///);
+        ///GO
+        ///Create index main.Users_id on Users (Id ASC);
+        ///GO
+        ///
+        ///-- ----------------------------
+        ///-- Table structure for Admins
+        ///-- Date: 2011-11-11
+        ///-- ---------------------- [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string script {
             get {

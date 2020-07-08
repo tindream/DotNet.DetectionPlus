@@ -88,38 +88,23 @@
     <Compile Include="..\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
-    <Compile Include="Data\DataService.cs" />
     <Compile Include="Enum\FunctionType.cs" />
     <Compile Include="Enum\IModel.cs" />
+    <Compile Include="Info\AdminBaseInfo.cs" />
+    <Compile Include="Info\BaseInfo.cs" />
     <Compile Include="Method\Config.cs" />
     <Compile Include="Method\Expand.cs" />
     <Compile Include="Method\Method.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="ViewPlus\AddViewModelPlus.cs" />
     <Compile Include="ViewPlus\DataGridViewModel.cs" />
     <Compile Include="ViewPlus\ViewlLocator.cs" />
     <Compile Include="ViewPlus\ViewModelPlus.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\script.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

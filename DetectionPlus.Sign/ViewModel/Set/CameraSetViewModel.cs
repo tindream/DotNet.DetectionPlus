@@ -16,6 +16,7 @@ namespace DetectionPlus.Sign
     public class CameraSetViewModel : ViewModelPlus
     {
         #region 属性
+        public AdminInfo Admin { get { return Config.Admin; } }
         private string name;
         public string Name
         {
@@ -39,13 +40,11 @@ namespace DetectionPlus.Sign
             {
                 return valueChanged ?? (valueChanged = new RelayCommand<SliderEXT>(slider =>
                 {
-                    Method.Progress(slider, () =>
-                    {
-                        //曝光
-                        var value = (float)(slider.Value * 500);
-                        Config.Camera.InitExposureTime = value;
-                        Config.Camera.ExposureTime = value;
-                    });
+                    //曝光
+                    var value = (float)(slider.Value * 500);
+                    Config.Camera.InitExposureTime = value;
+                    Config.Camera.ExposureTime = value;
+                    Config.Admin.ExposureTime = value;
                 }));
             }
         }
@@ -58,7 +57,10 @@ namespace DetectionPlus.Sign
                 {
                     Method.Progress(btnConnect, () =>
                     {
-                        Config.Camera.CameraName = Name;
+                        DataService.Default.Update(nameof(Config.Admin.CameraName));
+                        DataService.Default.Update(nameof(Config.Admin.IsTrigger));
+                        DataService.Default.Update(nameof(Config.Admin.ExposureTime));
+                        Config.Camera.CameraName = Config.Admin.CameraName;
                         if (!Config.Camera.IsOpen)
                         {
                             Config.Camera.Connect();

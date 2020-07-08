@@ -1,4 +1,5 @@
 ﻿using DetectionPlus.Camera;
+using GalaSoft.MvvmLight.Messaging;
 using Paway.Helper;
 using Paway.WPF;
 using System;
@@ -36,7 +37,25 @@ namespace DetectionPlus.Sign
             base.OnApplyTemplate();
             Method.Progress(this, () =>
             {
-                Config.Camera = new HKCamera();
+                try
+                {
+                    DataService.Default.Load();
+                    Config.Camera = new HKCamera()
+                    {
+                        CameraName = Config.Admin.CameraName,
+                        InitExposureTime = Config.Admin.ExposureTime
+                    };
+                }
+                catch (Exception ex)
+                {
+                    ex.Log();
+                    Messenger.Default.Send(new StatuMessage(ex.Message()));
+                    Method.Show(this, ex.Message(), LeveType.Error);
+                }
+            }, () =>
+            {
+                Messenger.Default.Send(new StatuMessage("加载完成"));
+                frame.Content = ViewlLocator.GetViewInstance<MonitorPage>();
             });
         }
         protected override void OnClosing(CancelEventArgs e)

@@ -14,6 +14,7 @@ namespace DetectionPlus.Camera
         object Tag { get; set; }
         string CameraName { get; set; }
         bool IsOpen { get; }
+        bool IsGrabbing { get; }
         int GetCameraCount { get; }
         Size GetCameraROIMax { get; }
         Rectangle GetCameraROI { get; }

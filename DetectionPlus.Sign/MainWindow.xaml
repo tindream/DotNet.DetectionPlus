@@ -15,7 +15,7 @@
             <TextBlock Text="{Binding Desc}" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
         </StatusBar>
 
-        <Frame Name="frame" Background="#FAFAFA" NavigationUIVisibility="Hidden" Source="/DetectionPlus.Sign;component/View/MonitorPage.xaml" />
+        <Frame Name="frame" Background="#FAFAFA" NavigationUIVisibility="Hidden"/>
 
     </DockPanel>
     <utils:WindowEXT.FunctionBar>

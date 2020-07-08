@@ -37,23 +37,42 @@ namespace DetectionPlus.Sign
         {
             get
             {
-                return run ?? (run = new RelayCommand<Page>(pg =>
+                return run ?? (run = new RelayCommand<ButtonEXT>(btnRun =>
                 {
                     if (Expand.Run(out int result, "B"))
                     {
-                        Method.Toast(pg, "Hello, " + result);
+                        Method.Toast(btnRun, "Hello, " + result);
                     }
-                    if (Config.Camera.CameraName == null) Config.Camera.CameraName = "ABC";
-                    Method.Progress(pg, () =>
+                    Method.Progress(btnRun, () =>
                     {
-                        if (!Config.Camera.IsOpen)
+                        if (!Config.Camera.IsGrabbing)
                         {
-                            Config.Camera.Connect();
-                            Config.Camera.ScreenEvent -= Camera_ScreenEvent;
-                            Config.Camera.ScreenEvent += Camera_ScreenEvent;
+                            if (!Config.Camera.IsOpen)
+                            {
+                                Config.Camera.Connect();
+                                Config.Camera.ScreenEvent -= Camera_ScreenEvent;
+                                Config.Camera.ScreenEvent += Camera_ScreenEvent;
+                            }
+                            Config.Camera.SetTriggerMode(Config.Admin.IsTrigger);
+                            Config.Camera.ContinueShot();
+                            Method.Invoke(btnRun, () =>
+                            {
+                                btnRun.BackgroundImage = new ImageEXT(new BitmapImage(new Uri("pack://application:,,,/DetectionPlus.Sign;component/Images/stop.png")),
+                                    new BitmapImage(new Uri("pack://application:,,,/DetectionPlus.Sign;component/Images/stop_s.png")));
+                            });
                         }
-                        Config.Camera.SetTriggerMode(false);//软触发
-                        Config.Camera.ContinueShot();
+                        else
+                        {
+                            if (Config.Camera.IsOpen)
+                            {
+                                Config.Camera.CameraStop();
+                            }
+                            Method.Invoke(btnRun, () =>
+                            {
+                                btnRun.BackgroundImage = new ImageEXT(new BitmapImage(new Uri("pack://application:,,,/DetectionPlus.Sign;component/Images/run.png")),
+                                    new BitmapImage(new Uri("pack://application:,,,/DetectionPlus.Sign;component/Images/run_s.png")));
+                            });
+                        }
                     });
                 }));
             }

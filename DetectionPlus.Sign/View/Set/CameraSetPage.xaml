@@ -28,12 +28,12 @@
             <StackPanel>
                 <DockPanel>
                     <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>
-                    <utils:TextBoxEXT Text="{Binding Name}" MaxLength="32" Width="200" HorizontalAlignment="Left"/>
+                    <utils:TextBoxEXT Text="{Binding Admin.CameraName}" MaxLength="32" Width="200" HorizontalAlignment="Left"/>
                 </DockPanel>
                 <DockPanel>
                     <TextBlock Text="触发：" VerticalAlignment="Center" TextAlignment="Right"/>
-                    <utils:RadioButtonEXT Content="软触发"/>
-                    <utils:RadioButtonEXT Content="硬触发"/>
+                    <utils:RadioButtonEXT Content="硬触发" IsChecked="{Binding Admin.IsTrigger}"/>
+                    <utils:RadioButtonEXT Content="软触发" IsChecked="{Binding Admin.IsTrigger, Converter={StaticResource boolReverse}}"/>
                 </DockPanel>
                 <DockPanel >
                     <TextBlock Text="曝光：" VerticalAlignment="Center" TextAlignment="Right" />

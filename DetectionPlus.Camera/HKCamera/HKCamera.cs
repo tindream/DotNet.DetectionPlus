@@ -98,6 +98,7 @@ namespace DetectionPlus.Camera
         #region 相机操作接口
         public string CameraName { get; set; }
         public bool IsOpen { get { return cameraOperator.IsCameraOpen; } }
+        public bool IsGrabbing { get { return cameraOperator.IsGrabbing; } }
         public int GetCameraCount
         {
             get

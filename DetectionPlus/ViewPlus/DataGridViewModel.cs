@@ -16,6 +16,8 @@ namespace DetectionPlus
     public class DataGridViewModel<T> : ViewModelPlus where T : IModel, IId, new()
     {
         #region 属性
+        protected IDataService server;
+
         public ObservableCollection<T> List { get; protected set; } = new ObservableCollection<T>();
         private object selectedItem;
         public object SelectedItem
@@ -47,20 +49,20 @@ namespace DetectionPlus
         }
         protected virtual List<T> Find()
         {
-            return DataService.Default.Find<T>();
+            return server.Find<T>();
         }
         protected virtual void Added(T info)
         {
-            DataService.Default.Insert(info);
+            server.Insert(info);
             List.Add(info);
         }
         protected virtual void Updated(DependencyObject obj, T info)
         {
-            DataService.Default.Update(info);
+            server.Update(info);
         }
         protected virtual void Deleted(DependencyObject obj, T info)
         {
-            DataService.Default.Delete(info);
+            server.Delete(info);
             List.Remove(info);
         }
         protected virtual void Selectioned(ListViewEXT listView1, IListView info)

@@ -71,6 +71,14 @@ namespace DetectionPlus.Sign
 
         #endregion
 
+        #region 消息
+        private void Statu(string msg)
+        {
+            this.Desc = msg;
+        }
+
+        #endregion
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -84,6 +92,7 @@ namespace DetectionPlus.Sign
             ////{
             ////    // Code runs "for real"
             ////}
+            this.MessengerInstance.Register<StatuMessage>(this, msg => Statu(msg.Message));
         }
     }
 }
