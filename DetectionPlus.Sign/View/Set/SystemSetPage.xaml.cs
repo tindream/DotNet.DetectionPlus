@@ -29,7 +29,7 @@ namespace DetectionPlus.Sign
         }
         private void SystemSetPage_Loaded(object sender, RoutedEventArgs e)
         {
-            tbInterval.Focus();
+            tbExpand.Focus();
         }
     }
 }

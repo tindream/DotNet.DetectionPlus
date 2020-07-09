@@ -31,10 +31,10 @@ namespace DetectionPlus
     /// </summary>
     public class Expand
     {
-        public static bool Run<T>(out T result, params object[] args)
+        public static bool Run<T>(out T result, string path, params object[] args)
         {
             result = default;
-            var directory = new DirectoryInfo(Config.Expand);
+            var directory = new DirectoryInfo(path);
             var files = directory.GetFiles("*.dll");
             foreach (var file in files)
             {

@@ -15,13 +15,18 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <WrapPanel Margin="0,20,0,0">
-            <TextBlock Text="获取间隔：" VerticalAlignment="Center" TextAlignment="Right"/>
-            <utils:TextBoxEXT Width="335" Name="tbInterval" Text="{Binding Info.Interval}"/>
-            <TextBlock Text="ms" VerticalAlignment="Center" Foreground="#666"/>
-        </WrapPanel>
+        <StackPanel Margin="0,20,0,0">
+            <WrapPanel>
+                <TextBlock Text="扩展接口目录：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <utils:TextBoxEXT Width="335" Name="tbExpand" Text="{Binding Info.Expand}"/>
+                <utils:ButtonEXT Name="btnOpen" Content="Open" Border="1;0" Margin="-1,2,2,2"
+                             BackgroundStart="Transparent;#C823AFFF" BackgroundEnd="Transparent;#C823AFFF" 
+                             Command="{Binding Open}" CommandParameter="{Binding ElementName=btnOpen}"/>
+            </WrapPanel>
+        </StackPanel>
         <WrapPanel Grid.Row="1" Margin="0,0,0,100">
-            <utils:ButtonEXT Name="btnSave" Content="确认" Width="120" Height="42" 
+            <utils:ButtonEXT Name="btnSave" Width="120" Height="42" Content="确认" Border="1;0"
+                             BackgroundStart="Transparent;#C823AFFF" BackgroundEnd="Transparent;#C823AFFF" 
                              Command="{Binding Save}" CommandParameter="{Binding ElementName=btnSave}"/>
         </WrapPanel>
     </Grid>

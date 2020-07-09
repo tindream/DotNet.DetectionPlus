@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -99,12 +100,22 @@ namespace DetectionPlus.Sign
                 else
                 {
                     Image = Imaging.CreateBitmapSourceFromHBitmap(obj.Bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                    var iResult = Expand.Run(out int result, "B");
+                    var iResult = Expand.Run(out int result, ExpandPath, "B");
                     if (iResult) Success++;
                     info.Result = iResult;
                 }
                 this.MessengerInstance.Send(new HistroyMessage(info));
             });
+        }
+
+        private string ExpandPath
+        {
+            get
+            {
+                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.Admin.Expand);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                return path;
+            }
         }
 
         #endregion

@@ -33,6 +33,16 @@ namespace DetectionPlus.Sign
 
         #endregion
 
+        private string expand;
+        /// <summary>
+        /// 扩展接口目录
+        /// </summary>
+        public string Expand
+        {
+            get { return expand; }
+            set { expand = value; OnPropertyChanged(); }
+        }
+
         #region Base
         /// <summary>
         /// 数据库版本
