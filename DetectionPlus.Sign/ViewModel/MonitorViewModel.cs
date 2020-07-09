@@ -104,6 +104,7 @@ namespace DetectionPlus.Sign
                     if (iResult) Success++;
                     info.Result = iResult;
                 }
+                DataService.Default.Insert(info);
                 this.MessengerInstance.Send(new HistroyMessage(info));
             });
         }

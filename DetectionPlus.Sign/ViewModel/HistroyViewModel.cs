@@ -59,7 +59,6 @@ namespace DetectionPlus.Sign
         #region 消息
         private void Histroy(HistroyInfo info)
         {
-            DataService.Default.Insert(info);
             this.List.Insert(0, info);
         }
 

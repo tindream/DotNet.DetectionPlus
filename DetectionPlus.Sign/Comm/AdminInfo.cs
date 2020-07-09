@@ -33,7 +33,7 @@ namespace DetectionPlus.Sign
 
         #endregion
 
-        private string expand;
+        private string expand = "Expand";
         /// <summary>
         /// 扩展接口目录
         /// </summary>

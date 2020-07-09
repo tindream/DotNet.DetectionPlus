@@ -1,5 +1,6 @@
 ﻿using DetectionPlus.Camera;
 using GalaSoft.MvvmLight.Messaging;
+using HalconDotNet;
 using Paway.Helper;
 using Paway.WPF;
 using System;
@@ -45,6 +46,10 @@ namespace DetectionPlus.Sign
                         CameraName = Config.Admin.CameraName,
                         InitExposureTime = Config.Admin.ExposureTime
                     };
+                    Method.Invoke(this, () =>
+                    {//预加载
+                     // new HWindowControlWPF();
+                    });
                 }
                 catch (Exception ex)
                 {
