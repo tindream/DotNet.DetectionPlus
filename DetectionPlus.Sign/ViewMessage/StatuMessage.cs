@@ -4,17 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DetectionPlus.Sign
 {
-    public class StatuMessage
+    public class InitMessage
     {
-        public string Message { get; set; }
-
-        public StatuMessage(string msg)
-        {
-            this.Message = msg;
-        }
+        public DependencyObject Obj { get; set; }
     }
 
     public class HistroyMessage
@@ -24,6 +20,16 @@ namespace DetectionPlus.Sign
         public HistroyMessage(HistroyInfo info)
         {
             this.Info = info;
+        }
+    }
+
+    public class StatuMessage
+    {
+        public string Message { get; set; }
+
+        public StatuMessage(string msg)
+        {
+            this.Message = msg;
         }
     }
 }

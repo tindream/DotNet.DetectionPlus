@@ -2,6 +2,7 @@ using DetectionPlus.Camera;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Paway.WPF;
+using System;
 using System.Reflection;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -34,36 +35,38 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
-        private ICommand history;
-        public ICommand History
+        private ICommand selectionCommand;
+        public ICommand SelectionCommand
         {
             get
             {
-                return history ?? (history = new RelayCommand<Frame>(frame =>
+                return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
                 {
-                    frame.Content = ViewlLocator.GetViewInstance<HistroyPage>();
-                }));
-            }
-        }
-        private ICommand mainPage;
-        public ICommand MainPage
-        {
-            get
-            {
-                return mainPage ?? (mainPage = new RelayCommand<Frame>(frame =>
-                {
-                    frame.Content = ViewlLocator.GetViewInstance<MonitorPage>();
-                }));
-            }
-        }
-        private ICommand setPage;
-        public ICommand SetPage
-        {
-            get
-            {
-                return setPage ?? (setPage = new RelayCommand<Frame>(frame =>
-                {
-                    frame.Content = ViewlLocator.GetViewInstance<SetPage>();
+                    if (listView1.SelectedItem is IListView info)
+                    {
+                        switch (info.Text)
+                        {
+                            case "主页":
+                                if (Method.Child(listView1, out Frame frame))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<MonitorPage>();
+                                }
+                                break;
+                            case "历史":
+                                if (Method.Child(listView1, out frame))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<HistroyPage>();
+                                }
+                                break;
+                            case "设置":
+                                if (Method.Child(listView1, out frame))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<SetPage>();
+                                }
+                                break;
+                        }
+                        Statu(info.Text);
+                    }
                 }));
             }
         }
@@ -75,6 +78,7 @@ namespace DetectionPlus.Sign
                 return about ?? (about = new RelayCommand<WindowEXT>(wd =>
                 {
                     var version = Assembly.GetExecutingAssembly().GetName().Version;
+                    Statu($"v{version}");
                     Method.Toast(wd, $"v{version}");
                 }));
             }

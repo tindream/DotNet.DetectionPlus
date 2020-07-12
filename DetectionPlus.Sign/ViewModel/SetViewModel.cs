@@ -42,6 +42,7 @@ namespace DetectionPlus.Sign
                                 }
                                 break;
                         }
+                        Messenger.Default.Send(new StatuMessage(info.Text));
                     }
                 }));
             }
