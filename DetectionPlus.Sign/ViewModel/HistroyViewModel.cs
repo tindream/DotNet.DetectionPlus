@@ -24,25 +24,27 @@ namespace DetectionPlus.Sign
             {
                 case "查询":
                     var query = new HistroyQueryWindow();
-                    if (Method.Show(listView1, query) != true) return;
-                    DateTime? start = null;
-                    DateTime? end = null;
-                    if (ViewModelLocator.Default.HistroyQuery.IStart) start = ViewModelLocator.Default.HistroyQuery.Start.Date;
-                    if (ViewModelLocator.Default.HistroyQuery.IEnd) end = ViewModelLocator.Default.HistroyQuery.End.AddDays(1).Date;
-
-                    var find = $"1=1";
-                    if (start != null) find += $" and {nameof(HistroyInfo.CreateOn)}>=@start";
-                    if (end != null) find += $" and {nameof(HistroyInfo.CreateOn)}<@end";
+                    if (Method.Show(listView1, query) == true)
                     {
-                        Method.Progress(listView1, () =>
+                        DateTime? start = null;
+                        DateTime? end = null;
+                        if (ViewModelLocator.Default.HistroyQuery.IStart) start = ViewModelLocator.Default.HistroyQuery.Start.Date;
+                        if (ViewModelLocator.Default.HistroyQuery.IEnd) end = ViewModelLocator.Default.HistroyQuery.End.AddDays(1).Date;
+
+                        var find = $"1=1";
+                        if (start != null) find += $" and {nameof(HistroyInfo.CreateOn)}>=@start";
+                        if (end != null) find += $" and {nameof(HistroyInfo.CreateOn)}<@end";
                         {
-                            var list = DataService.Default.Find<HistroyInfo>(find, new { start, end });
-                            Method.BeginInvoke(listView1, () =>
+                            Method.Progress(listView1, () =>
                             {
-                                base.List.Clear();
-                                foreach (var temp in list) base.List.Add(temp);
+                                var list = DataService.Default.Find<HistroyInfo>(find, new { start, end });
+                                Method.BeginInvoke(listView1, () =>
+                                {
+                                    base.List.Clear();
+                                    foreach (var temp in list) base.List.Add(temp);
+                                });
                             });
-                        });
+                        }
                     }
                     break;
             }

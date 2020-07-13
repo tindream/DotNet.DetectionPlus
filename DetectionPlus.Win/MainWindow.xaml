@@ -13,7 +13,7 @@
     <DockPanel>
         <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" Padding="0,3,0,0"
                            ItemHeight="85" ItemBorderBrush="Transparent;#ECF4FF;#DC23AFFF"
-                           ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222;#222"
+                           ItemBackground="Transparent;#ECF4FF;#E9EEFF" ItemTextForeground="#222"
                            ItemBorder=";;0,0,0,3"
                            ItemImageHeight="48" ItemImageWidth="48" ItemImageDock="Top"
                            Background="#CCD5F0">

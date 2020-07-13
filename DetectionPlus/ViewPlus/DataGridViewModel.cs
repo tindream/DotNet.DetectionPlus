@@ -71,7 +71,6 @@ namespace DetectionPlus
             {
                 case "刷新":
                     Refresh(listView1);
-                    listView1.SelectedIndex = -1;
                     break;
                 case "新加":
                     AddViewModel.Info = new T();
@@ -84,11 +83,9 @@ namespace DetectionPlus
                             datagrid.SelectedIndex = List.Count - 1;
                         }
                     }
-                    listView1.SelectedIndex = -1;
                     break;
                 case "编辑":
                     Edit(listView1, selectedItem);
-                    listView1.SelectedIndex = -1;
                     break;
                 case "删除":
                     if (selectedItem is T infoDel)
@@ -105,9 +102,9 @@ namespace DetectionPlus
                             datagrid.SelectedIndex = index;
                         }
                     }
-                    listView1.SelectedIndex = -1;
                     break;
             }
+            listView1.SelectedIndex = -1;
         }
         private ICommand selectionCommand;
         public ICommand SelectionCommand
