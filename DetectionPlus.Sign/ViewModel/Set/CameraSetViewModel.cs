@@ -1,11 +1,15 @@
 using DetectionPlus.Camera;
+using DetectionPlus.HWindowTool;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using HalconDotNet;
 using Paway.WPF;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -33,6 +37,51 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
+        private ICommand roi;
+        public ICommand ROI
+        {
+            get
+            {
+                return roi ?? (roi = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
+                {
+                    //hWindowTool.AddRoi(new ROIRectangle1());
+                    hWindowTool.SetROIShape(new ROIRectangle1());
+                }));
+            }
+        }
+        private ICommand open;
+        public ICommand Open
+        {
+            get
+            {
+                return open ?? (open = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
+                {
+                    var opnDlg = new OpenFileDialog
+                    {
+                        Filter = "所有图像文件 | *.bmp; *.pcx; *.png; *.jpg; *.gif;" +
+                        "*.tif; *.ico; *.dxf; *.cgm; *.cdr; *.wmf; *.eps; *.emf",
+                        Title = "打开图像文件",
+                        ShowHelp = true,
+                        Multiselect = false
+                    };
+                    if (opnDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadImage(opnDlg.FileName, hWindowTool);
+                    }
+                }));
+            }
+        }
+        private void LoadImage(string file, HWindowTool.HWindowTool hWindowTool)
+        {
+            if (!File.Exists(file)) return;
+            HObject ho_ModelImage;
+            HOperatorSet.ReadImage(out ho_ModelImage, file);
+            hWindowTool.DisplayImage(ho_ModelImage);
+            hWindowTool.Repaint(); //刷新显示
+            hWindowTool.DisplayImage(ho_ModelImage);
+            hWindowTool.Repaint(); //刷新显示
+        }
+
         private ICommand valueChanged;
         public ICommand ValueChanged
         {

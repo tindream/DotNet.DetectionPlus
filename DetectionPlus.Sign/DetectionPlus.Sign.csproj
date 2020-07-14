@@ -180,6 +180,10 @@
       <Project>{b3e5f70a-f48d-4696-8c1b-811a1de7cbb5}</Project>
       <Name>DetectionPlus.Camera</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DetectionPlus.HWindowTool\DetectionPlus.HWindowTool.csproj">
+      <Project>{3c576ed5-3775-402e-8e2b-3a27b355f1a4}</Project>
+      <Name>DetectionPlus.HWindowTool</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DetectionPlus\DetectionPlus.csproj">
       <Project>{5c7b7d24-46da-4678-9018-223f29c03e59}</Project>
       <Name>DetectionPlus</Name>
