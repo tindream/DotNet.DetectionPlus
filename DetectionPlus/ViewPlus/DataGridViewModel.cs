@@ -13,7 +13,7 @@ using System.Windows.Media;
 
 namespace DetectionPlus
 {
-    public class DataGridViewModel<T> : ViewModelPlus where T : IModel, IId, new()
+    public class DataGridViewModel<T> : ViewModelPlus where T : class, IModel, IId, new()
     {
         #region 属性
         protected IDataService server;

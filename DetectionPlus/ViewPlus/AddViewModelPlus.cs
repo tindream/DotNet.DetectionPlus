@@ -12,7 +12,7 @@ using System.Windows.Media;
 
 namespace DetectionPlus
 {
-    public class AddViewModelPlus<T> : ViewModelPlus where T : IModel, IId
+    public class AddViewModelPlus<T> : ViewModelPlus where T : class, IModel, IId
     {
         #region 属性
         private T info;
