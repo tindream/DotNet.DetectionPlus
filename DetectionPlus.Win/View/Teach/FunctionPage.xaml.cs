@@ -31,8 +31,7 @@ namespace DetectionPlus.Win
         private void LoadData()
         {
             radioList.Children.Clear();
-            var type = typeof(FunctionType);
-            var list = type.GetFields(TConfig.Flags).ToList();
+            var list = TMethod.List<FunctionType>();
             for (int i = 1; i < list.Count; i++)
             {
                 var radio = new RadioButtonEXT();
