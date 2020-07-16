@@ -37,6 +37,19 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
+
+        private ICommand reset;
+        public ICommand Reset
+        {
+            get
+            {
+                return reset ?? (reset = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
+                {
+                    hWindowTool.ClearWindow();
+                    hWindowTool.Repaint(); //刷新显示
+                }));
+            }
+        }
         private ICommand roi;
         public ICommand ROI
         {
@@ -76,8 +89,6 @@ namespace DetectionPlus.Sign
             if (!File.Exists(file)) return;
             HObject ho_ModelImage;
             HOperatorSet.ReadImage(out ho_ModelImage, file);
-            hWindowTool.DisplayImage(ho_ModelImage);
-            hWindowTool.Repaint(); //刷新显示
             hWindowTool.DisplayImage(ho_ModelImage);
             hWindowTool.Repaint(); //刷新显示
         }

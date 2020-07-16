@@ -48,7 +48,7 @@ namespace DetectionPlus.HWindowTool
         /// <summary>
         /// 双击间隔
         /// </summary>
-        private int interval = 500;
+        private readonly int interval = 500;
         /// <summary>
         /// 检索当前双击鼠标的时间
         /// </summary>
@@ -360,7 +360,7 @@ namespace DetectionPlus.HWindowTool
             viewPort.SizeChanged += ViewPort_Resize;
 
             //建立鼠标滚轮触发事件
-            this.MouseWheel += HWindowTool_MouseWheel;
+            this.MouseWheel += ViewPort_MouseWheel;
             //建立被选中ROI变化时触发事件（用于传递）
             ViewController.HWndActiveRoiChanged += new System.EventHandler(this.ViewController_HWndActiveRoiChanged);
         }
@@ -419,7 +419,7 @@ namespace DetectionPlus.HWindowTool
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void HWindowTool_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void ViewPort_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             //图像缩放使能
             if (!IsZoomImageEnabled) return;

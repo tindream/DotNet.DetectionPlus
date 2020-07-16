@@ -37,11 +37,16 @@
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
                              Content="Open"
                              Command="{Binding Open}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
+            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
                              Content="ROI"
                              Command="{Binding ROI}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
+            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  
+                             Border="1;0"
+                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             Content="Reset"
+                             Command="{Binding Reset}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
             <StackPanel>
                 <DockPanel>
                     <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>
