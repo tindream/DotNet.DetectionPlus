@@ -186,7 +186,7 @@ namespace DetectionPlus.HWindowTool
 
             stateView = MODE_VIEW_NONE;
 
-            zoomWndFactor = (double)ImageWidth / this.viewPort.Width;
+            zoomWndFactor = (double)ImageWidth / this.viewPort.ActualWidth;
             zoomAddOn = Math.Pow(0.9, 5);
             zoomWndSize = 150;
 
@@ -270,7 +270,7 @@ namespace DetectionPlus.HWindowTool
             ImgHeight = ImageHeight;
             ImgWidth = ImageWidth;
 
-            zoomWndFactor = (double)ImageWidth / viewPort.Width;
+            zoomWndFactor = (double)ImageWidth / viewPort.ActualWidth;
 
             var rect = viewPort.ImagePart;
             rect.X = (int)ImgX;
@@ -352,8 +352,8 @@ namespace DetectionPlus.HWindowTool
             HOperatorSet.SetSystem("border_width", 10);
             ZoomWindow = new HWindow();
 
-            posX = ((X - ImgX) / (ImgWidth - ImgX)) * viewPort.Width;
-            posY = ((Y - ImgY) / (ImgHeight - ImgY)) * viewPort.Height;
+            posX = ((X - ImgX) / (ImgWidth - ImgX)) * viewPort.ActualWidth;
+            posY = ((Y - ImgY) / (ImgHeight - ImgY)) * viewPort.ActualHeight;
 
             zoomZone = (int)((zoomWndSize / 2) * zoomWndFactor * zoomAddOn);
             ZoomWindow.OpenWindow((int)posY - (zoomWndSize / 2), (int)posX - (zoomWndSize / 2),
@@ -422,8 +422,8 @@ namespace DetectionPlus.HWindowTool
                 ZoomWindow.ClearWindow();
 
 
-                posX = ((e.X - ImgX) / (ImgWidth - ImgX)) * viewPort.Width;
-                posY = ((e.Y - ImgY) / (ImgHeight - ImgY)) * viewPort.Height;
+                posX = ((e.X - ImgX) / (ImgWidth - ImgX)) * viewPort.ActualWidth;
+                posY = ((e.Y - ImgY) / (ImgHeight - ImgY)) * viewPort.ActualHeight;
                 zoomZone = (zoomWndSize / 2) * zoomWndFactor * zoomAddOn;
 
                 ZoomWindow.SetWindowExtents((int)posY - (zoomWndSize / 2),
@@ -596,7 +596,7 @@ namespace DetectionPlus.HWindowTool
                     {
                         ImageHeight = h;
                         ImageWidth = w;
-                        zoomWndFactor = (double)ImageWidth / viewPort.Width;
+                        zoomWndFactor = (double)ImageWidth / viewPort.ActualWidth;
                         SetImagePart(0, 0, h, w);
                     }
                 }//if

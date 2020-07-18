@@ -32,11 +32,11 @@
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
                              BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/save.png|pack://application:,,,/DetectionPlus.Sign;component/Images/save_s.png"
                              Command="{Binding Save}" CommandParameter="{Binding ElementName=pg}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  
+            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             Content="Open"
-                             Command="{Binding Open}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
+                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/reset.png|pack://application:,,,/DetectionPlus.Sign;component/Images/reset_s.png"
+                             Command="{Binding Reset}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
             <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
@@ -45,8 +45,8 @@
             <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             Content="Reset"
-                             Command="{Binding Reset}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
+                             Content="Open"
+                             Command="{Binding Open}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
             <StackPanel>
                 <DockPanel>
                     <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>

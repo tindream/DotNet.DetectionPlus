@@ -45,8 +45,9 @@ namespace DetectionPlus.Sign
             {
                 return reset ?? (reset = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
                 {
-                    hWindowTool.ClearWindow();
-                    hWindowTool.Repaint(); //刷新显示
+                    hWindowTool.ResetWindow();
+                    //hWindowTool.ClearWindow();
+                    //hWindowTool.Repaint(); //刷新显示
                 }));
             }
         }

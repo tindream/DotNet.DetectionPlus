@@ -356,11 +356,11 @@ namespace DetectionPlus.HWindowTool
             InitializeComponent();
             ViewController = new ViewController(viewPort);
             this.interval = GetDoubleClickTime();
-            viewPort.MouseDown += ViewPort_MouseDown;
+            viewPort.HMouseDown += ViewPort_HMouseDown;
             viewPort.SizeChanged += ViewPort_Resize;
 
             //建立鼠标滚轮触发事件
-            this.MouseWheel += ViewPort_MouseWheel;
+            viewPort.HMouseWheel += ViewPort_HMouseWheel;
             //建立被选中ROI变化时触发事件（用于传递）
             ViewController.HWndActiveRoiChanged += new System.EventHandler(this.ViewController_HWndActiveRoiChanged);
         }
@@ -383,7 +383,7 @@ namespace DetectionPlus.HWindowTool
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ViewPort_MouseDown(object sender, MouseEventArgs e)
+        private void ViewPort_HMouseDown(object sender, HMouseEventArgsWPF e)
         {
             HMouseDown?.Invoke(this, new EventArgs());//将事件传递的方法
 
@@ -418,8 +418,7 @@ namespace DetectionPlus.HWindowTool
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
-        private void ViewPort_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void ViewPort_HMouseWheel(object sender, HMouseEventArgsWPF e)
         {
             //图像缩放使能
             if (!IsZoomImageEnabled) return;
