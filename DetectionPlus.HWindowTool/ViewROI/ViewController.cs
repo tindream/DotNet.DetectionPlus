@@ -783,6 +783,13 @@ namespace DetectionPlus.HWindowTool
         /// <summary>
         /// 添加消息显示(消息，颜色，位置X，位置Y，绑定方位，同等位要求，是否显示边框)
         /// </summary>
+        public void AddMessage(string str, Color color, int x, int y, AnchorType anchor, CoordSystemType coord, bool isBox)
+        {
+            AddMessage(str, str, color, x, y, anchor, coord, isBox);
+        }
+        /// <summary>
+        /// 添加消息显示(消息，颜色，位置X，位置Y，绑定方位，同等位要求，是否显示边框)
+        /// </summary>
         public void AddMessage(string name, string str, Color color, int x, int y, AnchorType anchor, CoordSystemType coord, bool isBox)
         {
             MessageList.Add(new MessageConfig(name, str, color, x, y, anchor, coord, isBox));

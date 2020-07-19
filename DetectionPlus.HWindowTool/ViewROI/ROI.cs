@@ -83,6 +83,8 @@ namespace DetectionPlus.HWindowTool
         /// </summary>
         public virtual void Draw(HWindow window) { }
 
+        public virtual void ReadDraw(HWindow window, RoiDrawConfig roiDrawConfig) { }
+
         /// <summary> 
         /// Returns the distance of the ROI handle being
         /// closest to the image point(x,y)

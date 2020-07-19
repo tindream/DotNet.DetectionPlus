@@ -1,6 +1,8 @@
 using DetectionPlus.Camera;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using HalconDotNet;
+using Paway.Helper;
 using Paway.WPF;
 using System;
 using System.IO;
@@ -45,6 +47,7 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
+        private HWindowTool.HWindowTool tool;
         private ICommand run;
         public ICommand Run
         {
@@ -52,6 +55,7 @@ namespace DetectionPlus.Sign
             {
                 return run ?? (run = new RelayCommand<ButtonEXT>(btnRun =>
                 {
+                    Method.Find(btnRun, out tool);
                     Method.Progress(btnRun, () =>
                     {
                         if (!Config.Camera.IsGrabbing)
@@ -88,25 +92,54 @@ namespace DetectionPlus.Sign
         }
         private void Camera_ScreenEvent(BitmapInfo obj)
         {
-            Method.Invoke(Config.Window, () =>
+            Total++;
+            var info = new HistroyInfo();
+            if (obj == null)
             {
-                Total++;
-                var info = new HistroyInfo();
-                if (obj == null)
+                info.Description = "拍照失败";
+                Method.Toast(Config.Window, info.Description);
+            }
+            else
+            {
+                //Image = Imaging.CreateBitmapSourceFromHBitmap(obj.Bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                //tool.DisplayImage(obj.Bitmap);
+                try
                 {
-                    info.Description = "拍照失败";
-                    Method.Toast(Config.Window, info.Description);
-                }
-                else
-                {
-                    Image = Imaging.CreateBitmapSourceFromHBitmap(obj.Bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                    var iResult = Expand.Run(out int result, ExpandPath, "B");
+                    var iResult = Test(obj.Bitmap);
                     if (iResult) Success++;
                     info.Result = iResult;
                 }
-                DataService.Default.Insert(info);
+                catch (Exception ex)
+                {
+                    info.Description = ex.Message();
+                }
+            }
+            DataService.Default.Insert(info);
+            Method.Invoke(Config.Window, () =>
+            {
                 this.MessengerInstance.Send(new HistroyMessage(info));
             });
+        }
+        private bool Test(System.Drawing.Bitmap bitmap)
+        {
+            HObject ho_CheckRegion;
+            HOperatorSet.GenEmptyObj(out ho_CheckRegion);
+            ho_CheckRegion.Dispose();
+            HOperatorSet.ReadRegion(out ho_CheckRegion, @"D:/Test/CircleRing.reg");
+            HTuple hv_ModelID = new HTuple();
+            HOperatorSet.ReadShapeModel(@"D:/Test/Model.shm", out hv_ModelID);
+            ModelConfig modelConfig = new ModelConfig();
+            modelConfig.ModelRow = 569.5;
+            modelConfig.ModelColumn = 913.5;
+            modelConfig.ModelID = hv_ModelID;
+
+            //var ho_Image = tool.GetImage(bitmap);
+            var ho_Image = tool.GetImage(@"D:/Test/CCD1/1.bmp");
+            tool.DisplayImage(ho_Image);
+            if (ho_Image == null) return false;
+            bool b = ImageHandle.CheckFunction(tool, ho_Image, ho_CheckRegion, modelConfig, 0, 180, 0.8, 5000);
+            return b;
+
         }
 
         private string ExpandPath

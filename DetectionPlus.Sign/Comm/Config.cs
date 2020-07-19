@@ -19,6 +19,18 @@ namespace DetectionPlus.Sign
         #region 全局数据
         public static ICamera Camera { get; set; }
         public static AdminInfo Admin { get; set; }
+        /// <summary>
+        /// 模板保存路径
+        /// </summary>
+        public static string Template
+        {
+            get
+            {
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "template");
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                return path;
+            }
+        }
 
         #endregion
     }

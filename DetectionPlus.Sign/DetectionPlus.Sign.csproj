@@ -94,6 +94,7 @@
     <Compile Include="Comm\AdminInfo.cs" />
     <Compile Include="Comm\Config.cs" />
     <Compile Include="Comm\DataService.cs" />
+    <Compile Include="Expand\ImageHandle.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

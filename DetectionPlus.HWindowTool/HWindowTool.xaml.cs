@@ -540,10 +540,16 @@ namespace DetectionPlus.HWindowTool
         /// </summary>
         public HObject DisplayImage(string file)
         {
-            if (!File.Exists(file)) return null;
-            HOperatorSet.ReadImage(out HObject ho_Image, file);
+            var ho_Image = GetImage(file);
+            if (ho_Image == null) return null;
             DisplayImage(ho_Image);
             Repaint();
+            return ho_Image;
+        }
+        public HObject GetImage(string file)
+        {
+            if (!File.Exists(file)) return null;
+            HOperatorSet.ReadImage(out HObject ho_Image, file);
             return ho_Image;
         }
         /// <summary>
@@ -551,14 +557,19 @@ namespace DetectionPlus.HWindowTool
         /// </summary>
         public HObject DisplayImage(System.Drawing.Bitmap bitmap)
         {
+            var ho_Image = GetImage(bitmap);
+            if (ho_Image == null) return null;
+            DisplayImage(ho_Image);
+            Repaint();
+            return ho_Image;
+        }
+        public HObject GetImage(System.Drawing.Bitmap bitmap)
+        {
             BitmapData bmpData = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
             /* Get the pointer to the bitmap's buffer. */
             IntPtr ptrBmp = bmpData.Scan0;
             HOperatorSet.GenImage1(out HObject ho_Image, "byte", bitmap.Width, bitmap.Height, ptrBmp);
             bitmap.UnlockBits(bmpData);
-
-            DisplayImage(ho_Image);
-            Repaint();
             return ho_Image;
         }
         /// <summary>

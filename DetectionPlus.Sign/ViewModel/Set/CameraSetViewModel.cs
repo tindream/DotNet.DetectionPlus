@@ -21,12 +21,6 @@ namespace DetectionPlus.Sign
     {
         #region 属性
         public AdminInfo Admin { get { return Config.Admin; } }
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; RaisePropertyChanged(); }
-        }
         private ImageSource image;
         public ImageSource Image
         {
@@ -59,7 +53,7 @@ namespace DetectionPlus.Sign
                 return roi ?? (roi = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
                 {
                     //hWindowTool.AddRoi(new ROIRectangle1());
-                    hWindowTool.SetROIShape(new ROIRectangle1());
+                    hWindowTool.SetROIShape(new ROICircleRing());
                 }));
             }
         }
@@ -81,6 +75,7 @@ namespace DetectionPlus.Sign
                     if (opnDlg.ShowDialog() == DialogResult.OK)
                     {
                         LoadImage(opnDlg.FileName, hWindowTool);
+                        ReadShapeModel();
                     }
                 }));
             }
@@ -149,12 +144,21 @@ namespace DetectionPlus.Sign
         {
             get
             {
-                return save ?? (save = new RelayCommand<Page>(pg =>
+                return save ?? (save = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
                 {
                     DataService.Default.Update(nameof(Config.Admin.CameraName));
                     DataService.Default.Update(nameof(Config.Admin.IsTrigger));
                     DataService.Default.Update(nameof(Config.Admin.ExposureTime));
-                    Method.Toast(pg, "保存成功");
+
+                    var list = hWindowTool.ViewController.RoiController.ROIList;
+                    if (list.Count > 0)
+                    {
+                        var roi = list[0];
+                        string modelIDPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".shm");
+                        string modelRegionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".reg");
+                        ShapeModel.Create_shape_model(roi.Image, roi.GetRegion(), modelIDPath, modelRegionPath);
+                    }
+                    Method.Toast(hWindowTool, "保存成功");
                 }));
             }
         }
@@ -163,22 +167,33 @@ namespace DetectionPlus.Sign
         {
             get
             {
-                return picture ?? (picture = new RelayCommand<Page>(pg =>
+                return picture ?? (picture = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
                 {
-                    Method.Progress(pg, () =>
+                    Method.Progress(hWindowTool, () =>
                     {
                         var bitmap = Config.Camera.CurrentImage();
                         if (bitmap == null)
                         {
-                            Method.Toast(pg, "拍照失败");
+                            Method.Toast(hWindowTool, "拍照失败");
                             return;
                         }
-                        Method.Invoke(pg, () =>
+                        Method.Invoke(hWindowTool, () =>
                         {
-                            Image = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                            hWindowTool.DisplayImage(bitmap);
+                            ReadShapeModel();
+                            //Image = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                         });
                     });
                 }));
+            }
+        }
+        private void ReadShapeModel()
+        {
+            string modelIDPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".shm");
+            if (File.Exists(modelIDPath))
+            {
+                HTuple hv_ModelID;
+                HOperatorSet.ReadShapeModel(modelIDPath, out hv_ModelID);
             }
         }
 

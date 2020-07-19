@@ -8,6 +8,7 @@
         xmlns:HalconDotNet="clr-namespace:HalconDotNet;assembly=halcondotnet"
         xmlns:local="clr-namespace:DetectionPlus.Sign"
         xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF" 
+        xmlns:hw="clr-namespace:DetectionPlus.HWindowTool;assembly=DetectionPlus.HWindowTool" 
         DataContext="{Binding Monitor ,Source={StaticResource Locator}}"
         mc:Ignorable="d"
         Name="pg"
@@ -30,7 +31,7 @@
         </DockPanel>
         <TextBlock Width="1" Background="LightGray" DockPanel.Dock="Right"/>
         <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" Background="#EEE">
-            <Image Source="{Binding Image}" HorizontalAlignment="Left"/>
+            <hw:HWindowTool Name="hWindowTool" IsMoveImageEnabled="False"/>
         </Border>
     </DockPanel>
 </Page>
