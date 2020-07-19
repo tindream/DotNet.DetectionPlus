@@ -312,7 +312,7 @@ namespace DetectionPlus.HWindowTool
 
             if (RoiController != null && (dispROI == MODE_INCLUDE_ROI))
             {
-                activeROIidx = RoiController.MouseDownAction(e.X, e.Y);
+                activeROIidx = RoiController.MouseDownAction(e.Column, e.Row);
             }
 
             if (activeROIidx == -1)
@@ -320,20 +320,20 @@ namespace DetectionPlus.HWindowTool
                 switch (stateView)
                 {
                     case MODE_VIEW_MOVE:
-                        startX = e.X;
-                        startY = e.Y;
+                        startX = e.Column;
+                        startY = e.Row;
                         break;
                     case MODE_VIEW_ZOOM:
                         if (e.Button == MouseButton.Left)
                             scale = 0.9;
                         else
                             scale = 1 / 0.9;
-                        ZoomImage(e.X, e.Y, scale);
+                        ZoomImage(e.Column, e.Row, scale);
                         break;
                     case MODE_VIEW_NONE:
                         break;
                     case MODE_VIEW_ZOOMWINDOW:
-                        ActivateZoomWindow((int)e.X, (int)e.Y);
+                        ActivateZoomWindow((int)e.Column, (int)e.Row);
                         break;
                     default:
                         break;
@@ -394,7 +394,7 @@ namespace DetectionPlus.HWindowTool
             //判断是否有待生成的ROI
             if (RoiController.ROI != null)
             {
-                RoiController.ROI.CreateROI(e.X, e.Y); //设置ROI位置
+                RoiController.ROI.CreateROI(e.Column, e.Row); //设置ROI位置
                 Repaint();  //刷新显示
             }
 
@@ -402,18 +402,18 @@ namespace DetectionPlus.HWindowTool
 
             if (RoiController != null && (RoiController.ActiveROIidx != -1) && (dispROI == MODE_INCLUDE_ROI))
             {
-                RoiController.MouseMoveAction(e.X, e.Y);
+                RoiController.MouseMoveAction(e.Column, e.Row);
             }
             else if (stateView == MODE_VIEW_MOVE)
             {
-                motionX = ((e.X - startX));
-                motionY = ((e.Y - startY));
+                motionX = ((e.Column - startX));
+                motionY = ((e.Row - startY));
 
                 if (((int)motionX != 0) || ((int)motionY != 0))
                 {
                     MoveImage(motionX, motionY);
-                    startX = e.X - motionX;
-                    startY = e.Y - motionY;
+                    startX = e.Column - motionX;
+                    startY = e.Row - motionY;
                 }
             }
             else if (stateView == MODE_VIEW_ZOOMWINDOW)
@@ -422,15 +422,15 @@ namespace DetectionPlus.HWindowTool
                 ZoomWindow.ClearWindow();
 
 
-                posX = ((e.X - ImgX) / (ImgWidth - ImgX)) * viewPort.ActualWidth;
-                posY = ((e.Y - ImgY) / (ImgHeight - ImgY)) * viewPort.ActualHeight;
+                posX = ((e.Column - ImgX) / (ImgWidth - ImgX)) * viewPort.ActualWidth;
+                posY = ((e.Row - ImgY) / (ImgHeight - ImgY)) * viewPort.ActualHeight;
                 zoomZone = (zoomWndSize / 2) * zoomWndFactor * zoomAddOn;
 
                 ZoomWindow.SetWindowExtents((int)posY - (zoomWndSize / 2),
                                             (int)posX - (zoomWndSize / 2),
                                             zoomWndSize, zoomWndSize);
-                ZoomWindow.SetPart((int)(e.Y - zoomZone), (int)(e.X - zoomZone),
-                                   (int)(e.Y + zoomZone), (int)(e.X + zoomZone));
+                ZoomWindow.SetPart((int)(e.Row - zoomZone), (int)(e.Column - zoomZone),
+                                   (int)(e.Row + zoomZone), (int)(e.Column + zoomZone));
                 Repaint(ZoomWindow);
 
                 HSystem.SetSystem("flush_graphic", "true");
