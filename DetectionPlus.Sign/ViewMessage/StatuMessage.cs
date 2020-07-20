@@ -12,6 +12,7 @@ namespace DetectionPlus.Sign
     {
         public DependencyObject Obj { get; set; }
     }
+    public class HistroyInitMessage : InitMessage { }
 
     public class HistroyMessage
     {

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -63,6 +64,22 @@ namespace DetectionPlus.Sign
         {
             this.List.Insert(0, info);
         }
+        private void HistroyInit(DependencyObject obj)
+        {
+            var pagedView = new PagedCollectionView(List) { PageSize = 20 };
+            if (obj is DataGridEXT dataGrid)
+            {
+                dataGrid.ItemsSource = pagedView;
+                if (Method.Child(dataGrid, out DataPager dataPager))
+                {
+                    dataPager.Source = pagedView;
+                }
+            }
+        }
+        protected override void Refreshed()
+        {
+            base.Refreshed();
+        }
 
         #endregion
 
@@ -70,6 +87,7 @@ namespace DetectionPlus.Sign
         {
             base.server = DataService.Default;
             this.MessengerInstance.Register<HistroyMessage>(this, msg => Histroy(msg.Info));
+            this.MessengerInstance.Register<HistroyInitMessage>(this, msg => HistroyInit(msg.Obj));
         }
     }
 }

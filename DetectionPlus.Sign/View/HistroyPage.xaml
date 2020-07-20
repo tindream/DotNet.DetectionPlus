@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <utils:ListViewEXT Name="listView1" ItemWidth="Auto" ItemPadding="5,0,5,0" ItemTextPadding="5"
                            ItemImageWidth="24" ItemImageHeight="24"
@@ -32,13 +33,14 @@
             <utils:ListBoxItemEXT Text="删除"
                                   Image="pack://application:,,,/DetectionPlus.Sign;component/Images/close.png|pack://application:,,,/DetectionPlus.Sign;component/Images/close_s.png"/>
         </utils:ListViewEXT>
-        <utils:DataGridEXT Name="datagrid1" Grid.Row="1" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}">
+        <utils:DataGridEXT Name="datagrid1" Grid.Row="1" SelectedItem="{Binding SelectedItem}">
             <DataGrid.Columns>
                 <DataGridTextColumn  Width="160" Binding="{Binding CreateOn, Converter={StaticResource dateConverter}}"/>
                 <DataGridTextColumn  Width="160" Binding="{Binding Results}"/> 
                 <DataGridTextColumn  Width="*" Binding="{Binding Description}"/> 
             </DataGrid.Columns>
         </utils:DataGridEXT>
+        <utils:DataPager Name="dataPager" Grid.Row="2"/>
 
     </Grid>
 </Page>

@@ -49,7 +49,7 @@ namespace DetectionPlus.Sign
                     };
                     Method.BeginInvoke(this, () =>
                     {//预加载
-                        new HWindowControlWPF();
+                        //new HWindowControlWPF();
                     });
                 }
                 catch (Exception ex)

@@ -64,8 +64,8 @@
     <Reference Include="Paway.Utils, Version=2.3.14.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
       <HintPath>..\packages\Paway.Utils.2.3.14\lib\net40\Paway.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.1.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.1.9.1\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.2.0\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

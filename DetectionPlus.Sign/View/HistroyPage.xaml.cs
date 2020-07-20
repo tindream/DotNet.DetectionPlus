@@ -1,4 +1,5 @@
-﻿using Paway.WPF;
+﻿using GalaSoft.MvvmLight.Messaging;
+using Paway.WPF;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,6 +25,11 @@ namespace DetectionPlus.Sign
         public HistroyPage()
         {
             InitializeComponent();
+        }
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            Messenger.Default.Send(new HistroyInitMessage() { Obj = datagrid1 });
         }
     }
 }

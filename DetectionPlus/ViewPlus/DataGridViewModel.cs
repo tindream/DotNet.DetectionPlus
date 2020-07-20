@@ -130,8 +130,9 @@ namespace DetectionPlus
                     List.Clear();
                     foreach (var item in list) List.Add(item);
                 });
-            });
+            }, Refreshed);
         }
+        protected virtual void Refreshed() { }
         private void Edit(DependencyObject obj, object item)
         {
             if (item is T info)
