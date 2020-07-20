@@ -3,6 +3,7 @@ using DetectionPlus.HWindowTool;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using HalconDotNet;
+using Paway.Helper;
 using Paway.WPF;
 using System;
 using System.IO;
@@ -156,7 +157,16 @@ namespace DetectionPlus.Sign
                         var roi = list[0];
                         string modelIDPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".shm");
                         string modelRegionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".reg");
-                        ShapeModel.Create_shape_model(roi.Image, roi.GetRegion(), modelIDPath, modelRegionPath);
+                        try
+                        {
+                            ShapeModel.Create_shape_model(roi.Image, roi.GetRegion(), modelIDPath, modelRegionPath);
+                        }
+                        catch (Exception ex)
+                        {
+                            ex.Log();
+                            Method.Toast(hWindowTool, ex.Message(), true);
+                            return;
+                        }
                     }
                     Method.Toast(hWindowTool, "保存成功");
                 }));

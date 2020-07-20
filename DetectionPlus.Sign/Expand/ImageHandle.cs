@@ -21,19 +21,13 @@ namespace DetectionPlus.Sign
         }
     }
 
-
     public class ShapeModel
     {
-
         #region  创建模板(形状)
         /// <summary>
         ///  ho_Image 输入图像  ho_region 输入区域   savePath 模板保存路径  index 相机编号
         /// </summary>
-        /// <param name="ho_Image"></param>
-        /// <param name="ho_region"></param>
-        /// <param name="savePath"></param>
-        /// <param name="index"></param>
-        public static bool Create_shape_model(HObject ho_Image, HObject ho_region, string imagePath, string modelIDPath)
+        public static void Create_shape_model(HObject ho_Image, HObject ho_region, string imagePath, string modelIDPath)
         {
             HObject ho_ImageReduced, ho_GrayImage;
             HTuple hv_ModelID = new HTuple();
@@ -65,20 +59,14 @@ namespace DetectionPlus.Sign
                     ho_ImageReduced.Dispose();
                 }
             }
-            catch (Exception exp)
-            {
-                return false;
-            }
             finally
             {
                 //ho_region.Dispose();
                 ho_ImageReduced.Dispose();
             }
-            return true;
         }
         #endregion
     }
-
 
     public class ImageHandle
     {
@@ -201,7 +189,6 @@ namespace DetectionPlus.Sign
                 }
 
             }
-
             catch (HalconException exp)
             {
                 return false;
