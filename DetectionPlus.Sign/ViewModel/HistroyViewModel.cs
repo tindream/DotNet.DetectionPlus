@@ -36,6 +36,7 @@ namespace DetectionPlus.Sign
                         if (start != null) find += $" and {nameof(HistroyInfo.CreateOn)}>=@start";
                         if (end != null) find += $" and {nameof(HistroyInfo.CreateOn)}<@end";
                         {
+                            find += $" order by {nameof(HistroyInfo.CreateOn)} desc";
                             Method.Progress(listView1, () =>
                             {
                                 var list = DataService.Default.Find<HistroyInfo>(find, new { start, end });

@@ -36,7 +36,12 @@
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
                              BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/ring.png|pack://application:,,,/DetectionPlus.Sign;component/Images/ring_s.png"
-                             Command="{Binding ROI}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
+                             Command="{Binding Ring}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
+            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
+                             Border="1;0"
+                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/rectangle.png|pack://application:,,,/DetectionPlus.Sign;component/Images/rectangle_s.png"
+                             Command="{Binding Rect}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
             <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 

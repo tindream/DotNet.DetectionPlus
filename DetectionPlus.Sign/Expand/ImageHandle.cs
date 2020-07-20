@@ -15,57 +15,7 @@ namespace DetectionPlus.Sign
         public HObject ModelRegion { get; set; }
         public HTuple ModelRow { get; set; }
         public HTuple ModelColumn { get; set; }
-        public ModelConfig()
-        {
-
-        }
-    }
-
-    public class ShapeModel
-    {
-        #region  创建模板(形状)
-        /// <summary>
-        ///  ho_Image 输入图像  ho_region 输入区域   savePath 模板保存路径  index 相机编号
-        /// </summary>
-        public static void Create_shape_model(HObject ho_Image, HObject ho_region, string imagePath, string modelIDPath)
-        {
-            HObject ho_ImageReduced, ho_GrayImage;
-            HTuple hv_ModelID = new HTuple();
-            HOperatorSet.GenEmptyObj(out ho_ImageReduced);
-            HOperatorSet.GenEmptyObj(out ho_GrayImage);
-            try
-            {
-                if (ho_Image != null)
-                {
-                    HTuple hv_Channels;
-                    HOperatorSet.CountChannels(ho_Image, out hv_Channels);
-                    ho_GrayImage.Dispose();
-                    if (hv_Channels > 1)
-                    {
-                        HOperatorSet.Rgb1ToGray(ho_Image, out ho_GrayImage);
-                    }
-                    else
-                    {
-                        HOperatorSet.CopyImage(ho_Image, out ho_GrayImage);
-                    }
-                    ho_ImageReduced.Dispose();
-                    HOperatorSet.ReduceDomain(ho_GrayImage, ho_region, out ho_ImageReduced);
-                    HOperatorSet.CreateShapeModel(ho_ImageReduced, "auto", (new HTuple(0)).TupleRad()
-                        , (new HTuple(360)).TupleRad(), "auto", "auto", "use_polarity", "auto", "auto",
-                        out hv_ModelID);
-                    HOperatorSet.WriteImage(ho_Image, "bmp", 0, imagePath); //保存示教模型
-                    HOperatorSet.WriteShapeModel(hv_ModelID, modelIDPath);  //保存模板
-
-                    ho_ImageReduced.Dispose();
-                }
-            }
-            finally
-            {
-                //ho_region.Dispose();
-                ho_ImageReduced.Dispose();
-            }
-        }
-        #endregion
+        public ModelConfig() { }
     }
 
     public class ImageHandle
@@ -153,7 +103,7 @@ namespace DetectionPlus.Sign
 
                         if ((int)(new HTuple(hv_Area.TupleLess(minArea))) != 0)
                         {
-                            hWindow.ViewController.AddMessage("NG", Colors.Red, 10, 200, AnchorType.LeftTop, CoordSystemType.window, false);
+                            hWindow.ViewController.AddMessage("NG", Colors.Red, 10, 35, AnchorType.LeftTop, CoordSystemType.window, false);
                             //  hWindow.repaint(); //刷新显示
                             hWindow.DisplayHObject(ho_RegionAffineTrans, Colors.Red, DrawModelType.margin);
                             hWindow.DisplayHObject(ho_ContoursAffineTrans, Colors.Red, DrawModelType.margin);
@@ -162,7 +112,7 @@ namespace DetectionPlus.Sign
                         }
                         else
                         {
-                            hWindow.ViewController.AddMessage("OK:" + hv_Area.ToString(), Colors.Lime, 10, 200, AnchorType.LeftTop, CoordSystemType.window, false);
+                            hWindow.ViewController.AddMessage("OK:" + hv_Area.ToString(), Colors.Lime, 10, 35, AnchorType.LeftTop, CoordSystemType.window, false);
                             //hWindow.repaint(); //刷新显示
                             hWindow.DisplayHObject(ho_RegionAffineTrans, Colors.Lime, DrawModelType.margin);
                             hWindow.DisplayHObject(ho_ContoursAffineTrans, Colors.Lime, DrawModelType.margin);

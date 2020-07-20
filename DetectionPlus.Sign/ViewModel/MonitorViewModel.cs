@@ -5,6 +5,7 @@ using HalconDotNet;
 using Paway.Helper;
 using Paway.WPF;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -47,7 +48,7 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
-        private HWindowTool.HWindowTool tool;
+        private HWindowTool.HWindowTool hWindowTool;
         private ICommand run;
         public ICommand Run
         {
@@ -55,7 +56,7 @@ namespace DetectionPlus.Sign
             {
                 return run ?? (run = new RelayCommand<ButtonEXT>(btnRun =>
                 {
-                    Method.Find(btnRun, out tool);
+                    Method.Find(btnRun, out hWindowTool);
                     Method.Progress(btnRun, () =>
                     {
                         if (!Config.Camera.IsGrabbing)
@@ -120,25 +121,32 @@ namespace DetectionPlus.Sign
                 this.MessengerInstance.Send(new HistroyMessage(info));
             });
         }
+        private int index;
         private bool Test(System.Drawing.Bitmap bitmap)
         {
-            HObject ho_CheckRegion;
-            HOperatorSet.GenEmptyObj(out ho_CheckRegion);
-            ho_CheckRegion.Dispose();
-            HOperatorSet.ReadRegion(out ho_CheckRegion, @"D:/Test/CircleRing.reg");
+            string regionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".Ring.reg");
+            var ho_CheckRegion = HalconHelper.ReadRegion(regionPath, hWindowTool.HalconWindow, false);
+            if (ho_CheckRegion == null) throw new WarningException("未设置区域");
+
             HTuple hv_ModelID = new HTuple();
-            HOperatorSet.ReadShapeModel(@"D:/Test/Model.shm", out hv_ModelID);
+            string modelPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".Rect.shm");
+            HOperatorSet.ReadShapeModel(modelPath, out hv_ModelID);
+            if (hv_ModelID == null) throw new WarningException("未设置模板");
+
             ModelConfig modelConfig = new ModelConfig();
-            modelConfig.ModelRow = 569.5;
-            modelConfig.ModelColumn = 913.5;
+            modelConfig.ModelRow = Config.Admin.CenterY;
+            modelConfig.ModelColumn = Config.Admin.CenterX;
             modelConfig.ModelID = hv_ModelID;
 
+            hWindowTool.ClearWindow();
+            if (++index > 12) index = 1;
+            var ho_Image = hWindowTool.GetImage(@"D:/Test/CCD1/" + index + ".bmp");
             //var ho_Image = tool.GetImage(bitmap);
-            var ho_Image = tool.GetImage(@"D:/Test/CCD1/1.bmp");
-            tool.DisplayImage(ho_Image);
-            if (ho_Image == null) return false;
-            bool b = ImageHandle.CheckFunction(tool, ho_Image, ho_CheckRegion, modelConfig, 0, 180, 0.8, 5000);
-            return b;
+            if (ho_Image == null) throw new WarningException("图像加载失败");
+
+            hWindowTool.DisplayImage(ho_Image);
+            bool result = ImageHandle.CheckFunction(hWindowTool, ho_Image, ho_CheckRegion, modelConfig, 0, 180, 0.8, 5000);
+            return result;
 
         }
 

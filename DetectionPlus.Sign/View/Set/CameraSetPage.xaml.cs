@@ -25,5 +25,10 @@ namespace DetectionPlus.Sign
         {
             InitializeComponent();
         }
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            hWindowTool.Width = hWindowTool.ActualHeight * 4 / 3;
+        }
     }
 }

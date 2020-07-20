@@ -18,6 +18,11 @@ namespace DetectionPlus.Sign
         /// </summary>
         public string CameraName { get; set; } = "Com1";
         /// <summary>
+        /// 模板中心点
+        /// </summary>
+        public double CenterX { get; set; }
+        public double CenterY { get; set; }
+        /// <summary>
         /// 硬触发标记
         /// </summary>
         public bool IsTrigger { get; set; }

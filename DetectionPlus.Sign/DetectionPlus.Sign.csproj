@@ -94,6 +94,7 @@
     <Compile Include="Comm\AdminInfo.cs" />
     <Compile Include="Comm\Config.cs" />
     <Compile Include="Comm\DataService.cs" />
+    <Compile Include="Expand\HalconHelper.cs" />
     <Compile Include="Expand\ImageHandle.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -238,6 +239,10 @@
   <ItemGroup>
     <Resource Include="Images\ring.png" />
     <Resource Include="Images\ring_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rectangle.png" />
+    <Resource Include="Images\rectangle_s.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

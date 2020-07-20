@@ -32,7 +32,6 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
-
         private ICommand reset;
         public ICommand Reset
         {
@@ -46,14 +45,28 @@ namespace DetectionPlus.Sign
                 }));
             }
         }
-        private ICommand roi;
-        public ICommand ROI
+        private ICommand rect;
+        public ICommand Rect
         {
             get
             {
-                return roi ?? (roi = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
+                return rect ?? (rect = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
                 {
-                    //hWindowTool.AddRoi(new ROIRectangle1());
+                    var list = hWindowTool.ViewController.RoiController.ROIList;
+                    list.RemoveAll(c => c is ROIRectangle2);
+                    hWindowTool.SetROIShape(new ROIRectangle2());
+                }));
+            }
+        }
+        private ICommand ring;
+        public ICommand Ring
+        {
+            get
+            {
+                return ring ?? (ring = new RelayCommand<HWindowTool.HWindowTool>(hWindowTool =>
+                {
+                    var list = hWindowTool.ViewController.RoiController.ROIList;
+                    list.RemoveAll(c => c is ROICircleRing);
                     hWindowTool.SetROIShape(new ROICircleRing());
                 }));
             }
@@ -75,19 +88,11 @@ namespace DetectionPlus.Sign
                     };
                     if (opnDlg.ShowDialog() == DialogResult.OK)
                     {
-                        LoadImage(opnDlg.FileName, hWindowTool);
-                        ReadShapeModel();
+                        HalconHelper.LoadImage(opnDlg.FileName, hWindowTool);
+                        ReadRegion(hWindowTool);
                     }
                 }));
             }
-        }
-        private void LoadImage(string file, HWindowTool.HWindowTool hWindowTool)
-        {
-            if (!File.Exists(file)) return;
-            HObject ho_ModelImage;
-            HOperatorSet.ReadImage(out ho_ModelImage, file);
-            hWindowTool.DisplayImage(ho_ModelImage);
-            hWindowTool.Repaint(); //刷新显示
         }
 
         private ICommand valueChanged;
@@ -151,21 +156,41 @@ namespace DetectionPlus.Sign
                     DataService.Default.Update(nameof(Config.Admin.IsTrigger));
                     DataService.Default.Update(nameof(Config.Admin.ExposureTime));
 
-                    var list = hWindowTool.ViewController.RoiController.ROIList;
-                    if (list.Count > 0)
+                    foreach (var item in hWindowTool.ViewController.RoiController.ROIList)
                     {
-                        var roi = list[0];
-                        string modelIDPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".shm");
-                        string modelRegionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".reg");
-                        try
+                        if (item is ROICircleRing ring)
                         {
-                            ShapeModel.Create_shape_model(roi.Image, roi.GetRegion(), modelIDPath, modelRegionPath);
+                            try
+                            {
+                                string regionPath = Path.Combine(Config.Template, Config.Admin.CameraName + $".Ring.reg");
+                                HalconHelper.WriteRegion(item.GetRegion(), regionPath);
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.Log();
+                                Method.Toast(hWindowTool, ex.Message(), true);
+                                return;
+                            }
                         }
-                        catch (Exception ex)
+                        if (item is ROIRectangle2)
                         {
-                            ex.Log();
-                            Method.Toast(hWindowTool, ex.Message(), true);
-                            return;
+                            Config.Admin.CenterX = item.GetCenter().X;
+                            Config.Admin.CenterY = item.GetCenter().Y;
+                            DataService.Default.Update(nameof(Config.Admin.CenterX));
+                            DataService.Default.Update(nameof(Config.Admin.CenterY));
+
+                            string regionPath = Path.Combine(Config.Template, Config.Admin.CameraName + $".Rect.reg");
+                            string modelPath = Path.Combine(Config.Template, Config.Admin.CameraName + $".Rect.shm");
+                            try
+                            {
+                                HalconHelper.CreateShapModel(item.Image, item.GetRegion(), regionPath, modelPath);
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.Log();
+                                Method.Toast(hWindowTool, ex.Message(), true);
+                                return;
+                            }
                         }
                     }
                     Method.Toast(hWindowTool, "保存成功");
@@ -190,21 +215,19 @@ namespace DetectionPlus.Sign
                         Method.Invoke(hWindowTool, () =>
                         {
                             hWindowTool.DisplayImage(bitmap);
-                            ReadShapeModel();
+                            ReadRegion(hWindowTool);
                             //Image = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                         });
                     });
                 }));
             }
         }
-        private void ReadShapeModel()
+        private void ReadRegion(HWindowTool.HWindowTool hWindowTool)
         {
-            string modelIDPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".shm");
-            if (File.Exists(modelIDPath))
-            {
-                HTuple hv_ModelID;
-                HOperatorSet.ReadShapeModel(modelIDPath, out hv_ModelID);
-            }
+            string regionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".Ring.reg");
+            HalconHelper.ReadRegion(regionPath, hWindowTool.HalconWindow);
+            regionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".Rect.reg");
+            HalconHelper.ReadRegion(regionPath, hWindowTool.HalconWindow);
         }
 
         #endregion
