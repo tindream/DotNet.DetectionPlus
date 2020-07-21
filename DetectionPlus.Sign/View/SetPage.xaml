@@ -24,6 +24,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <utils:ListBoxItemEXT Text="相机" IsSelected="True"/>
+            <utils:ListBoxItemEXT Text="通讯设置"/>
             <utils:ListBoxItemEXT Text="系统设置"/>
         </utils:ListViewEXT>
         <TextBlock Width="1" Background="LightGray"/>

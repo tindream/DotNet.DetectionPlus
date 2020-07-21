@@ -94,7 +94,7 @@
     <Compile Include="Comm\AdminInfo.cs" />
     <Compile Include="Comm\Config.cs" />
     <Compile Include="Comm\DataService.cs" />
-    <Compile Include="Expand\HalconHelper.cs" />
+    <Compile Include="Comm\DeviceManager.cs" />
     <Compile Include="Expand\ImageHandle.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -104,10 +104,12 @@
     <Compile Include="ViewMessage\StatuMessage.cs" />
     <Compile Include="ViewModel\HistroyViewModel.cs" />
     <Compile Include="ViewModel\Histroy\HistroyQueryModel.cs" />
+    <Compile Include="ViewModel\Main\RegeditModel.cs" />
     <Compile Include="ViewModel\MonitorViewModel.cs" />
     <Compile Include="ViewModel\Set\CameraSetViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SetViewModel.cs" />
+    <Compile Include="ViewModel\Set\CommSetViewModel.cs" />
     <Compile Include="ViewModel\Set\SystemSetViewModel.cs" />
     <Compile Include="Comm\ViewModelLocator.cs" />
     <Compile Include="View\HistroyPage.xaml.cs">
@@ -115,6 +117,9 @@
     </Compile>
     <Compile Include="View\Histroy\HistroyQueryWindow.xaml.cs">
       <DependentUpon>HistroyQueryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\RegeditWindow.xaml.cs">
+      <DependentUpon>RegeditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MonitorPage.xaml.cs">
       <DependentUpon>MonitorPage.xaml</DependentUpon>
@@ -124,6 +129,9 @@
     </Compile>
     <Compile Include="View\SetPage.xaml.cs">
       <DependentUpon>SetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Set\CommSetPage.xaml.cs">
+      <DependentUpon>CommSetPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Set\SystemSetPage.xaml.cs">
       <DependentUpon>SystemSetPage.xaml</DependentUpon>
@@ -148,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Main\RegeditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\MonitorPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -157,6 +169,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\SetPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Set\CommSetPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -8,7 +8,7 @@ using System.Windows.Media;
 using DetectionPlus.HWindowTool;
 using HalconDotNet;
 
-namespace DetectionPlus.Sign
+namespace DetectionPlus.HWindowTool
 {
     public class HalconHelper
     {
@@ -94,7 +94,7 @@ namespace DetectionPlus.Sign
         /// <summary>
         /// 加载图像文件
         /// </summary>
-        public static void LoadImage(string file, HWindowTool.HWindowTool hWindowTool)
+        public static void LoadImage(string file, HWindowTool hWindowTool)
         {
             if (!File.Exists(file)) return;
             HObject ho_ModelImage;

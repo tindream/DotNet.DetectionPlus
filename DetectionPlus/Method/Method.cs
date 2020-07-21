@@ -53,6 +53,25 @@ namespace DetectionPlus
             return result;
         }
 
+        /// <summary>
+        /// 将十六进制字符串转为无符号整数数组
+        /// </summary>
+        public static byte[] HexStrToByteArr(string hexString)
+        {
+            int len = hexString.Length / 2;
+            if (hexString.Length % 2 == 1)
+            {
+                len++;
+                hexString = hexString.PadLeft(hexString.Length + 1, '0');
+            }
+            byte[] buffer = new byte[len];
+            for (int i = 0; i < len; i++)
+            {
+                buffer[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            }
+            return buffer;
+        }
+
         #region 统一Invoke处理
         public static void Invoke(DependencyObject obj, Action action)
         {

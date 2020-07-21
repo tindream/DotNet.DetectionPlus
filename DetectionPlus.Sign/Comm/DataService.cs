@@ -69,7 +69,7 @@ namespace DetectionPlus.Sign
                 }
                 else
                 {
-                    list[0].Value = value.ToString();
+                    list[0].Value = value.ToStrs();
                     list[0].DateTime = DateTime.Now;
                     Update(list[0], cmd);
                 }

@@ -35,6 +35,27 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
+        private ICommand regedit;
+        public ICommand Regedit
+        {
+            get
+            {
+                return regedit ?? (regedit = new RelayCommand<WindowEXT>(wd =>
+                {
+                    if (Config.IListener)
+                    {
+                        Method.Toast(wd, "已注册");
+                        return;
+                    }
+                    var query = new RegeditWindow();
+                    if (Method.Show(wd, query) == true)
+                    {
+                        Method.Toast(wd, "注册成功");
+                    }
+                }));
+            }
+        }
+
         private ICommand selectionCommand;
         public ICommand SelectionCommand
         {
@@ -44,6 +65,11 @@ namespace DetectionPlus.Sign
                 {
                     if (listView1.SelectedItem is IListView info)
                     {
+                        if (!Config.IListener)
+                        {
+                            Method.Toast(listView1, "未注册", true);
+                            return;
+                        }
                         switch (info.Text)
                         {
                             case "主页":

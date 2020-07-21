@@ -61,6 +61,7 @@
     <Compile Include="Enum\CoordSystemType.cs" />
     <Compile Include="Enum\DrawModelType.cs" />
     <Compile Include="Enum\ROIMergeType.cs" />
+    <Compile Include="Helper\HalconHelper.cs" />
     <Compile Include="ViewROI\ROI.cs" />
     <Compile Include="ViewROI\ROICircle.cs" />
     <Compile Include="ViewROI\ROICircleRing.cs" />

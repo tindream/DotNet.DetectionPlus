@@ -40,7 +40,7 @@
             <Separator />
             <Menu>
                 <MenuItem Header="帮助">
-                    <MenuItem Header="注册" Command="{Binding About}" CommandParameter="{Binding ElementName=wd}"/>
+                    <MenuItem Header="注册" Command="{Binding Regedit}" CommandParameter="{Binding ElementName=wd}"/>
                     <Separator />
                     <MenuItem Header="关于" Command="{Binding About}" CommandParameter="{Binding ElementName=wd}"/>
                 </MenuItem>

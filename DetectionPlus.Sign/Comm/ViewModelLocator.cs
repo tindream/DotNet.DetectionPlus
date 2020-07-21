@@ -43,6 +43,8 @@ namespace DetectionPlus.Sign
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
+            SimpleIoc.Default.Register<CommSetViewModel>();
+            SimpleIoc.Default.Register<RegeditModel>();
             SimpleIoc.Default.Register<HistroyQueryModel>();
             SimpleIoc.Default.Register<HistroyViewModel>();
             SimpleIoc.Default.Register<SystemSetViewModel>();
@@ -52,6 +54,8 @@ namespace DetectionPlus.Sign
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
+        public CommSetViewModel CommSet { get { return ServiceLocator.Current.GetInstance<CommSetViewModel>(); } }
+        public RegeditModel Regedit { get { return ServiceLocator.Current.GetInstance<RegeditModel>(); } }
         public HistroyQueryModel HistroyQuery { get { return ServiceLocator.Current.GetInstance<HistroyQueryModel>(); } }
         public HistroyViewModel Histroy { get { return ServiceLocator.Current.GetInstance<HistroyViewModel>(); } }
         public SystemSetViewModel SystemSet { get { return ServiceLocator.Current.GetInstance<SystemSetViewModel>(); } }

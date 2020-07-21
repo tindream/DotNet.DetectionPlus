@@ -19,6 +19,7 @@ namespace DetectionPlus.Sign
         #region 全局数据
         public static ICamera Camera { get; set; }
         public static AdminInfo Admin { get; set; }
+        public static DeviceManager Manager { get; set; }
         /// <summary>
         /// 模板保存路径
         /// </summary>

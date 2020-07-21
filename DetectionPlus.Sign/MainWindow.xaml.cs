@@ -47,9 +47,21 @@ namespace DetectionPlus.Sign
                         CameraName = Config.Admin.CameraName,
                         InitExposureTime = Config.Admin.ExposureTime
                     };
+                    Config.MacId = HardWareHelper.GetCpuId() + HardWareHelper.GetMainHardDiskId();
+                    Config.MacId = EncryptHelper.MD5(Config.MacId + TConfig.Suffix);
+                    Config.IListener = Config.Admin.Listener == EncryptHelper.MD5(Config.MacId + TConfig.Suffix);
+                    Config.Manager = new DeviceManager(Config.Admin);
+                    Config.Manager.ConnectEvent += delegate
+                    {
+                        Messenger.Default.Send(new StatuMessage($"{Config.Manager.Info.Host}{(Config.Manager.Connected ? "已连接" : "已断开")}"));
+                    };
+                    if (!Config.IListener)
+                    {
+                        Method.Toast(this, "未注册", true);
+                    }
                     Method.BeginInvoke(this, () =>
                     {//预加载
-                        //new HWindowControlWPF();
+                     //new HWindowControlWPF();
                     });
                 }
                 catch (Exception ex)

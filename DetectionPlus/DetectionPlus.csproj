@@ -88,6 +88,12 @@
     <Compile Include="..\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Comm\Device\COMClient.cs" />
+    <Compile Include="Comm\Device\IDevice.cs" />
+    <Compile Include="Comm\Device\TCPClient.cs" />
+    <Compile Include="Comm\Message\MessageBase.cs" />
+    <Compile Include="Comm\Message\ReadMessage.cs" />
+    <Compile Include="Comm\Message\WriteMessage.cs" />
     <Compile Include="Enum\FunctionType.cs" />
     <Compile Include="Enum\IModel.cs" />
     <Compile Include="Info\AdminBaseInfo.cs" />

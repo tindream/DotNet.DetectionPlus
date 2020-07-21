@@ -1,0 +1,43 @@
+﻿<Window x:Class="DetectionPlus.Sign.RegeditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:local="clr-namespace:DetectionPlus.Sign"
+        xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
+        DataContext="{Binding Regedit ,Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Background="#FAFAFA"
+        FontSize="15"
+        Name="wd"
+        Title="注册"
+        Height="320" Width="500" ResizeMode="NoResize">
+
+    <Grid Margin="5,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" Margin="0,10">
+            <WrapPanel>
+                <TextBlock Text="机器码：" Width="75" VerticalAlignment="Center" TextAlignment="Right"/>
+                <utils:TextBoxEXT Name="tbMachine" IsReadOnly="True" Width="335" Text="{Binding Machine, Mode=OneWay}" MaxLength="32"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="注册码：" Width="75" VerticalAlignment="Center" TextAlignment="Right"/>
+                <utils:TextBoxEXT Name="tbRegedit" Width="335" Text="{Binding Regedit}" MaxLength="32"/>
+            </WrapPanel>
+            <!--<WrapPanel>
+                <TextBlock Text="监控类型：" Width="110" VerticalAlignment="Center" TextAlignment="Right"/>
+                <utils:ComboBoxMulti Width="335" ItemsSource="{Binding MonitorList}" Text="{Binding Info.ConnectTypes}"/>
+            </WrapPanel>-->
+        </StackPanel>
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <utils:ButtonEXT Content="确认" Width="88" Command="{Binding Save}" CommandParameter="{Binding ElementName=wd}"
+                             BackgroundStart="#1023AFFF" BackgroundEnd="#D323AFFF" />
+            <utils:ButtonEXT Content="取消" Width="88"  Command="{Binding Cancel}" CommandParameter="{Binding ElementName=wd}"
+                             BackgroundStart=";#10FF7327" BackgroundEnd=";#D3FF7327" />
+        </WrapPanel>
+    </Grid>
+</Window>

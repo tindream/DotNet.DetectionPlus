@@ -1,4 +1,5 @@
 using DetectionPlus.Camera;
+using DetectionPlus.HWindowTool;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using HalconDotNet;
@@ -56,6 +57,11 @@ namespace DetectionPlus.Sign
             {
                 return run ?? (run = new RelayCommand<ButtonEXT>(btnRun =>
                 {
+                    if (!Config.IListener)
+                    {
+                        Method.Toast(btnRun, "未注册", true);
+                        return;
+                    }
                     Method.Find(btnRun, out hWindowTool);
                     Method.Progress(btnRun, () =>
                     {
@@ -107,6 +113,11 @@ namespace DetectionPlus.Sign
                 try
                 {
                     var iResult = Test(obj.Bitmap);
+                    if (Config.Admin.Result == iResult)
+                    {
+                        Config.Manager.Result();
+                        info.Description = Convert.ToString(Config.Admin.Value, 2);
+                    }
                     if (iResult) Success++;
                     info.Result = iResult;
                 }
@@ -147,7 +158,6 @@ namespace DetectionPlus.Sign
             hWindowTool.DisplayImage(ho_Image);
             bool result = ImageHandle.CheckFunction(hWindowTool, ho_Image, ho_CheckRegion, modelConfig, 0, 180, 0.8, 5000);
             return result;
-
         }
 
         private string ExpandPath

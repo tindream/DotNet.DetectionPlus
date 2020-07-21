@@ -35,6 +35,12 @@ namespace DetectionPlus.Sign
                                     frame.Content = ViewlLocator.GetViewInstance<CameraSetPage>();
                                 }
                                 break;
+                            case "通讯设置":
+                                if (Method.Child(listView1, out frame))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<CommSetPage>();
+                                }
+                                break;
                             case "系统设置":
                                 if (Method.Child(listView1, out frame))
                                 {
