@@ -31,10 +31,34 @@ namespace DetectionPlus
         {
             var data = string.Empty;
             Data(this, ref data);
-            var msg = $"{Config.Header}{Address:X2}{Code:X2}{data}";
+            var msg = $"{Address:X2}{Code:X2}{data}";
             msg = msg.Replace("-", "").Replace(" ", "");
-            byte[] buffer = Method.HexStrToByteArr(msg);
-            return buffer;
+            var header = Method.HexStrToByteArr(Config.Header.Replace(" ", ""));
+            var buffer = Method.HexStrToByteArr(msg);
+            var calc = CRC16(buffer);
+            return header.Concat(buffer).Concat(calc).ToArray();
+        }
+        public static byte[] CRC16(byte[] data)
+        {
+            int len = data.Length;
+            if (len > 0)
+            {
+                ushort crc = 0xFFFF;
+
+                for (int i = 0; i < len; i++)
+                {
+                    crc = (ushort)(crc ^ (data[i]));
+                    for (int j = 0; j < 8; j++)
+                    {
+                        crc = (crc & 1) != 0 ? (ushort)((crc >> 1) ^ 0xA001) : (ushort)(crc >> 1);
+                    }
+                }
+                byte hi = (byte)((crc & 0xFF00) >> 8);  //高位置
+                byte lo = (byte)(crc & 0x00FF);         //低位置
+
+                return new byte[] { hi, lo };
+            }
+            return new byte[] { 0, 0 };
         }
         private void Data(object obj, ref string data)
         {

@@ -115,8 +115,8 @@ namespace DetectionPlus.Sign
                     var iResult = Test(obj.Bitmap);
                     if (Config.Admin.Result == iResult)
                     {
-                        Config.Manager.Result();
-                        info.Description = Convert.ToString(Config.Admin.Value, 2);
+                        var result = Config.Manager.Result();
+                        info.Description = $"输出{(result ? "成功" : "失败")}: " + Convert.ToString(Config.Admin.Value, 2).PadLeft(8, '0');
                     }
                     if (iResult) Success++;
                     info.Result = iResult;

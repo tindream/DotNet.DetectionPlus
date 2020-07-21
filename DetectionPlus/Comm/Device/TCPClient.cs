@@ -10,13 +10,11 @@ using System.Threading.Tasks;
 
 namespace DetectionPlus
 {
-    public class TCPClient : IDevice
+    public class TCPClient : DeviceBase, IDevice
     {
-        private volatile bool IStop;
         private volatile bool IAlone;
         private volatile bool connected;
 
-        private readonly object objLock = new object();
         private TcpClient client;
         private readonly string host;
         private readonly int port;
@@ -212,28 +210,42 @@ namespace DetectionPlus
             }
         }
 
-        private void RecevidLog(string ip, byte[] buffer)
+        private byte[] Recevid(NetworkStream stream, int length)
+        {
+            return base.Recevid(length, stream.Read);
+        }
+        private void Send(string ip, NetworkStream stream, MessageBase msg)
+        {
+            base.Send(ip, msg, stream.Write);
+        }
+
+        #endregion
+    }
+    public class DeviceBase
+    {
+        protected volatile bool IStop;
+        protected readonly object objLock = new object();
+
+        protected void RecevidLog(string ip, byte[] buffer)
         {
             DeviceLog.Log($">>>>>>>{ip}>接收数据：{BitConverter.ToString(buffer)}");
         }
-        private byte[] Recevid(NetworkStream stream, int length)
+        protected byte[] Recevid(int length, Func<byte[], int, int, int> action)
         {
             var buffer = new byte[length];
             length = 0;
             while (true)
             {
-                length += stream.Read(buffer, length, buffer.Length - length);// 接收包头，防止粘包
+                length += action(buffer, length, buffer.Length - length);// 接收包头，防止粘包
                 if (length == buffer.Length) break;
             }
             return buffer;
         }
-        private void Send(string ip, NetworkStream stream, MessageBase msg)
+        protected void Send(string ip, MessageBase msg, Action<byte[], int, int> action)
         {
             byte[] buffer = msg.Buffer();
-            stream.Write(buffer, 0, buffer.Length);
+            action(buffer, 0, buffer.Length);
             DeviceLog.Log($"<<<<<<<{ip}<发送数据：{BitConverter.ToString(buffer)}");
         }
-
-        #endregion
     }
 }
