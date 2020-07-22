@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,12 +14,10 @@ namespace DetectionPlus
     public class TCPClient : DeviceBase, IDevice
     {
         private volatile bool IAlone;
-        private volatile bool connected;
 
         private TcpClient client;
         private readonly string host;
         private readonly int port;
-        public event Action ConnectEvent;
 
         public TCPClient(string host, int port)
         {
@@ -36,56 +35,25 @@ namespace DetectionPlus
         }
 
         #region 公开接口
-        public bool Connected
+        public override void Open()
         {
-            get { return connected; }
-            set
+            Open(() =>
             {
-                if (connected != value)
-                {
-                    connected = value;
-                    try
-                    {
-                        ConnectEvent?.Invoke();
-                    }
-                    catch (Exception ex)
-                    {
-                        ex.Log();
-                    }
-                }
-            }
-        }
-        public void Open()
-        {
-            if (IStop) return;
-
-            Task.Run(() =>
+                client.Connect(host, port);
+                Connected = client.Connected;
+            }, ex =>
             {
-                if (IAlone) return;
-                try
-                {
-                    IAlone = true;
-                    lock (objLock)
-                    {
-                        client.Connect(host, port);
-                        Connected = client.Connected;
-                    }
-                }
-                catch (ObjectDisposedException)
+                if (ex is ObjectDisposedException)
                 {
                     ReConnect(new SocketException((int)SocketError.IsConnected));
                 }
-                catch (SocketException e)
+                else if (ex is SocketException e)
                 {
                     ReConnect(e);
                 }
-                catch (Exception ex)
+                else
                 {
                     ex.Log();
-                }
-                finally
-                {
-                    IAlone = false;
                 }
             });
         }
@@ -122,11 +90,7 @@ namespace DetectionPlus
         }
         public void Close()
         {
-            IStop = true;
-            lock (objLock)
-            {
-                client?.Close();
-            }
+            Close(() => { client?.Close(); });
         }
 
         #endregion
@@ -138,18 +102,16 @@ namespace DetectionPlus
             {
                 lock (objLock)
                 {
-                    if (client.Client == null || client.Connected != Connected) ReConnect(new SocketException((int)SocketError.IsConnected));
-                    if (client.Client == null || !client.Connected || !Connected) throw new WarningException("未连接");
+                    SendMessage(msg);
+
                     string ip = client.Client.RemoteEndPoint.ToString();
                     var stream = client.GetStream();
-                    Send(ip, stream, msg);
+                    byte[] heardBuffer = Recevid(Config.HeardSize, stream.Read);
 
-                    byte[] heardBuffer = Recevid(stream, Config.HeardSize);
-
-                    byte[] dataBuffer = Recevid(stream, 2);
+                    byte[] dataBuffer = Recevid(2, stream.Read);
                     var length = BitConverter.ToInt16(dataBuffer.Reverse().ToArray(), 0);
 
-                    dataBuffer = Recevid(stream, length);
+                    dataBuffer = Recevid(length, stream.Read);
                     RecevidLog(ip, heardBuffer.Concat(dataBuffer).ToArray());
 
                     var data = BitConverter.ToString(dataBuffer);
@@ -178,15 +140,13 @@ namespace DetectionPlus
             {
                 lock (objLock)
                 {
-                    if (client.Client == null || client.Connected != Connected) ReConnect(new SocketException((int)SocketError.IsConnected));
-                    if (client.Client == null || !client.Connected || !Connected) throw new WarningException("未连接");
+                    SendMessage(msg);
+
                     string ip = client.Client.RemoteEndPoint.ToString();
                     var stream = client.GetStream();
-                    Send(ip, stream, msg);
+                    byte[] heardBuffer = Recevid(Config.HeardSize, stream.Read);
 
-                    byte[] heardBuffer = Recevid(stream, Config.HeardSize);
-
-                    var dataBuffer = Recevid(stream, 4 + (msg as WriteMessage).Count * 2);
+                    var dataBuffer = Recevid(4 + (msg as WriteMessage).Count * 2, stream.Read);
                     RecevidLog(ip, heardBuffer.Concat(dataBuffer).ToArray());
 
                     var data = BitConverter.ToString(dataBuffer);
@@ -209,43 +169,15 @@ namespace DetectionPlus
                 throw;
             }
         }
-
-        private byte[] Recevid(NetworkStream stream, int length)
+        private void SendMessage(MessageBase msg)
         {
-            return base.Recevid(length, stream.Read);
-        }
-        private void Send(string ip, NetworkStream stream, MessageBase msg)
-        {
-            base.Send(ip, msg, stream.Write);
+            if (client.Client == null || client.Connected != Connected) ReConnect(new SocketException((int)SocketError.IsConnected));
+            if (client.Client == null || !client.Connected || !Connected) throw new WarningException("未连接");
+            string ip = client.Client.RemoteEndPoint.ToString();
+            var stream = client.GetStream();
+            Send(ip, msg, stream.Write);
         }
 
         #endregion
-    }
-    public class DeviceBase
-    {
-        protected volatile bool IStop;
-        protected readonly object objLock = new object();
-
-        protected void RecevidLog(string ip, byte[] buffer)
-        {
-            DeviceLog.Log($">>>>>>>{ip}>接收数据：{BitConverter.ToString(buffer)}");
-        }
-        protected byte[] Recevid(int length, Func<byte[], int, int, int> action)
-        {
-            var buffer = new byte[length];
-            length = 0;
-            while (true)
-            {
-                length += action(buffer, length, buffer.Length - length);// 接收包头，防止粘包
-                if (length == buffer.Length) break;
-            }
-            return buffer;
-        }
-        protected void Send(string ip, MessageBase msg, Action<byte[], int, int> action)
-        {
-            byte[] buffer = msg.Buffer();
-            action(buffer, 0, buffer.Length);
-            DeviceLog.Log($"<<<<<<<{ip}<发送数据：{BitConverter.ToString(buffer)}");
-        }
     }
 }

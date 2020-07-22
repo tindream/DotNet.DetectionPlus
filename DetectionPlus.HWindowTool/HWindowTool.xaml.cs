@@ -766,5 +766,20 @@ namespace DetectionPlus.HWindowTool
         }
 
         #endregion
+
+        #region 图像
+        /// <summary>
+        /// 加载图像文件
+        /// </summary>
+        public void LoadImage(string file)
+        {
+            if (!File.Exists(file)) return;
+            HObject ho_ModelImage;
+            HOperatorSet.ReadImage(out ho_ModelImage, file);
+            this.DisplayImage(ho_ModelImage);
+            this.Repaint(); //刷新显示
+        }
+
+        #endregion
     }
 }

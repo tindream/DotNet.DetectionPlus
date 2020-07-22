@@ -88,7 +88,7 @@ namespace DetectionPlus.Sign
                     };
                     if (opnDlg.ShowDialog() == DialogResult.OK)
                     {
-                        HalconHelper.LoadImage(opnDlg.FileName, hWindowTool);
+                        hWindowTool.LoadImage(opnDlg.FileName);
                         ReadRegion(hWindowTool);
                     }
                 }));

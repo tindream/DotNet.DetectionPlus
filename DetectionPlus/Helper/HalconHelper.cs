@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using DetectionPlus.HWindowTool;
 using HalconDotNet;
 
-namespace DetectionPlus.HWindowTool
+namespace DetectionPlus
 {
     public class HalconHelper
     {
@@ -70,7 +69,6 @@ namespace DetectionPlus.HWindowTool
         {
             HOperatorSet.WriteRegion(ho_region, regionPath);
         }
-
         /// <summary>
         /// 读取区域并显示
         /// </summary>
@@ -86,21 +84,6 @@ namespace DetectionPlus.HWindowTool
                 return ho_Region;
             }
             return null;
-        }
-
-        #endregion
-
-        #region 图像
-        /// <summary>
-        /// 加载图像文件
-        /// </summary>
-        public static void LoadImage(string file, HWindowTool hWindowTool)
-        {
-            if (!File.Exists(file)) return;
-            HObject ho_ModelImage;
-            HOperatorSet.ReadImage(out ho_ModelImage, file);
-            hWindowTool.DisplayImage(ho_ModelImage);
-            hWindowTool.Repaint(); //刷新显示
         }
 
         #endregion

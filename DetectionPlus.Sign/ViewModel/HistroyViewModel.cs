@@ -77,10 +77,6 @@ namespace DetectionPlus.Sign
                 }
             }
         }
-        protected override void Refreshed()
-        {
-            base.Refreshed();
-        }
 
         #endregion
 

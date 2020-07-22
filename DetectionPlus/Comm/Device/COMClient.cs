@@ -12,12 +12,9 @@ namespace DetectionPlus
 {
     public class COMClient : DeviceBase, IDevice
     {
-        private volatile bool IAlone;
-        private volatile bool connected;
 
         private SerialPort client;
         private readonly string host;
-        public event Action ConnectEvent;
 
         public COMClient(string host)
         {
@@ -29,6 +26,7 @@ namespace DetectionPlus
         {
             if (IStop) return;
             client = new SerialPort();
+            client.PortName = this.host;
             client.WriteTimeout = 3 * 1000;
             client.ReadTimeout = 3 * 1000;
 
@@ -40,50 +38,16 @@ namespace DetectionPlus
         }
 
         #region 公开接口
-        public bool Connected
+        public override void Open()
         {
-            get { return connected; }
-            set
+            Open(() =>
             {
-                if (connected != value)
-                {
-                    connected = value;
-                    try
-                    {
-                        ConnectEvent?.Invoke();
-                    }
-                    catch (Exception ex)
-                    {
-                        ex.Log();
-                    }
-                }
-            }
-        }
-        public void Open()
-        {
-            if (IStop) return;
-
-            Task.Run(() =>
+                client.Open();
+                Connected = client.IsOpen;
+            }, ex =>
             {
-                if (IAlone) return;
-                try
-                {
-                    IAlone = true;
-                    lock (objLock)
-                    {
-                        client.Open();
-                        Connected = client.IsOpen;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ReConnect();
-                    ex.Log();
-                }
-                finally
-                {
-                    IAlone = false;
-                }
+                ReConnect();
+                ex.Log();
             });
         }
         private void ReConnect()
@@ -104,11 +68,7 @@ namespace DetectionPlus
         }
         public void Close()
         {
-            IStop = true;
-            lock (objLock)
-            {
-                client?.Close();
-            }
+            Close(() => { client?.Close(); });
         }
 
         #endregion
@@ -126,11 +86,11 @@ namespace DetectionPlus
                 {
                     if (client == null || client.IsOpen != Connected) ReConnect();
                     if (client == null || !client.IsOpen || !Connected) return new WriteReponseMessage() { List = new List<short> { 0 } };
-                    Send(client.PortName, msg);
+                    Send(client.PortName, msg, client.Write);
 
-                    byte[] heardBuffer = Recevid(Config.HeardSize);
+                    byte[] heardBuffer = Recevid(Config.HeardSize, client.Read);
 
-                    var dataBuffer = Recevid(4 + (msg as WriteMessage).Count * 2);
+                    var dataBuffer = Recevid(4 + (msg as WriteMessage).Count * 2, client.Read);
                     RecevidLog(client.PortName, heardBuffer.Concat(dataBuffer).ToArray());
 
                     var data = BitConverter.ToString(dataBuffer);
@@ -144,14 +104,6 @@ namespace DetectionPlus
                 ReConnect();
                 throw;
             }
-        }
-        private byte[] Recevid(int length)
-        {
-            return base.Recevid(length, client.Read);
-        }
-        private void Send(string ip, MessageBase msg)
-        {
-            base.Send(ip, msg, client.Write);
         }
 
         #endregion

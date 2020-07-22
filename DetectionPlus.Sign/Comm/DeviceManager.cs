@@ -29,6 +29,7 @@ namespace DetectionPlus.Sign
                 Device.ConnectEvent -= Device_ConnectEvent;
                 Device.Close();
             }
+            if (info.Host == null) return;
             if (info.Host.StartsWith("COM", StringComparison.OrdinalIgnoreCase))
             {
                 Device = new COMClient(info.Host);
