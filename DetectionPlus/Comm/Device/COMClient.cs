@@ -26,6 +26,7 @@ namespace DetectionPlus
         {
             if (IStop) return;
             client = new SerialPort();
+            if (this.host.IsEmpty()) return;
             client.PortName = this.host;
             client.WriteTimeout = 3 * 1000;
             client.ReadTimeout = 3 * 1000;

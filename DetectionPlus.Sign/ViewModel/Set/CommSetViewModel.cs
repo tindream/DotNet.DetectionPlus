@@ -51,12 +51,11 @@ namespace DetectionPlus.Sign
             {
                 return save ?? (save = new RelayCommand<ButtonEXT>(btnSave =>
                 {
-                    if (Method.Find(btnSave, out TextBoxEXT textBox, "tbAddress"))
+                    if (Method.Find(btnSave, out TextBoxEXT tbAddress, "tbAddress"))
                     {
-                        var value = textBox.Text.ToInt();
-                        if (value < 0 || value > 255)
+                        if (Validation.GetHasError(tbAddress))
                         {
-                            Method.Toast(btnSave, "地址范围0-255", true);
+                            tbAddress.Focus();
                             return;
                         }
                     }

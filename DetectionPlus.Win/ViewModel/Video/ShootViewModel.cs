@@ -102,14 +102,6 @@ namespace DetectionPlus.Win
             CarameList.Add(new ListViewModel("C6"));
             CarameList.Add(new ListViewModel("全部"));
             CarameList.Add(new ListViewModel("设置"));
-            try
-            {
-                var result = DataService.Default.ExecuteScalar("select 0");
-            }
-            catch (Exception ex)
-            {
-                Method.Toast(ex.Message());
-            }
             this.MessengerInstance.Register<ShootRefreshMessage>(this, msg => LoadControl(msg.Obj as ListViewEXT));
         }
     }
