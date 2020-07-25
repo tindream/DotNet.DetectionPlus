@@ -18,7 +18,7 @@
     <DockPanel Margin="5">
         <DockPanel DockPanel.Dock="Top" >
             <utils:ListViewEXT Name="listView1" BorderThickness="1,0,0,0"
-                               ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5"
+                               ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5" ItemTextForeground="#222;;#444"
                                ItemWidth="Auto" ItemImageWidth="24" ItemImageStretch="None" DockPanel.Dock="Top" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
