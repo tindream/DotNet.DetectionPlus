@@ -43,25 +43,37 @@ namespace DetectionPlus.Sign
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<CommSetViewModel>();
             SimpleIoc.Default.Register<RegeditModel>();
+
             SimpleIoc.Default.Register<HistroyQueryModel>();
             SimpleIoc.Default.Register<HistroyViewModel>();
-            SimpleIoc.Default.Register<SystemSetViewModel>();
-            SimpleIoc.Default.Register<SetViewModel>();
             SimpleIoc.Default.Register<MonitorViewModel>();
+
+            SimpleIoc.Default.Register<SystemSetViewModel>();
+            SimpleIoc.Default.Register<CommSetViewModel>();
+            SimpleIoc.Default.Register<RegionSetViewModel>();
+            SimpleIoc.Default.Register<ModelSetViewModel>();
             SimpleIoc.Default.Register<CameraSetViewModel>();
+            SimpleIoc.Default.Register<HToolViewModel>();
+            SimpleIoc.Default.Register<SetViewModel>();
+
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
-        public CommSetViewModel CommSet { get { return ServiceLocator.Current.GetInstance<CommSetViewModel>(); } }
         public RegeditModel Regedit { get { return ServiceLocator.Current.GetInstance<RegeditModel>(); } }
+
         public HistroyQueryModel HistroyQuery { get { return ServiceLocator.Current.GetInstance<HistroyQueryModel>(); } }
         public HistroyViewModel Histroy { get { return ServiceLocator.Current.GetInstance<HistroyViewModel>(); } }
-        public SystemSetViewModel SystemSet { get { return ServiceLocator.Current.GetInstance<SystemSetViewModel>(); } }
-        public SetViewModel Set { get { return ServiceLocator.Current.GetInstance<SetViewModel>(); } }
         public MonitorViewModel Monitor { get { return ServiceLocator.Current.GetInstance<MonitorViewModel>(); } }
+
+        public SystemSetViewModel SystemSet { get { return ServiceLocator.Current.GetInstance<SystemSetViewModel>(); } }
+        public CommSetViewModel CommSet { get { return ServiceLocator.Current.GetInstance<CommSetViewModel>(); } }
+        public RegionSetViewModel RegionSet { get { return ServiceLocator.Current.GetInstance<RegionSetViewModel>(); } }
+        public ModelSetViewModel ModelSet { get { return ServiceLocator.Current.GetInstance<ModelSetViewModel>(); } }
         public CameraSetViewModel CameraSet { get { return ServiceLocator.Current.GetInstance<CameraSetViewModel>(); } }
+        public HToolViewModel HTool { get { return ServiceLocator.Current.GetInstance<HToolViewModel>(); } }
+        public SetViewModel Set { get { return ServiceLocator.Current.GetInstance<SetViewModel>(); } }
+
         public MainViewModel Main { get { return ServiceLocator.Current.GetInstance<MainViewModel>(); } }
         public static void Cleanup()
         {

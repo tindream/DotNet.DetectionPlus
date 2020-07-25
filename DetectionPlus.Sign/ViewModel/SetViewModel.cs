@@ -29,13 +29,25 @@ namespace DetectionPlus.Sign
                     {
                         switch (info.Text)
                         {
-                            case "相机":
+                            case "相机选择":
                                 if (Method.Child(listView1, out Frame frame))
                                 {
                                     frame.Content = ViewlLocator.GetViewInstance<CameraSetPage>();
                                 }
                                 break;
-                            case "通讯设置":
+                            case "模板定位":
+                                if (Method.Child(listView1, out frame))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<ModelSetPage>();
+                                }
+                                break;
+                            case "识别区域":
+                                if (Method.Child(listView1, out frame))
+                                {
+                                    frame.Content = ViewlLocator.GetViewInstance<RegionSetPage>();
+                                }
+                                break;
+                            case "输出结果":
                                 if (Method.Child(listView1, out frame))
                                 {
                                     frame.Content = ViewlLocator.GetViewInstance<CommSetPage>();

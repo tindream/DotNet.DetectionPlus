@@ -106,6 +106,9 @@
     <Compile Include="ViewModel\Histroy\HistroyQueryModel.cs" />
     <Compile Include="ViewModel\Main\RegeditModel.cs" />
     <Compile Include="ViewModel\MonitorViewModel.cs" />
+    <Compile Include="ViewModel\Set\HToolViewModel.cs" />
+    <Compile Include="ViewModel\Set\RegionSetViewModel.cs" />
+    <Compile Include="ViewModel\Set\ModelSetViewModel.cs" />
     <Compile Include="ViewModel\Set\CameraSetViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SetViewModel.cs" />
@@ -123,6 +126,15 @@
     </Compile>
     <Compile Include="View\MonitorPage.xaml.cs">
       <DependentUpon>MonitorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Set\HToolPage.xaml.cs">
+      <DependentUpon>HToolPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Set\RegionSetPage.xaml.cs">
+      <DependentUpon>RegionSetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Set\ModelSetPage.xaml.cs">
+      <DependentUpon>ModelSetPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Set\CameraSetPage.xaml.cs">
       <DependentUpon>CameraSetPage.xaml</DependentUpon>
@@ -161,6 +173,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MonitorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Set\HToolPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Set\RegionSetPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Set\ModelSetPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -259,6 +283,14 @@
   <ItemGroup>
     <Resource Include="Images\rectangle.png" />
     <Resource Include="Images\rectangle_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\image.png" />
+    <Resource Include="Images\image_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\direction_rect.png" />
+    <Resource Include="Images\direction_rect_s.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -799,10 +799,11 @@ namespace DetectionPlus.HWindowTool
         /// </summary>
         private void ShowMessageList(HWindow window)
         {
-            foreach (MessageConfig mes in MessageList)
+            for (int i = 0; i < MessageList.Count; i++)
             {
-                if (mes.AnchorType == AnchorType.LeftTop) Disp_message(window, mes.Message, mes.CoordSystemType.ToString(), mes.Y, mes.X, mes.ColorStr, mes.IsBox);
-                else Disp_continue_message(window, mes.Message, mes.CoordSystemType.ToString(), mes.Y, mes.X, mes.ColorStr, mes.IsBox);
+                var msg = MessageList[i];
+                if (msg.AnchorType == AnchorType.LeftTop) Disp_message(window, msg.Message, msg.CoordSystemType.ToString(), msg.Y, msg.X, msg.ColorStr, msg.IsBox);
+                else Disp_continue_message(window, msg.Message, msg.CoordSystemType.ToString(), msg.Y, msg.X, msg.ColorStr, msg.IsBox);
             }
         }
         /// <summary>

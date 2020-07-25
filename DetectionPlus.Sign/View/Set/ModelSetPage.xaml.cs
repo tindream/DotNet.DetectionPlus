@@ -18,11 +18,11 @@ using System.Windows.Shapes;
 namespace DetectionPlus.Sign
 {
     /// <summary>
-    /// 相机设置
+    /// 模板定位
     /// </summary>
-    public partial class CameraSetPage : Page
+    public partial class ModelSetPage : Page
     {
-        public CameraSetPage()
+        public ModelSetPage()
         {
             InitializeComponent();
             this.Loaded += MonitorPage_Loaded;

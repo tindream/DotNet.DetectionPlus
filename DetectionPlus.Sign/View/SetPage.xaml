@@ -23,8 +23,10 @@
                                            CommandParameter="{Binding ElementName=listView1}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <utils:ListBoxItemEXT Text="相机" IsSelected="True"/>
-            <utils:ListBoxItemEXT Text="通讯设置"/>
+            <utils:ListBoxItemEXT Text="相机选择" IsSelected="True"/>
+            <utils:ListBoxItemEXT Text="模板定位"/>
+            <utils:ListBoxItemEXT Text="识别区域"/>
+            <utils:ListBoxItemEXT Text="输出结果"/>
             <utils:ListBoxItemEXT Text="系统设置"/>
         </utils:ListViewEXT>
         <TextBlock Width="1" Background="LightGray"/>

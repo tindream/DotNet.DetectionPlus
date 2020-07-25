@@ -29,7 +29,6 @@
             <StackPanel>
             </StackPanel>
         </DockPanel>
-        <TextBlock Width="1" Background="LightGray" DockPanel.Dock="Right"/>
         <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" Background="#EEE">
             <hw:HWindowTool Name="hWindowTool" IsMoveImageEnabled="False"/>
         </Border>

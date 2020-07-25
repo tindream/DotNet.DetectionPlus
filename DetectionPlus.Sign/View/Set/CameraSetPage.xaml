@@ -15,43 +15,28 @@
         d:DesignHeight="450" d:DesignWidth="800"
         FontSize="15">
 
-    <DockPanel>
-        <DockPanel Margin="5" DockPanel.Dock="Top" >
-            <utils:ButtonEXT Name="btnConnect" Margin="15,0"  Height="52"  Width="52" 
-                             Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/connect.png|pack://application:,,,/DetectionPlus.Sign;component/Images/connect_s.png"
-                             Command="{Binding Connect}" CommandParameter="{Binding ElementName=btnConnect}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
-                             Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/picture.png|pack://application:,,,/DetectionPlus.Sign;component/Images/picture_s.png"
-                             Command="{Binding Picture}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
-                             Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/reset.png|pack://application:,,,/DetectionPlus.Sign;component/Images/reset_s.png"
-                             Command="{Binding Reset}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
-                             Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/ring.png|pack://application:,,,/DetectionPlus.Sign;component/Images/ring_s.png"
-                             Command="{Binding Ring}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
-                             Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/rectangle.png|pack://application:,,,/DetectionPlus.Sign;component/Images/rectangle_s.png"
-                             Command="{Binding Rect}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  Width="52" 
-                             Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/save.png|pack://application:,,,/DetectionPlus.Sign;component/Images/save_s.png"
-                             Command="{Binding Save}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
-            <utils:ButtonEXT Margin="0,0,15,0"  Height="52"  
-                             Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
-                             Content="Open"
-                             Command="{Binding Open}" CommandParameter="{Binding ElementName=hWindowTool}" Stretch="None"/>
+    <DockPanel Margin="5">
+        <DockPanel DockPanel.Dock="Top" >
+            <utils:ListViewEXT Name="listView1" BorderThickness="1,0,0,0"
+                               ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5"
+                               ItemWidth="Auto" ItemImageWidth="24" ItemImageStretch="None" DockPanel.Dock="Top" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listView1}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <utils:ListBoxItemEXT Text="连接"
+                                      Image="pack://application:,,,/DetectionPlus.Sign;component/Images/connect.png|pack://application:,,,/DetectionPlus.Sign;component/Images/connect_s.png"/>
+                <utils:ListBoxItemEXT Text="拍照"
+                                      Image="pack://application:,,,/DetectionPlus.Sign;component/Images/picture.png|pack://application:,,,/DetectionPlus.Sign;component/Images/picture_s.png"/>
+                <utils:ListBoxItemEXT Text="重置"
+                                      Image="pack://application:,,,/DetectionPlus.Sign;component/Images/reset.png|pack://application:,,,/DetectionPlus.Sign;component/Images/reset_s.png"/>
+                <utils:ListBoxItemEXT Text="Open"
+                                      Image="pack://application:,,,/DetectionPlus.Sign;component/Images/image.png|pack://application:,,,/DetectionPlus.Sign;component/Images/image_s.png"/>
+                <utils:ListBoxItemEXT Text="Save"
+                                      Image="pack://application:,,,/DetectionPlus.Sign;component/Images/save.png|pack://application:,,,/DetectionPlus.Sign;component/Images/save_s.png"/>
+            </utils:ListViewEXT>
             <StackPanel>
                 <DockPanel>
                     <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>
@@ -64,7 +49,7 @@
                 </DockPanel>
                 <DockPanel >
                     <TextBlock Text="曝光：" VerticalAlignment="Center" TextAlignment="Right" />
-                    <utils:SliderEXT x:Name="slider" Maximum="100000" Value="{Binding Admin.ExposureTime}" Margin="0,5" >
+                    <utils:SliderEXT x:Name="slider" Maximum="1000000" Value="{Binding Admin.ExposureTime}" Margin="0,5" Minimum="10" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ValueChanged">
                                 <i:InvokeCommandAction Command="{Binding ValueChanged}"
@@ -75,9 +60,6 @@
                 </DockPanel>
             </StackPanel>
         </DockPanel>
-        <TextBlock Width="1" Background="LightGray" DockPanel.Dock="Right"/>
-        <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" Background="#EEE">
-            <hw:HWindowTool Name="hWindowTool"/>
-        </Border>
+        <Frame x:Name="frame1" NavigationUIVisibility="Hidden"/>
     </DockPanel>
 </Page>

@@ -49,6 +49,7 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
+        private HObject ho_CheckRegion;
         private HWindowTool.HWindowTool hWindowTool;
         private ICommand run;
         public ICommand Run
@@ -62,7 +63,15 @@ namespace DetectionPlus.Sign
                         Method.Toast(btnRun, "未注册", true);
                         return;
                     }
-                    Method.Find(btnRun, out hWindowTool);
+                    if (!Method.Find(btnRun, out hWindowTool))
+                    {
+                        Method.Toast(btnRun, "未找到控件", true);
+                        return;
+                    }
+                    string regionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".Ring.reg");
+                    this.ho_CheckRegion = HalconHelper.ReadRegion(regionPath, hWindowTool.HalconWindow, false);
+                    if (ho_CheckRegion == null) throw new WarningException("未设置区域");
+
                     Method.Progress(btnRun, () =>
                     {
                         if (!Config.Camera.IsGrabbing)
@@ -108,8 +117,6 @@ namespace DetectionPlus.Sign
             }
             else
             {
-                //Image = Imaging.CreateBitmapSourceFromHBitmap(obj.Bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                //tool.DisplayImage(obj.Bitmap);
                 try
                 {
                     var iResult = Test(obj.Bitmap);
@@ -127,18 +134,11 @@ namespace DetectionPlus.Sign
                 }
             }
             DataService.Default.Insert(info);
-            Method.Invoke(Config.Window, () =>
-            {
-                this.MessengerInstance.Send(new HistroyMessage(info));
-            });
+            this.MessengerInstance.Send(new HistroyMessage(info));
         }
         private int index;
         private bool Test(System.Drawing.Bitmap bitmap)
         {
-            string regionPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".Ring.reg");
-            var ho_CheckRegion = HalconHelper.ReadRegion(regionPath, hWindowTool.HalconWindow, false);
-            if (ho_CheckRegion == null) throw new WarningException("未设置区域");
-
             HTuple hv_ModelID = new HTuple();
             string modelPath = Path.Combine(Config.Template, Config.Admin.CameraName + ".Rect.shm");
             HOperatorSet.ReadShapeModel(modelPath, out hv_ModelID);

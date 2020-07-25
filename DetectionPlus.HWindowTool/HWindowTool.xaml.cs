@@ -407,7 +407,7 @@ namespace DetectionPlus.HWindowTool
         /// <param name="e"></param>
         private void ViewPort_Resize(object sender, EventArgs e)
         {
-            if (isDrawInit) Repaint();//显示
+            if (isDrawInit) this.Dispatcher.BeginInvoke(new Action(() => { Repaint(); }));//显示
         }
 
         #endregion
@@ -461,7 +461,6 @@ namespace DetectionPlus.HWindowTool
             //重置显示倍率，并刷新显示
             if (ZoomViewPercentage != 100) ZoomViewPercentage = 100;
             else Repaint();  //刷新显示
-
         }
 
         #endregion
