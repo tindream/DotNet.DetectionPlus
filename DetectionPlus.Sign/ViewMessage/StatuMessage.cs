@@ -9,28 +9,15 @@ using System.Windows;
 
 namespace DetectionPlus.Sign
 {
-    public class DisplayMessage
+    public class TestMessage : InitMessage
     {
-        public Bitmap Bitmap { get; set; }
+        public string File { get; set; }
 
-        public DisplayMessage(Bitmap bitmap)
+        public TestMessage(string file)
         {
-            this.Bitmap = bitmap;
+            this.File = file;
         }
     }
-
-    public class InitMessage
-    {
-        public DependencyObject Obj { get; set; }
-    }
-    public class HistroyInitMessage : InitMessage { }
-    public class CommInitMessage : InitMessage { }
-    public class PictureMessage : InitMessage { }
-    public class ResetMessage : InitMessage { }
-    public class OpenMessage : InitMessage { }
-    public class SaveMessage : InitMessage { }
-    public class ModelMessage : InitMessage { }
-    public class RingMessage : InitMessage { }
 
     public class HistroyMessage
     {
@@ -51,4 +38,17 @@ namespace DetectionPlus.Sign
             this.Message = msg;
         }
     }
+
+    public class InitMessage
+    {
+        public DependencyObject Obj { get; set; }
+    }
+    public class HistroyInitMessage : InitMessage { }
+    public class CommInitMessage : InitMessage { }
+    public class PictureMessage : InitMessage { }
+    public class ResetMessage : InitMessage { }
+    public class OpenMessage : InitMessage { }
+    public class SaveMessage : InitMessage { }
+    public class ModelMessage : InitMessage { }
+    public class RingMessage : InitMessage { }
 }

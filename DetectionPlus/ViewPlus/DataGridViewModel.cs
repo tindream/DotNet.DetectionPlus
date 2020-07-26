@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -60,6 +61,20 @@ namespace DetectionPlus
         {
             server.Update(info);
         }
+        protected virtual void Delete(DependencyObject obj, T info)
+        {
+            if (Method.Ask(obj, "确认删除：" + info.Desc()))
+            {
+                var index = -1;
+                if (Method.Child(obj, out DataGridEXT datagrid))
+                {
+                    index = datagrid.SelectedIndex;
+                }
+                Deleted(obj, info);
+                if (index >= List.Count) index = List.Count - 1;
+                datagrid.SelectedIndex = index;
+            }
+        }
         protected virtual void Deleted(DependencyObject obj, T info)
         {
             server.Delete(info);
@@ -85,22 +100,12 @@ namespace DetectionPlus
                     }
                     break;
                 case "编辑":
-                    Edit(listView1, selectedItem);
+                    if (selectedItem is T infoEdit) Edit(listView1, infoEdit);
                     break;
                 case "删除":
                     if (selectedItem is T infoDel)
                     {
-                        if (Method.Ask(listView1, "确认删除：" + infoDel.Desc()))
-                        {
-                            var index = -1;
-                            if (Method.Child(listView1, out DataGridEXT datagrid))
-                            {
-                                index = datagrid.SelectedIndex;
-                            }
-                            Deleted(listView1, infoDel);
-                            if (index >= List.Count) index = List.Count - 1;
-                            datagrid.SelectedIndex = index;
-                        }
+                        Delete(listView1, infoDel);
                     }
                     break;
             }
@@ -133,26 +138,38 @@ namespace DetectionPlus
             }, Refreshed);
         }
         protected virtual void Refreshed() { }
-        private void Edit(DependencyObject obj, object item)
+        private void Edit(DependencyObject obj, T info)
         {
-            if (item is T info)
+            AddViewModel.Info = info;
+            var edit = AddWindow();
+            if (Method.Show(obj, edit) == true)
             {
-                AddViewModel.Info = info;
-                var edit = AddWindow();
-                if (Method.Show(obj, edit) == true)
-                {
-                    Updated(obj, info);
-                }
+                Updated(obj, info);
             }
+        }
+        protected virtual void OnDoubleClick(DataGridEXT datagrid1, T info)
+        {
+            Edit(datagrid1, info);
         }
         private ICommand doubleClick;
         public ICommand DoubleClick
         {
             get
             {
-                return doubleClick ?? (doubleClick = new RelayCommand<DataGridEXT>(datagrid1 =>
+                return doubleClick ?? (doubleClick = new RelayCommand<MouseButtonEventArgs>(e =>
                 {
-                    Edit(datagrid1, datagrid1.SelectedItem);
+                    if (e.Source is DataGridEXT datagrid1)
+                    {
+                        var point = e.GetPosition(datagrid1);
+                        var obj = datagrid1.InputHitTest(point);
+                        if (Method.Parent(obj, out DataGridRow row))
+                        {
+                            if (row.Item is T info)
+                            {
+                                OnDoubleClick(datagrid1, info);
+                            }
+                        }
+                    }
                 }));
             }
         }

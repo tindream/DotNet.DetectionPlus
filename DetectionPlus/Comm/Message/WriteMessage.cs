@@ -13,19 +13,14 @@ namespace DetectionPlus
         /// </summary>
         public short Start { get; set; }
         /// <summary>
-        /// 寄存器数量(高位、低位)
-        /// </summary>
-        public short Count { get; set; }
-        /// <summary>
         /// 寄存器值列表(高位、低位)
         /// </summary>
         public List<short> List { get; set; } = new List<short>();
 
         public WriteMessage() : base(Config.Write) { }
-        public WriteMessage(int start, int count = 1) : this()
+        public WriteMessage(int start) : this()
         {
             this.Start = (short)start;
-            this.Count = (short)count;
         }
     }
     public class WriteReponseMessage : MessageBase
@@ -34,10 +29,6 @@ namespace DetectionPlus
         /// 寄存器起始地址(高位、低位)
         /// </summary>
         public short Start { get; set; }
-        /// <summary>
-        /// 寄存器数量(高位、低位)
-        /// </summary>
-        public short Count { get; set; }
         /// <summary>
         /// 寄存器值列表(高位、低位)
         /// </summary>

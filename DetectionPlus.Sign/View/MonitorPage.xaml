@@ -26,8 +26,11 @@
             <TextBlock Text="{Binding Success}" VerticalAlignment="Center" Padding="5" Foreground="#23AFFF"/>
             <TextBlock Text="/" VerticalAlignment="Center" />
             <TextBlock Text="{Binding Total}" VerticalAlignment="Center" Padding="5"/>
-            <StackPanel>
-            </StackPanel>
+            <utils:ButtonEXT Name="btnTest" Margin="15,0"  Height="52"  Content="Test" DockPanel.Dock="Right"
+                             Border="1;0"
+                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             Command="{Binding Test}" CommandParameter="{Binding ElementName=btnTest}" Stretch="None"/>
+            <StackPanel/>
         </DockPanel>
         <Border BorderBrush="LightGray" BorderThickness="1" Padding="10" Background="#EEE">
             <hw:HWindowTool Name="hWindowTool" IsMoveImageEnabled="False"/>

@@ -15,7 +15,7 @@ namespace DetectionPlus.Sign
         private bool IStop;
         public AdminInfo Info { get; set; }
         public IDevice Device { get; set; }
-        public event Action ConnectEvent;
+        public event Action<string> ConnectEvent;
 
         public DeviceManager(AdminInfo info)
         {
@@ -26,8 +26,8 @@ namespace DetectionPlus.Sign
         {
             if (Device != null)
             {
-                Device.ConnectEvent -= Device_ConnectEvent;
                 Device.Close();
+                Device.ConnectEvent -= Device_ConnectEvent;
             }
             if (info.Host == null) return;
             if (info.Host.StartsWith("COM", StringComparison.OrdinalIgnoreCase))
@@ -47,7 +47,7 @@ namespace DetectionPlus.Sign
         }
         private void Device_ConnectEvent()
         {
-            ConnectEvent?.Invoke();
+            ConnectEvent?.Invoke(Device.Host);
         }
 
         #region 设备状态

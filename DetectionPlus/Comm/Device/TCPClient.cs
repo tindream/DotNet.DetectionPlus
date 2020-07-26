@@ -16,13 +16,13 @@ namespace DetectionPlus
         private volatile bool IAlone;
 
         private TcpClient client;
-        private readonly string host;
+        public string Host { get; private set; }
         private readonly int port;
 
         public TCPClient(string host, int port)
         {
             Init();
-            this.host = host;
+            this.Host = host;
             this.port = port;
             Open();
         }
@@ -39,7 +39,7 @@ namespace DetectionPlus
         {
             Open(() =>
             {
-                client.Connect(host, port);
+                client.Connect(Host, port);
                 Connected = client.Connected;
             }, ex =>
             {
@@ -146,7 +146,7 @@ namespace DetectionPlus
                     var stream = client.GetStream();
                     byte[] heardBuffer = Recevid(Config.HeardSize, stream.Read);
 
-                    var dataBuffer = Recevid(4 + (msg as WriteMessage).Count * 2, stream.Read);
+                    var dataBuffer = Recevid(4, stream.Read);
                     RecevidLog(ip, heardBuffer.Concat(dataBuffer).ToArray());
 
                     var data = BitConverter.ToString(dataBuffer);

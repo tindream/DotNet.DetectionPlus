@@ -50,7 +50,7 @@ namespace DetectionPlus.Sign
                             case "输出结果":
                                 if (Method.Child(listView1, out frame))
                                 {
-                                    frame.Content = ViewlLocator.GetViewInstance<CommSetPage>();
+                                    frame.Content = ViewlLocator.GetViewInstance<ResultSetPage>();
                                 }
                                 break;
                             case "系统设置":

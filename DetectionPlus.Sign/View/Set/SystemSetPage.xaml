@@ -10,11 +10,21 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       FontSize="15">
-    <Grid Margin="5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+
+
+    <DockPanel Margin="5">
+        <utils:ListViewEXT Name="listView2" BorderThickness="1,0,0,0"
+                               ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5" ItemTextForeground="#222;;#444"
+                               ItemWidth="Auto" ItemImageWidth="24" ItemImageStretch="None" DockPanel.Dock="Top" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listView2}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <utils:ListBoxItemEXT Text="Save"
+                                      Image="pack://application:,,,/DetectionPlus.Sign;component/Images/save.png|pack://application:,,,/DetectionPlus.Sign;component/Images/save_s.png"/>
+        </utils:ListViewEXT>
         <StackPanel Margin="0,20,0,0">
             <WrapPanel>
                 <TextBlock Text="扩展接口目录：" VerticalAlignment="Center" TextAlignment="Right"/>
@@ -24,10 +34,5 @@
                              Command="{Binding Open}" CommandParameter="{Binding ElementName=btnOpen}"/>
             </WrapPanel>
         </StackPanel>
-        <WrapPanel Grid.Row="1" Margin="0,0,0,100">
-            <utils:ButtonEXT Name="btnSave" Width="120" Height="42" Content="确认" Border="1;0"
-                             BackgroundStart="Transparent;#C823AFFF" BackgroundEnd="Transparent;#C823AFFF" 
-                             Command="{Binding Save}" CommandParameter="{Binding ElementName=btnSave}"/>
-        </WrapPanel>
-    </Grid>
+    </DockPanel>
 </Page>

@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:DetectionPlus.Sign"
       xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+      xmlns:i1="http://www.galasoft.ch/mvvmlight"
       DataContext="{Binding Histroy ,Source={StaticResource Locator}}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -33,12 +34,21 @@
                                   Image="pack://application:,,,/DetectionPlus.Sign;component/Images/search.png|pack://application:,,,/DetectionPlus.Sign;component/Images/search_s.png"/>
             <utils:ListBoxItemEXT Text="删除"
                                   Image="pack://application:,,,/DetectionPlus.Sign;component/Images/close.png|pack://application:,,,/DetectionPlus.Sign;component/Images/close_s.png"/>
+            <utils:ListBoxItemEXT Text="清空"
+                                  Image="pack://application:,,,/DetectionPlus.Sign;component/Images/clear.png|pack://application:,,,/DetectionPlus.Sign;component/Images/clear_s.png"/>
+            <utils:ListBoxItemEXT Text="测试"
+                                  Image="pack://application:,,,/DetectionPlus.Sign;component/Images/test.png|pack://application:,,,/DetectionPlus.Sign;component/Images/test_s.png"/>
         </utils:ListViewEXT>
-        <utils:DataGridEXT Name="datagrid1" Grid.Row="1" SelectedItem="{Binding SelectedItem}">
+        <utils:DataGridEXT Name="datagrid1" Grid.Row="1" SelectedItem="{Binding SelectedItem}" SelectionMode="Extended" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i1:EventToCommand Command="{Binding DoubleClick}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <DataGrid.Columns>
                 <DataGridTextColumn  Width="160" Binding="{Binding CreateOn, Converter={StaticResource dateConverter}}"/>
-                <DataGridTextColumn  Width="160" Binding="{Binding Results}"/> 
-                <DataGridTextColumn  Width="*" Binding="{Binding Description}"/> 
+                <DataGridTextColumn  Width="160" Binding="{Binding Results}"/>
+                <DataGridTextColumn  Width="*" Binding="{Binding Description}"/>
             </DataGrid.Columns>
         </utils:DataGridEXT>
         <utils:DataPager Name="dataPager" Grid.Row="2"/>

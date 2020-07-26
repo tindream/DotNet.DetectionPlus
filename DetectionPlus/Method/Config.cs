@@ -19,7 +19,7 @@ namespace DetectionPlus
         /// <summary>
         /// modbus/TCP头长度
         /// </summary>
-        public const int HeardSize = 8;
+        public const int HeardSize = 2;
         /// <summary>
         /// modbus/TCP 固定报文
         /// </summary>

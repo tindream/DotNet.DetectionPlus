@@ -513,6 +513,7 @@ namespace DetectionPlus.HWindowTool
         /// </summary>
         private void Repaint(HWindow window)
         {
+            if (window.Handle == (IntPtr)0) return;
             //线程锁定
             lock (LockDisplay)
             {

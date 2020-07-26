@@ -9,6 +9,7 @@ namespace DetectionPlus
     public interface IDevice
     {
         bool Connected { get; }
+        string Host { get; }
         event Action ConnectEvent;
 
         void Open();

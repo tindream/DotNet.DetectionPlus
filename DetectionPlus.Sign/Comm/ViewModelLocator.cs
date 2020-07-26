@@ -50,7 +50,7 @@ namespace DetectionPlus.Sign
             SimpleIoc.Default.Register<MonitorViewModel>();
 
             SimpleIoc.Default.Register<SystemSetViewModel>();
-            SimpleIoc.Default.Register<CommSetViewModel>();
+            SimpleIoc.Default.Register<ResultSetViewModel>();
             SimpleIoc.Default.Register<RegionSetViewModel>();
             SimpleIoc.Default.Register<ModelSetViewModel>();
             SimpleIoc.Default.Register<CameraSetViewModel>();
@@ -67,7 +67,7 @@ namespace DetectionPlus.Sign
         public MonitorViewModel Monitor { get { return ServiceLocator.Current.GetInstance<MonitorViewModel>(); } }
 
         public SystemSetViewModel SystemSet { get { return ServiceLocator.Current.GetInstance<SystemSetViewModel>(); } }
-        public CommSetViewModel CommSet { get { return ServiceLocator.Current.GetInstance<CommSetViewModel>(); } }
+        public ResultSetViewModel ResultSet { get { return ServiceLocator.Current.GetInstance<ResultSetViewModel>(); } }
         public RegionSetViewModel RegionSet { get { return ServiceLocator.Current.GetInstance<RegionSetViewModel>(); } }
         public ModelSetViewModel ModelSet { get { return ServiceLocator.Current.GetInstance<ModelSetViewModel>(); } }
         public CameraSetViewModel CameraSet { get { return ServiceLocator.Current.GetInstance<CameraSetViewModel>(); } }

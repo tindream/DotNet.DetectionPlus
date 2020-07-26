@@ -1,6 +1,7 @@
 ﻿using Paway.Helper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -27,6 +28,16 @@ namespace DetectionPlus
 
         [Text("描述")]
         public string Description { get; set; }
+
+        [Text("图片")]
+        [NoSelect]
+        public string Images
+        {
+            get
+            {
+                return File.Exists(Path.Combine(Config.Images, $"{Id}.bmp")) ? "已存" : null;
+            }
+        }
 
         public override string Desc()
         {

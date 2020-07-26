@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Paway.Helper;
 using Paway.WPF;
 using System;
@@ -14,7 +15,7 @@ using System.Windows.Media;
 
 namespace DetectionPlus.Sign
 {
-    public class CommSetViewModel : ViewModelPlus
+    public class ResultSetViewModel : ViewModelPlus
     {
         #region 属性
         public AdminInfo Info { get; set; }
@@ -36,7 +37,7 @@ namespace DetectionPlus.Sign
                         {
                             if (listView1.Items[i] is IListView item && item.IsSelected)
                             {
-                                value += 1 << (item.Text.ToInt() - 1);
+                                value += 1 << item.Text.ToInt();
                             }
                         }
                         Info.Value = value;
@@ -44,48 +45,62 @@ namespace DetectionPlus.Sign
                 }));
             }
         }
-        private ICommand save;
-        public ICommand Save
+        private ICommand selectionCommand;
+        public ICommand SelectionCommand
         {
             get
             {
-                return save ?? (save = new RelayCommand<ButtonEXT>(btnSave =>
+                return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
                 {
-                    if (Method.Find(btnSave, out TextBoxEXT tbAddress, "tbAddress"))
+                    if (listView1.SelectedItem is IListView info)
                     {
-                        if (Validation.GetHasError(tbAddress))
+                        switch (info.Text)
                         {
-                            tbAddress.Focus();
-                            return;
+                            case "Save":
+                                Save(listView1);
+                                break;
                         }
+                        Messenger.Default.Send(new StatuMessage(info.Text));
                     }
-                    if (Config.Admin.Result != Info.Result)
-                    {
-                        Config.Admin.Result = Info.Result;
-                        DataService.Default.Update(nameof(Config.Admin.Result));
-                    }
-                    if (Config.Admin.Value != Info.Value)
-                    {
-                        Config.Admin.Value = Info.Value;
-                        DataService.Default.Update(nameof(Config.Admin.Value));
-                    }
-                    if (Config.Admin.Address != Info.Address)
-                    {
-                        Config.Admin.Address = Info.Address;
-                        DataService.Default.Update(nameof(Config.Admin.Address));
-                    }
-                    if (Config.Admin.Host != Info.Host)
-                    {
-                        Config.Admin.Host = Info.Host;
-                        DataService.Default.Update(nameof(Config.Admin.Host));
-                        Method.Progress(btnSave, () =>
-                        {
-                            Config.Manager.Update(Config.Admin);
-                        });
-                    }
-                    Method.Toast(btnSave, "保存成功");
+                    listView1.SelectedIndex = -1;
                 }));
             }
+        }
+        private void Save(ListViewEXT listView1)
+        {
+            if (Method.Find(listView1, out TextBoxEXT tbAddress, "tbAddress"))
+            {
+                if (Validation.GetHasError(tbAddress))
+                {
+                    tbAddress.Focus();
+                    return;
+                }
+            }
+            UpdateValue(nameof(Config.Admin.Result));
+            UpdateValue(nameof(Config.Admin.Value));
+            UpdateValue(nameof(Config.Admin.Address));
+            UpdateValue(nameof(Config.Admin.ISuccess));
+            UpdateValue(nameof(Config.Admin.IFail));
+            if (UpdateValue(nameof(Config.Admin.Host)))
+            {
+                Method.Progress(listView1, () =>
+                {
+                    Config.Manager.Update(Config.Admin);
+                });
+            }
+            Method.Toast(listView1, "保存成功");
+        }
+        private bool UpdateValue(string name)
+        {
+            var adminValue = Config.Admin.GetValue(name);
+            var infoValue = Info.GetValue(name);
+            if (!adminValue.Equals(infoValue))
+            {
+                Config.Admin.SetValue(name, infoValue);
+                DataService.Default.Update(name);
+                return true;
+            }
+            return false;
         }
 
         #endregion
@@ -99,7 +114,7 @@ namespace DetectionPlus.Sign
                 {
                     if (listView1.Items[i] is IListView item)
                     {
-                        var value = 1 << (item.Text.ToInt() - 1);
+                        var value = 1 << item.Text.ToInt();
                         item.IsSelected = (Info.Value & value) == value;
                     }
                 }
@@ -108,7 +123,7 @@ namespace DetectionPlus.Sign
 
         #endregion
 
-        public CommSetViewModel()
+        public ResultSetViewModel()
         {
             this.Info = Config.Admin.Clone();
             this.MessengerInstance.Register<CommInitMessage>(this, msg => CommInit(msg.Obj));

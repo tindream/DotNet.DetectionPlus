@@ -33,6 +33,14 @@ namespace DetectionPlus.Sign
         /// 通讯端口
         /// </summary>
         public int Port { get; set; }
+        /// <summary>
+        /// 成功
+        /// </summary>
+        public bool ISuccess { get; set; }
+        /// <summary>
+        /// 失败
+        /// </summary>
+        public bool IFail { get; set; }
 
         #endregion
 

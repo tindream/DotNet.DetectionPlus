@@ -27,7 +27,7 @@ namespace DetectionPlus.Sign
         {
             get
             {
-                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "template");
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Template");
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                 return path;
             }

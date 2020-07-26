@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Paway.Helper;
 using Paway.WPF;
 using System;
@@ -21,6 +22,29 @@ namespace DetectionPlus.Sign
         #endregion
 
         #region 命令
+        private ICommand selectionCommand;
+        public ICommand SelectionCommand
+        {
+            get
+            {
+                return selectionCommand ?? (selectionCommand = new RelayCommand<ListViewEXT>(listView1 =>
+                {
+                    if (listView1.SelectedItem is IListView info)
+                    {
+                        switch (info.Text)
+                        {
+                            case "Save":
+                                Config.Admin.Expand = this.Info.Expand;
+                                DataService.Default.Update(nameof(Config.Admin.Expand));
+                                Method.Toast(listView1, "保存成功");
+                                break;
+                        }
+                        Messenger.Default.Send(new StatuMessage(info.Text));
+                    }
+                    listView1.SelectedIndex = -1;
+                }));
+            }
+        }
         private ICommand open;
         public ICommand Open
         {
@@ -39,19 +63,6 @@ namespace DetectionPlus.Sign
                     {
                         this.Info.Expand = new System.IO.DirectoryInfo(fbd.SelectedPath).Name;
                     }
-                }));
-            }
-        }
-        private ICommand save;
-        public ICommand Save
-        {
-            get
-            {
-                return save ?? (save = new RelayCommand<ButtonEXT>(btnSave =>
-                {
-                    Config.Admin.Expand = this.Info.Expand;
-                    DataService.Default.Update(nameof(Config.Admin.Expand));
-                    Method.Toast(btnSave, "保存成功");
                 }));
             }
         }

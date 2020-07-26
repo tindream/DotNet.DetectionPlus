@@ -14,7 +14,7 @@ namespace DetectionPlus
         /// <summary>
         /// 从机地址(站号，随便指定，00  -- FF 都可以)
         /// </summary>
-        public byte Address { get; set; }
+        public byte Address { get; set; } = 1;
         /// <summary>
         /// 寄存器类型-功能码
         /// </summary>
@@ -33,10 +33,9 @@ namespace DetectionPlus
             Data(this, ref data);
             var msg = $"{Address:X2}{Code:X2}{data}";
             msg = msg.Replace("-", "").Replace(" ", "");
-            var header = Method.HexStrToByteArr(Config.Header.Replace(" ", ""));
             var buffer = Method.HexStrToByteArr(msg);
             var calc = CRC16(buffer);
-            return header.Concat(buffer).Concat(calc).ToArray();
+            return buffer.Concat(calc).ToArray();
         }
         public static byte[] CRC16(byte[] data)
         {
@@ -56,7 +55,7 @@ namespace DetectionPlus
                 byte hi = (byte)((crc & 0xFF00) >> 8);  //高位置
                 byte lo = (byte)(crc & 0x00FF);         //低位置
 
-                return new byte[] { hi, lo };
+                return new byte[] { lo, hi };
             }
             return new byte[] { 0, 0 };
         }

@@ -1,4 +1,4 @@
-﻿<Page x:Class="DetectionPlus.Sign.CommSetPage"
+﻿<Page x:Class="DetectionPlus.Sign.ResultSetPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,16 +7,25 @@
       xmlns:utils="clr-namespace:Paway.WPF;assembly=Paway.WPF"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
       xmlns:i1="http://www.galasoft.ch/mvvmlight"
-      DataContext="{Binding CommSet ,Source={StaticResource Locator}}"
+      DataContext="{Binding ResultSet ,Source={StaticResource Locator}}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       FontSize="15">
-    <Grid Margin="5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <StackPanel Margin="0,20,0,0">
+
+    <DockPanel Margin="5">
+        <utils:ListViewEXT Name="listView2" BorderThickness="1,0,0,0"
+                               ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5" ItemTextForeground="#222;;#444"
+                               ItemWidth="Auto" ItemImageWidth="24" ItemImageStretch="None" DockPanel.Dock="Top" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionCommand}"
+                                           CommandParameter="{Binding ElementName=listView2}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <utils:ListBoxItemEXT Text="Save"
+                                      Image="pack://application:,,,/DetectionPlus.Sign;component/Images/save.png|pack://application:,,,/DetectionPlus.Sign;component/Images/save_s.png"/>
+        </utils:ListViewEXT>
+        <StackPanel>
             <WrapPanel Margin="0,3">
                 <TextBlock Text="输出结果：" VerticalAlignment="Center" TextAlignment="Right"/>
                 <utils:RadioButtonEXT Content="OK" IsChecked="{Binding Info.Result}"/>
@@ -24,15 +33,14 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="输出信号：" VerticalAlignment="Center" TextAlignment="Right"/>
-                <utils:ListViewEXT Name="listView1" DockPanel.Dock="Bottom" Margin="5" Height="29"
-                           ItemImageWidth="0" ItemMargin="1,1,0,0" ItemHeight="28" ItemWidth="50" ItemBorder="0"
+                <utils:ListViewEXT Name="listView1" DockPanel.Dock="Bottom" Margin="5" Height="29" BorderThickness="1,0,0,0"
+                           ItemImageWidth="0" ItemHeight="28" ItemWidth="50" ItemBorder="0,1,1,1"
                            HorizontalAlignment="Center" SelectionMode="Multiple" VerticalAlignment="Top">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i1:EventToCommand Command="{Binding SelectionLineCommand}" PassEventArgsToCommand="True"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    <utils:ListBoxItemEXT Text="8" IsSelected="True"/>
                     <utils:ListBoxItemEXT Text="7" />
                     <utils:ListBoxItemEXT Text="6" />
                     <utils:ListBoxItemEXT Text="5" />
@@ -40,6 +48,7 @@
                     <utils:ListBoxItemEXT Text="3" />
                     <utils:ListBoxItemEXT Text="2" />
                     <utils:ListBoxItemEXT Text="1" />
+                    <utils:ListBoxItemEXT Text="0" />
                 </utils:ListViewEXT>
             </WrapPanel>
             <WrapPanel>
@@ -50,11 +59,11 @@
                 <TextBlock Text="通讯主机：" VerticalAlignment="Center" TextAlignment="Right"/>
                 <utils:TextBoxEXT Width="335" Text="{Binding Info.Host}" MaxLength="15"/>
             </WrapPanel>
+            <WrapPanel Margin="0,3">
+                <TextBlock Text="保存图像：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <utils:CheckBoxEXT IsChecked="{Binding Info.ISuccess}" Content="OK"/>
+                <utils:CheckBoxEXT IsChecked="{Binding Info.IFail}" Content="NG"/>
+            </WrapPanel>
         </StackPanel>
-        <WrapPanel Grid.Row="1" Margin="0,0,0,100">
-            <utils:ButtonEXT Name="btnSave" Width="120" Height="42" Content="确认" Border="1;0"
-                             BackgroundStart="Transparent;#C823AFFF" BackgroundEnd="Transparent;#C823AFFF" 
-                             Command="{Binding Save}" CommandParameter="{Binding ElementName=btnSave}"/>
-        </WrapPanel>
-    </Grid>
+    </DockPanel>
 </Page>

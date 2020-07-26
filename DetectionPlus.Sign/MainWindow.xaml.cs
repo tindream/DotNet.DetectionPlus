@@ -51,9 +51,9 @@ namespace DetectionPlus.Sign
                     Config.MacId = EncryptHelper.MD5(Config.MacId + TConfig.Suffix);
                     Config.IListener = Config.Admin.Listener == EncryptHelper.MD5(Config.MacId + TConfig.Suffix);
                     Config.Manager = new DeviceManager(Config.Admin);
-                    Config.Manager.ConnectEvent += delegate
+                    Config.Manager.ConnectEvent += host =>
                     {
-                        Messenger.Default.Send(new StatuMessage($"{Config.Manager.Info.Host}{(Config.Manager.Connected ? "已连接" : "已断开")}"));
+                        Messenger.Default.Send(new StatuMessage($"{host}{(Config.Manager.Connected ? "已连接" : "已断开")}"));
                     };
                     if (!Config.IListener)
                     {

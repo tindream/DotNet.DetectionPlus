@@ -14,26 +14,26 @@ namespace DetectionPlus
     {
 
         private SerialPort client;
-        private readonly string host;
+        public string Host { get; private set; }
 
         public COMClient(string host)
         {
+            this.Host = host;
             Init();
-            this.host = host;
             Open();
         }
         private void Init()
         {
             if (IStop) return;
             client = new SerialPort();
-            if (this.host.IsEmpty()) return;
-            client.PortName = this.host;
+            if (this.Host.IsEmpty()) return;
+            client.PortName = this.Host;
             client.WriteTimeout = 3 * 1000;
             client.ReadTimeout = 3 * 1000;
 
             client.BaudRate = 9600;
             client.Parity = Parity.None;
-            client.StopBits = StopBits.One;
+            client.StopBits = StopBits.Two;
             client.DataBits = 8;
             client.Handshake = Handshake.None;
         }
@@ -91,7 +91,7 @@ namespace DetectionPlus
 
                     byte[] heardBuffer = Recevid(Config.HeardSize, client.Read);
 
-                    var dataBuffer = Recevid(4 + (msg as WriteMessage).Count * 2, client.Read);
+                    var dataBuffer = Recevid(4 + 2, client.Read);
                     RecevidLog(client.PortName, heardBuffer.Concat(dataBuffer).ToArray());
 
                     var data = BitConverter.ToString(dataBuffer);

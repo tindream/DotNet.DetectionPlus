@@ -66,6 +66,7 @@ namespace DetectionPlus
         }
         protected void Close(Action action)
         {
+            Connected = false;
             IStop = true;
             lock (objLock)
             {

@@ -19,11 +19,11 @@ using System.Windows.Shapes;
 namespace DetectionPlus.Sign
 {
     /// <summary>
-    /// 通讯设置
+    /// 结果输出-通讯设置
     /// </summary>
-    public partial class CommSetPage : Page
+    public partial class ResultSetPage : Page
     {
-        public CommSetPage()
+        public ResultSetPage()
         {
             InitializeComponent();
             this.Loaded += SystemSetPage_Loaded;
