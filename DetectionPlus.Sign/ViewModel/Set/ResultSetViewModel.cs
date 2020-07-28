@@ -94,7 +94,7 @@ namespace DetectionPlus.Sign
         {
             var adminValue = Config.Admin.GetValue(name);
             var infoValue = Info.GetValue(name);
-            if (!adminValue.Equals(infoValue))
+            if (!adminValue.TEquals(infoValue))
             {
                 Config.Admin.SetValue(name, infoValue);
                 DataService.Default.Update(name);
