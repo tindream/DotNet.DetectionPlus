@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <utils:ListViewEXT Name="listView1" ItemWidth="Auto" 
-                           ItemPadding="5,0,5,0" ItemTextPadding="5" ItemTextForeground="#222;;#444"
+                           ItemPadding="5,0,5,0" ItemTextPadding="5"
                            ItemImageWidth="24" ItemImageHeight="24"
                            ItemBorderBrush="Transparent;;"
                            ItemBackground="Transparent;;">

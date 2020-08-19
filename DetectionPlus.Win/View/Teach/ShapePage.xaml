@@ -26,7 +26,7 @@
 
             <utils:ListViewEXT Name="listView1" Grid.Row="1" DockPanel.Dock="Top"
                                ItemHeight="65" ItemBorderBrush="Transparent;;"
-                               ItemBackground="Transparent;;" ItemTextForeground="#222"
+                               ItemBackground="Transparent;;"
                                ItemImageDock="Top"
                                Background="Transparent" VerticalAlignment="Center">
                 <i:Interaction.Triggers>

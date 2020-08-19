@@ -13,11 +13,8 @@
     <DockPanel>
         <utils:ListViewEXT Name="listViewMain" Padding="15,0" DockPanel.Dock="Top"
                            ItemHeight="52" ItemWidth="72" 
-                           ItemBorder=";0,0,0,4"
-                           ItemBorderBrush="Transparent;#7723AFFF"
-                           ItemBackground="Transparent;#7723AFFF;#E9EEFF" 
-                           ItemTextForeground="#222;;#444" Background="#CCD5F0"
-                           ItemImageWidth="0">
+                           ItemBorder="0;0,0,0,4"
+                           Style="{StaticResource themeBackground}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SelectionCommand}"
@@ -28,7 +25,7 @@
             <utils:ListBoxItemEXT Text="历史"/>
             <utils:ListBoxItemEXT Text="设置"/>
         </utils:ListViewEXT>
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White" Height="30">
+        <StatusBar DockPanel.Dock="Bottom" Style="{StaticResource themeBackHigh}" VerticalAlignment="Bottom" Foreground="White" Height="30">
             <TextBlock Text="{Binding Desc}" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
         </StatusBar>
 

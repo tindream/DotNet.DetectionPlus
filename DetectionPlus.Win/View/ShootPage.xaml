@@ -12,11 +12,10 @@
       Title="FunctionPage"
       FontSize="15">
     <DockPanel>
-        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top"
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Top" BorderThickness="1,0,0,0"
                            ItemsSource="{Binding CarameList}"
-                           ItemWidth="Auto"  ItemHeight="32" 
-                           ItemBorder="0,1,1,1" ItemPadding="15,0,15,0"
-                           ItemImageWidth="0">
+                           ItemWidth="Auto" ItemHeight="32" 
+                           ItemBorder="0,1,1,1" ItemPadding="15,0,15,0">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SelectionCommand}"

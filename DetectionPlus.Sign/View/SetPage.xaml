@@ -12,11 +12,10 @@
         FontSize="15">
 
     <DockPanel>
-        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" 
+        <utils:ListViewEXT Name="listView1" DockPanel.Dock="Left" Margin="0,0,-1,0" Panel.ZIndex="1"
                            Orientation="Vertical" 
-                           ItemBorder="0" ItemPadding="10,5,10,5" ItemWidth="120"
-                           ItemImageWidth="0" 
-                           VerticalAlignment="Top" HorizontalContentAlignment="Right">
+                           ItemBorder="0;0,0,3,0" ItemPadding="10,5,10,5" ItemWidth="120"
+                           HorizontalContentAlignment="Right">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SelectionCommand}"
@@ -29,7 +28,7 @@
             <utils:ListBoxItemEXT Text="输出结果"/>
             <utils:ListBoxItemEXT Text="系统设置"/>
         </utils:ListViewEXT>
-        <TextBlock Width="1" Background="LightGray"/>
+        <TextBlock Width="1" Background="Gray"/>
 
         <Frame Margin="5,0" Source="/DetectionPlus.Sign;component/View/Set/CameraSetPage.xaml" NavigationUIVisibility="Hidden"/>
     </DockPanel>
