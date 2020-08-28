@@ -28,8 +28,8 @@
             <utils:ListBoxItemEXT Text="输出结果"/>
             <utils:ListBoxItemEXT Text="系统设置"/>
         </utils:ListViewEXT>
-        <TextBlock Width="1" Background="Gray"/>
+        <TextBlock Width="1" Background="Gray" VerticalAlignment="Stretch"/>
 
-        <Frame Margin="5,0" Source="/DetectionPlus.Sign;component/View/Set/CameraSetPage.xaml" NavigationUIVisibility="Hidden"/>
+        <Frame Margin="5,1,0,0" Source="/DetectionPlus.Sign;component/View/Set/CameraSetPage.xaml" NavigationUIVisibility="Hidden"/>
     </DockPanel>
 </Page>

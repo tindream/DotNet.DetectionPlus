@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Column="1" Margin="5" Source="/Images/F2.png" Stretch="None"/>
-        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -26,7 +26,7 @@
             <TextBlock Text="请调整二值化影像：其检测区域应呈橘色，并与背景有所区分。" Padding="5"/>
             <WrapPanel Grid.Row="1" Name="radioList" VerticalAlignment="Center">
                 <utils:SliderEXT x:Name="slider" Width="450" Maximum="100" Value="50" 
-                                 VerticalAlignment="Center" TrackColorLinear="#5500FFFF;#FAFFFF00">
+                                 TrackColorLinear="#5500FFFF;#FAFFFF00">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="ValueChanged">
                             <i:InvokeCommandAction Command="{Binding ValueChangedCommand}"

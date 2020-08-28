@@ -15,7 +15,7 @@
         d:DesignHeight="450" d:DesignWidth="800"
         FontSize="15">
 
-    <DockPanel Margin="5">
+    <DockPanel>
         <DockPanel DockPanel.Dock="Top" >
             <utils:ListViewEXT Name="listView1" BorderThickness="1,0,0,0"
                                ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5"
@@ -39,16 +39,16 @@
             </utils:ListViewEXT>
             <StackPanel>
                 <DockPanel>
-                    <TextBlock Text="名称：" VerticalAlignment="Center" TextAlignment="Right"/>
+                    <TextBlock Text="名称：" TextAlignment="Right"/>
                     <utils:TextBoxEXT Text="{Binding Admin.CameraName}" MaxLength="32" Width="200" HorizontalAlignment="Left"/>
                 </DockPanel>
                 <DockPanel>
-                    <TextBlock Text="触发：" VerticalAlignment="Center" TextAlignment="Right"/>
+                    <TextBlock Text="触发：" TextAlignment="Right"/>
                     <utils:RadioButtonEXT Content="硬触发" IsChecked="{Binding Admin.IsTrigger}"/>
                     <utils:RadioButtonEXT Content="软触发" IsChecked="{Binding Admin.IsTrigger, Converter={StaticResource boolReverse}}"/>
                 </DockPanel>
                 <DockPanel >
-                    <TextBlock Text="曝光：" VerticalAlignment="Center" TextAlignment="Right" />
+                    <TextBlock Text="曝光：" TextAlignment="Right" />
                     <utils:SliderEXT x:Name="slider" Maximum="1000000" Value="{Binding Admin.ExposureTime}" Margin="0,5" Minimum="10" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="ValueChanged">

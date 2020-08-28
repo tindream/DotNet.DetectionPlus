@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Column="1" Margin="5" Source="/Images/F2.png" Stretch="None"/>
-        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

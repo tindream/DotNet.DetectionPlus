@@ -22,10 +22,10 @@
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
                              BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/run.png|pack://application:,,,/DetectionPlus.Sign;component/Images/run_s.png"
                              Command="{Binding Run}" CommandParameter="{Binding ElementName=btnRun}" Stretch="None"/>
-            <TextBlock Text="计数:" VerticalAlignment="Center" Padding="10,0"/>
-            <TextBlock Text="{Binding Success}" VerticalAlignment="Center" Padding="5" Foreground="#23AFFF"/>
-            <TextBlock Text="/" VerticalAlignment="Center" />
-            <TextBlock Text="{Binding Total}" VerticalAlignment="Center" Padding="5"/>
+            <TextBlock Text="计数:" Padding="10,0"/>
+            <TextBlock Text="{Binding Success}" Padding="5" Foreground="#23AFFF"/>
+            <TextBlock Text="/"/>
+            <TextBlock Text="{Binding Total}" Padding="5"/>
             <utils:ButtonEXT Name="btnTest" Margin="15,0"  Height="52"  Content="Test" DockPanel.Dock="Right"
                              Border="1;0"
                              BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 

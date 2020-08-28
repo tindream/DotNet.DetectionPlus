@@ -21,17 +21,13 @@
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" Margin="0,10">
             <WrapPanel>
-                <TextBlock Text="机器码：" Width="75" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="机器码：" Width="75" TextAlignment="Right"/>
                 <utils:TextBoxEXT Name="tbMachine" IsReadOnly="True" Width="335" Text="{Binding Machine, Mode=OneWay}" MaxLength="32"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="注册码：" Width="75" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="注册码：" Width="75" TextAlignment="Right"/>
                 <utils:TextBoxEXT Name="tbRegedit" Width="335" Text="{Binding Regedit}" MaxLength="32"/>
             </WrapPanel>
-            <!--<WrapPanel>
-                <TextBlock Text="监控类型：" Width="110" VerticalAlignment="Center" TextAlignment="Right"/>
-                <utils:ComboBoxMulti Width="335" ItemsSource="{Binding MonitorList}" Text="{Binding Info.ConnectTypes}"/>
-            </WrapPanel>-->
         </StackPanel>
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
             <utils:ButtonEXT Content="确认" Width="88" Command="{Binding Save}" CommandParameter="{Binding ElementName=wd}"

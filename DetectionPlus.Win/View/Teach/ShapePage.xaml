@@ -16,7 +16,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

@@ -33,7 +33,7 @@
             <utils:ListBoxItemEXT Text="侦错"
                                   Image="pack://application:,,,/DetectionPlus.Win;component/Images/tool.png|pack://application:,,,/DetectionPlus.Win;component/Images/tool_s.png"/>
         </utils:ListViewEXT>
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="#40508D" Foreground="White" Height="30">
+        <StatusBar DockPanel.Dock="Bottom" Background="#40508D" Foreground="White" Height="30">
             <TextBlock Text="准备就绪" Padding="10,6" FontSize="14" Margin="-3"></TextBlock>
         </StatusBar>
 

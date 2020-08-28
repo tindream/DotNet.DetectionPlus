@@ -28,10 +28,6 @@
                 <utils:CheckBoxEXT IsChecked="{Binding IEnd}" Content="结束时间：" VerticalAlignment="Center" />
                 <utils:DatePickerEXT Margin="2" Width="335" Text="{Binding End, Mode=TwoWay}" IsEnabled="{Binding IEnd}" SelectedDateFormat="Short"/>
             </WrapPanel>
-            <!--<WrapPanel>
-                <TextBlock Text="监控类型：" Width="110" VerticalAlignment="Center" TextAlignment="Right"/>
-                <utils:ComboBoxMulti Width="335" ItemsSource="{Binding MonitorList}" Text="{Binding Info.ConnectTypes}"/>
-            </WrapPanel>-->
         </StackPanel>
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
             <utils:ButtonEXT Content="确认" Width="88" Command="{Binding Save}" CommandParameter="{Binding ElementName=wd}"

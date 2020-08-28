@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Data;
-using log4net;
 using System.Reflection;
 using System.Threading;
 using System.Collections;

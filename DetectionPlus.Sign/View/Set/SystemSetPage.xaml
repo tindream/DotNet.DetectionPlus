@@ -11,8 +11,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       FontSize="15">
 
-
-    <DockPanel Margin="5">
+    <DockPanel>
         <utils:ListViewEXT Name="listView2" BorderThickness="1,0,0,0"
                                ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5"
                                ItemWidth="Auto" ItemImageWidth="24" ItemImageStretch="None" DockPanel.Dock="Top" >
@@ -27,7 +26,7 @@
         </utils:ListViewEXT>
         <StackPanel Margin="0,20,0,0">
             <WrapPanel>
-                <TextBlock Text="扩展接口目录：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="扩展接口目录：" TextAlignment="Right"/>
                 <utils:TextBoxEXT Width="335" Name="tbExpand" Text="{Binding Info.Expand}"/>
                 <utils:ButtonEXT Name="btnOpen" Content="Open" Border="1;0" Margin="-1,2,2,2"
                              BackgroundStart="Transparent;#C823AFFF" BackgroundEnd="Transparent;#C823AFFF" 

@@ -15,7 +15,7 @@
         d:DesignHeight="450" d:DesignWidth="800"
         FontSize="15">
 
-    <DockPanel Margin="5">
+    <DockPanel>
         <utils:ListViewEXT Name="listView1" BorderThickness="1,0,0,0"
                                ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5"
                                ItemWidth="Auto" ItemImageWidth="24" ItemImageStretch="None" DockPanel.Dock="Top" >

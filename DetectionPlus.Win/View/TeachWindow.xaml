@@ -31,7 +31,7 @@
             <utils:ListBoxItemEXT Text="检测项目"/>
             <utils:ListBoxItemEXT Text="基本功能"/>
         </utils:ListViewEXT>
-        <TextBlock Width="1" Background="LightGray"/>
+        <TextBlock Width="1" Background="LightGray" VerticalAlignment="Stretch"/>
 
         <Grid>
             <Grid.RowDefinitions>

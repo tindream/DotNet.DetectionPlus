@@ -25,10 +25,10 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </utils:ListViewEXT>
-        <TextBlock Width="1" Background="LightGray"/>
+        <TextBlock Width="1" Background="LightGray" VerticalAlignment="Stretch"/>
         <StackPanel>
             <WrapPanel>
-                <TextBlock Text="名称：" Width="83" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="名称：" Width="83" TextAlignment="Right"/>
                 <utils:TextBoxEXT Width="335"/>
             </WrapPanel>
             <WrapPanel Margin="0,20">

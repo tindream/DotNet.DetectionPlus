@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Column="1" Margin="5" Source="/Images/F2.png" Stretch="None"/>
-        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Column="1" Width="1" Background="LightGray" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
             <TextBlock Text="请调整内外环形，其物件边缘应被圈住。" Padding="5"/>
             <WrapPanel Grid.Row="1" Name="radioList" VerticalAlignment="Center">
-                <TextBlock Text="敏感度：" VerticalAlignment="Center"/>
+                <TextBlock Text="敏感度：" />
                 <utils:ComboBoxEXT Width="102">
                     <ComboBoxItem Content="正常" IsSelected="True"/>
                 </utils:ComboBoxEXT>

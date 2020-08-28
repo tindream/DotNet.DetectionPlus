@@ -12,7 +12,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       FontSize="15">
 
-    <DockPanel Margin="5">
+    <DockPanel>
         <utils:ListViewEXT Name="listView2" BorderThickness="1,0,0,0"
                                ItemBorder="0,1,1,1" ItemPadding="10,5,10,5" ItemTextPadding="5"
                                ItemWidth="Auto" ItemImageWidth="24" ItemImageStretch="None" DockPanel.Dock="Top" >
@@ -27,12 +27,12 @@
         </utils:ListViewEXT>
         <StackPanel>
             <WrapPanel Margin="0,3">
-                <TextBlock Text="输出结果：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="输出结果：" TextAlignment="Right"/>
                 <utils:RadioButtonEXT Content="OK" IsChecked="{Binding Info.Result}"/>
                 <utils:RadioButtonEXT Content="NG" IsChecked="{Binding Info.Result, Converter={StaticResource boolReverse}}"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="输出信号：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="输出信号：" TextAlignment="Right"/>
                 <utils:ListViewEXT Name="listView1" DockPanel.Dock="Bottom" Margin="5" Height="29" BorderThickness="1,0,0,0"
                            ItemHeight="28" ItemWidth="50" ItemBorder="0,1,1,1"
                            HorizontalAlignment="Center" SelectionMode="Multiple" VerticalAlignment="Top">
@@ -52,15 +52,15 @@
                 </utils:ListViewEXT>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="输出地址：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="输出地址：" TextAlignment="Right"/>
                 <utils:TextBoxEXT Name="tbAddress" Width="335" Text="{Binding Info.Address}" MaxLength="3"/>
             </WrapPanel>
             <WrapPanel>
-                <TextBlock Text="通讯主机：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="通讯主机：" TextAlignment="Right"/>
                 <utils:TextBoxEXT Width="335" Text="{Binding Info.Host}" MaxLength="15"/>
             </WrapPanel>
             <WrapPanel Margin="0,3">
-                <TextBlock Text="保存图像：" VerticalAlignment="Center" TextAlignment="Right"/>
+                <TextBlock Text="保存图像：" TextAlignment="Right"/>
                 <utils:CheckBoxEXT IsChecked="{Binding Info.ISuccess}" Content="OK"/>
                 <utils:CheckBoxEXT IsChecked="{Binding Info.IFail}" Content="NG"/>
             </WrapPanel>
