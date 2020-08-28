@@ -58,14 +58,14 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Helper, Version=2.3.16.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Helper.2.3.16\lib\net40\Paway.Helper.dll</HintPath>
+    <Reference Include="Paway.Helper, Version=2.3.17.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Helper.2.3.17.1\lib\net40\Paway.Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.Utils, Version=2.3.16.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.Utils.2.3.16\lib\net40\Paway.Utils.dll</HintPath>
+    <Reference Include="Paway.Utils, Version=2.3.17.0, Culture=neutral, PublicKeyToken=5f9d1a9ddcc41d83, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.Utils.2.3.17\lib\net40\Paway.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="Paway.WPF, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Paway.WPF.1.2.3.2\lib\net45\Paway.WPF.dll</HintPath>
+    <Reference Include="Paway.WPF, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Paway.WPF.1.2.4\lib\net45\Paway.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

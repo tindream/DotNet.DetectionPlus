@@ -139,7 +139,7 @@ namespace DetectionPlus.Sign
                 }
 
             }
-            catch (HalconException exp)
+            catch (HalconException)
             {
                 return false;
             }

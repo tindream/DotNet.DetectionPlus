@@ -41,7 +41,7 @@ namespace DetectionPlus.Sign
                             find += $" order by {nameof(HistroyInfo.CreateOn)} desc";
                             Method.Progress(listView1, () =>
                             {
-                                var list = DataService.Default.Find<HistroyInfo>(find, new { start, end });
+                                var list = server.Find<HistroyInfo>(find, new { start, end });
                                 Method.BeginInvoke(listView1, () =>
                                 {
                                     base.List.Clear();
@@ -54,9 +54,8 @@ namespace DetectionPlus.Sign
                 case "清空":
                     if (Method.Ask(listView1, $"确认清空所有记录：共 {List.Count} 项"))
                     {
-                        var list = List.ToList();
-                        DataService.Default.Delete(list);
-                        foreach (var temp in list)
+                        server.Delete(List.ToList());
+                        foreach (var temp in List)
                         {
                             File.Delete(Path.Combine(Config.Images, $"{temp.Id}.bmp"));
                         }
@@ -82,7 +81,7 @@ namespace DetectionPlus.Sign
         }
         protected override List<HistroyInfo> Find()
         {
-            var list = DataService.Default.Find<HistroyInfo>($"{nameof(HistroyInfo.CreateOn)}>=@start order by {nameof(HistroyInfo.CreateOn)} desc", new { start = DateTime.Now.Date });
+            var list = server.Find<HistroyInfo>($"{nameof(HistroyInfo.CreateOn)}>=@start order by {nameof(HistroyInfo.CreateOn)} desc", new { start = DateTime.Now.Date });
             return list;
         }
         protected override void Delete(DependencyObject obj, HistroyInfo info)
@@ -100,7 +99,7 @@ namespace DetectionPlus.Sign
                     {
                         var index = dataGridEXT.SelectedIndex;
 
-                        DataService.Default.Delete(list);
+                        server.Delete(list);
                         foreach (var temp in list)
                         {
                             List.Remove(temp);

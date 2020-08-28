@@ -13,8 +13,6 @@ namespace DetectionPlus
 {
     public class TCPClient : DeviceBase, IDevice
     {
-        private volatile bool IAlone;
-
         private TcpClient client;
         public string Host { get; private set; }
         private readonly int port;
