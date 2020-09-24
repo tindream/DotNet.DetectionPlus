@@ -151,23 +151,18 @@ namespace DetectionPlus
         {
             Edit(datagrid1, info);
         }
-        private ICommand doubleClick;
-        public ICommand DoubleClick
+        private ICommand rowDoubleCommand;
+        public ICommand RowDoubleCommand
         {
             get
             {
-                return doubleClick ?? (doubleClick = new RelayCommand<MouseButtonEventArgs>(e =>
+                return rowDoubleCommand ?? (rowDoubleCommand = new RelayCommand<RowDoubleEventArgs>(e =>
                 {
                     if (e.Source is DataGridEXT datagrid1)
                     {
-                        var point = e.GetPosition(datagrid1);
-                        var obj = datagrid1.InputHitTest(point);
-                        if (Method.Parent(obj, out DataGridRow row))
+                        if (e.Item is T info)
                         {
-                            if (row.Item is T info)
-                            {
-                                OnDoubleClick(datagrid1, info);
-                            }
+                            OnDoubleClick(datagrid1, info);
                         }
                     }
                 }));

@@ -32,7 +32,7 @@
                 <utils:TextBoxEXT Width="335"/>
             </WrapPanel>
             <WrapPanel Margin="0,20">
-                <utils:ButtonEXT Content="删除" Width="88"/>
+                <utils:ButtonEXT Content="删除" Width="88" ItemBackground="Transparent;#77CA6B38" Border="1;0"/>
                 <utils:ButtonEXT Content="保存" Width="88"/>
             </WrapPanel>
         </StackPanel>

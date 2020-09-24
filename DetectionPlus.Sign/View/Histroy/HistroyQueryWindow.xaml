@@ -31,9 +31,9 @@
         </StackPanel>
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
             <utils:ButtonEXT Content="确认" Width="88" Command="{Binding Save}" CommandParameter="{Binding ElementName=wd}"
-                             BackgroundStart="#1023AFFF" BackgroundEnd="#D323AFFF" />
+                             ItemBackground="#D323AFFF" />
             <utils:ButtonEXT Content="取消" Width="88"  Command="{Binding Cancel}" CommandParameter="{Binding ElementName=wd}"
-                             BackgroundStart=";#10FF7327" BackgroundEnd=";#D3FF7327" />
+                             ItemBackground="Transparent;#77CA6B38" Border="1;0"/>
         </WrapPanel>
     </Grid>
 </Window>

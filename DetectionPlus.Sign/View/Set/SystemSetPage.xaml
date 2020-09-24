@@ -29,7 +29,7 @@
                 <TextBlock Text="扩展接口目录：" TextAlignment="Right"/>
                 <utils:TextBoxEXT Width="335" Name="tbExpand" Text="{Binding Info.Expand}"/>
                 <utils:ButtonEXT Name="btnOpen" Content="Open" Border="1;0" Margin="-1,2,2,2"
-                             BackgroundStart="Transparent;#C823AFFF" BackgroundEnd="Transparent;#C823AFFF" 
+                             ItemBackground="Transparent;#7723AFFF" 
                              Command="{Binding Open}" CommandParameter="{Binding ElementName=btnOpen}"/>
             </WrapPanel>
         </StackPanel>

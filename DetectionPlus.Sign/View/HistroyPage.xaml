@@ -41,8 +41,8 @@
         </utils:ListViewEXT>
         <utils:DataGridEXT Name="datagrid1" Grid.Row="1" SelectedItem="{Binding SelectedItem}" SelectionMode="Extended" >
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i1:EventToCommand Command="{Binding DoubleClick}" PassEventArgsToCommand="True"/>
+                <i:EventTrigger EventName="RowDoubleEvent">
+                    <i1:EventToCommand Command="{Binding RowDoubleCommand}" PassEventArgsToCommand="True"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <DataGrid.Columns>

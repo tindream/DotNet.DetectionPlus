@@ -19,7 +19,7 @@
         <DockPanel Margin="5" DockPanel.Dock="Top" >
             <utils:ButtonEXT Name="btnRun" Margin="15,0"  Height="52"  Width="52" 
                              Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             ItemBackground="White;#7723AFFF" 
                              BackgroundImage="pack://application:,,,/DetectionPlus.Sign;component/Images/run.png|pack://application:,,,/DetectionPlus.Sign;component/Images/run_s.png"
                              Command="{Binding Run}" CommandParameter="{Binding ElementName=btnRun}" Stretch="None"/>
             <TextBlock Text="计数:" Padding="10,0"/>
@@ -28,7 +28,7 @@
             <TextBlock Text="{Binding Total}" Padding="5"/>
             <utils:ButtonEXT Name="btnTest" Margin="15,0"  Height="52"  Content="Test" DockPanel.Dock="Right"
                              Border="1;0"
-                             BackgroundStart="Transparent;#7723AFFF" BackgroundEnd="Transparent;#7723AFFF" 
+                             ItemBackground="White;#7723AFFF" 
                              Command="{Binding Test}" CommandParameter="{Binding ElementName=btnTest}" Stretch="None"/>
             <StackPanel/>
         </DockPanel>

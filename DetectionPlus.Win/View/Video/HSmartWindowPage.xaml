@@ -18,7 +18,7 @@
                                              Height="202" VerticalAlignment="Top" Width="360" HImagePart="0,0,1280,720" />
         <WrapPanel Grid.Row="1">
             <utils:ButtonEXT Content="打开"/>
-            <utils:ButtonEXT Content="关闭"/>
+            <utils:ButtonEXT Content="关闭" ItemBackground="Transparent;#77CA6B38" Border="1;0"/>
         </WrapPanel>
     </Grid>
 </Page>

@@ -71,51 +71,5 @@ namespace DetectionPlus
             }
             return buffer;
         }
-
-        #region 统一Invoke处理
-        public static void Invoke(DependencyObject obj, Action action)
-        {
-            obj.Dispatcher.Invoke(() =>
-            {
-                try
-                {
-                    action.Invoke();
-                }
-                catch (Exception ex)
-                {
-                    Method.Error(obj, ex.Message());
-                }
-            });
-        }
-        public static void BeginInvoke(DependencyObject obj, Action action)
-        {
-            obj.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                try
-                {
-                    action.Invoke();
-                }
-                catch (Exception ex)
-                {
-                    Method.Error(obj, ex.Message());
-                }
-            }));
-        }
-        public static void BeginInvoke<T>(DependencyObject obj, Action<T> action, T t)
-        {
-            obj.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                try
-                {
-                    action.Invoke(t);
-                }
-                catch (Exception ex)
-                {
-                    Method.Error(obj, ex.Message());
-                }
-            }));
-        }
-
-        #endregion
     }
 }
